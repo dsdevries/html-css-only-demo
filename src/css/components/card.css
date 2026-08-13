@@ -1,0 +1,30 @@
+.card {
+    display: flex;
+    gap: 2rem;
+
+    a {
+        width: 250px;
+        display: block;
+        position: relative;
+        text-decoration: none;
+
+        img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 2/3;
+            object-fit: cover;
+            display: block;
+            border-radius: 2rem;
+        }
+    }
+
+    .details {
+        display: none;
+    }
+
+    h3 {
+        display: inline-block;
+        color: #000;
+        margin-bottom: 0;
+    }
+}

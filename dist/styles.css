@@ -142,6 +142,8 @@ img.full-width {
 .main-nav {
   view-transition-name: main-nav;
   filter: drop-shadow(0 3px 6px gray);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
   z-index: 10;
   background: none;
   border: 1px solid rgba(255, 255, 255, .7);
@@ -307,6 +309,10 @@ img.full-width {
 
 .main-nav a:hover {
   anchor-name: --hover;
+}
+
+.main-nav + * {
+  margin-bottom: 100px;
 }
 
 @property --button-background-color-from {
@@ -504,6 +510,285 @@ img.full-width {
   --marker-background-color-to: var(--marker-background-color-light-to);
 }
 
+.card {
+  gap: 2rem;
+  display: flex;
+}
+
+.card a {
+  width: 250px;
+  text-decoration: none;
+  display: block;
+  position: relative;
+}
+
+.card a img {
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 2rem;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card .details {
+  display: none;
+}
+
+.card h3 {
+  color: #000;
+  margin-bottom: 0;
+  display: inline-block;
+}
+
+@keyframes droplet-stretch-vertical {
+  0% {
+    animation-timing-function: var(--spring-easing);
+    transform: scaleX(1);
+  }
+
+  30% {
+    animation-timing-function: var(--spring-easing);
+    transform: scaleX(.8);
+  }
+
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes droplet-stretch-vertical-alt {
+  0% {
+    animation-timing-function: var(--spring-easing);
+    transform: scaleX(1);
+  }
+
+  30% {
+    animation-timing-function: var(--spring-easing);
+    transform: scaleX(.8);
+  }
+
+  60% {
+    animation-timing-function: var(--spring-easing);
+    transform: scaleX(.9);
+  }
+
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+::view-transition-group(profile-selected-indicator) {
+  animation-duration: 1s;
+  animation-timing-function: var(--spring-easing);
+  z-index: 1;
+  background: var(--glass-panel-light);
+  box-shadow: var(--glass-edge);
+  border-radius: 2em;
+}
+
+.profile .profile-button {
+  anchor-name: --profile-button;
+  filter: drop-shadow(0 3px 6px gray);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  background: none;
+  border: 1px solid rgba(255, 255, 255, .7);
+  border-radius: 2rem;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  overflow: clip;
+}
+
+.profile .profile-button:before {
+  content: "";
+  background: var(--glass-panel-medium);
+  color: #6a1b9a;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .45),
+                    var(--glass-edge);
+  clip-path: inset(0 round 2rem);
+  z-index: -2;
+  border-radius: 2rem;
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  left: -1px;
+  right: -1px;
+}
+
+.profile .profile-button img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.profile [popover] {
+  filter: drop-shadow(0 3px 6px gray);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  position-anchor: --profile-button;
+  position-area: bottom;
+  color: inherit;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, .7);
+  border-radius: 2rem;
+  padding: 0;
+  overflow: clip;
+  transform: translateX(50%);
+}
+
+.profile [popover]::-ms-backdrop {
+  background: none;
+}
+
+.profile [popover]::backdrop {
+  background: none;
+}
+
+.profile [popover] ul {
+  flex-direction: column;
+  align-items: stretch;
+  gap: .2rem;
+  margin: 0;
+  padding: .2rem;
+  list-style: none;
+  display: flex;
+}
+
+.profile [popover] ul:after {
+  content: "";
+  top: anchor(top);
+  left: anchor(left);
+  right: anchor(right);
+  height: anchor-size(height);
+  transition: top 1s var(--spring-easing),
+                        left 1s var(--spring-easing),
+                        right 1s var(--spring-easing),
+                        height 1s var(--spring-easing),
+                        opacity 1s var(--spring-easing),
+                        transform 1s var(--spring-easing);
+  pointer-events: none;
+  transform-origin: center;
+  animation-duration: .6s;
+  animation-timing-function: var(--spring-easing);
+  z-index: -1;
+  background: none;
+  border-radius: 2em;
+  display: block;
+  position: absolute;
+}
+
+.profile [popover] ul:before {
+  content: "";
+  top: anchor(top);
+  left: anchor(left);
+  right: anchor(right);
+  height: anchor-size(height);
+  transition: top 1s var(--spring-easing),
+                        left 1s var(--spring-easing),
+                        right 1s var(--spring-easing),
+                        height 1s var(--spring-easing),
+                        opacity 1s var(--spring-easing),
+                        transform 1s var(--spring-easing);
+  pointer-events: none;
+  transform-origin: center;
+  animation-duration: .6s;
+  animation-timing-function: var(--spring-easing);
+  z-index: -1;
+  background: none;
+  border-radius: 2em;
+  display: block;
+  position: absolute;
+}
+
+.profile [popover] ul:before {
+  background: var(--glass-panel-light);
+  box-shadow: var(--glass-edge);
+  view-transition-name: profile-selected-indicator;
+  position-anchor: --profile-selected;
+}
+
+.profile [popover] ul:after {
+  background: var(--glass-panel-dark);
+  position-anchor: --profile-hover;
+  opacity: 0;
+}
+
+.profile [popover] ul:not(:has(li a:hover)) {
+  anchor-name: --profile-hover;
+}
+
+.profile [popover] ul:has(li a:hover):after {
+  opacity: 1;
+}
+
+.profile [popover] ul:has(li:nth-child(odd) a:hover):after {
+  animation-name: droplet-stretch-vertical;
+}
+
+.profile [popover] ul:has(li:nth-child(odd).selected):before {
+  animation-name: droplet-stretch-vertical;
+}
+
+.profile [popover] ul:has(li:nth-child(2n) a:hover):after {
+  animation-name: droplet-stretch-vertical-alt;
+}
+
+.profile [popover] ul:has(li:nth-child(2n).selected):before {
+  animation-name: droplet-stretch-vertical-alt;
+}
+
+.profile [popover] ul:has(li a:active):after {
+  transform: scale(.8, 1.3);
+}
+
+.profile [popover] li {
+  background: none;
+  justify-content: center;
+  align-items: center;
+  transition: color .3s;
+  display: flex;
+  position: relative;
+}
+
+.profile [popover] li.selected {
+  color: red;
+  anchor-name: --profile-selected;
+}
+
+.profile [popover] a {
+  color: inherit;
+  white-space: nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  text-decoration: none;
+  display: flex;
+}
+
+.profile [popover] a:hover {
+  anchor-name: --profile-hover;
+}
+
+.profile [popover]:before {
+  content: "";
+  background: var(--glass-panel-medium);
+  color: #6a1b9a;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .45),
+                    var(--glass-edge);
+  clip-path: inset(0 round 2rem);
+  z-index: -2;
+  border-radius: 2rem;
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  left: -1px;
+  right: -1px;
+}
+
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -610,62 +895,8 @@ img.full-width {
   opacity: 1;
 }
 
-#overview .movies li {
-  gap: 2rem;
-  display: flex;
-}
-
 #overview .movies li:hover {
   anchor-name: --active-movie;
-}
-
-#overview .movies li a {
-  width: 250px;
-  text-decoration: none;
-  display: block;
-  position: relative;
-}
-
-#overview .movies li a img {
-  aspect-ratio: 2 / 3;
-  object-fit: cover;
-  border-radius: 2rem;
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-#overview .movies li .details {
-  display: none;
-}
-
-#overview .movies li h3 {
-  color: #000;
-  margin-bottom: 0;
-  display: inline-block;
-}
-
-#overview .movies .column {
-  flex-direction: column;
-}
-
-#overview .movies .column li a {
-  width: 150px;
-}
-
-#overview .movies .column li .details {
-  display: block;
-}
-
-#overview .movies .column li .details .cast {
-  color: #777;
-  gap: 2rem;
-  font-size: .8rem;
-  display: flex;
-}
-
-#overview .movies .column li .details .cast .name {
-  font-weight: bold;
 }
 
 #detail::view-transition-new(image) {
@@ -685,22 +916,18 @@ img.full-width {
 }
 
 #detail .content {
-  box-sizing: border-box;
   color: #fff;
   view-transition-name: movie-description;
   background: linear-gradient(0deg, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0));
   border-radius: 2rem;
-  padding: 2rem;
+  padding-bottom: 2rem;
   position: absolute;
   bottom: 0;
-  left: 0;
-  right: 0;
   overflow: clip;
 }
 
 #detail h1 {
   margin-bottom: 0;
-  display: inline-block;
 }
 
 :root {

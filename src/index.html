@@ -16,6 +16,20 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<header class="content-grid">
+    <div class="profile">
+        <button class="button profile-button" popovertarget="profile-menu">
+            <img src="assets/avatar.png" />
+        </button>
+        <nav class="profile-menu" popover="auto" id="profile-menu">
+            <ul>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="settings.html">Settings</a></li>
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
 <nav class="main-nav">
     <ul>
         <li class="selected"><a href="index.html">Featured</a></li>
@@ -29,7 +43,7 @@
     <h1>What to watch</h1>
     <div class="carousel">
         <ul class="movies">
-            <li data-image="assets/gladiator.webp">
+            <li class="card" data-image="assets/gladiator.webp">
                 <a>
                     <img src="assets/gladiator.webp" />
                 </a>
@@ -60,7 +74,7 @@
                     </div>
                 </div>
             </li>
-            <li data-image="assets/lion-king.webp">
+            <li class="card" data-image="assets/lion-king.webp">
                 <a href="detail.html" id="lion-king-poster" class="lion-king">
                     <img src="assets/lion-king.webp" />
                 </a>
@@ -83,7 +97,7 @@
                     </div>
                 </div>
             </li>
-            <li data-image="assets/flow.jpeg">
+            <li class="card" data-image="assets/flow.jpeg">
                 <a>
                     <img src="assets/flow.jpeg" />
                 </a>
@@ -106,7 +120,7 @@
                     </div>
                 </div>
             </li>
-            <li data-image="assets/sonic.webp">
+            <li class="card" data-image="assets/sonic.webp">
                 <a>
                     <img src="assets/sonic.webp" />
                 </a>
@@ -143,7 +157,7 @@
     <h1>Editor Picks</h1>
     <div class="carousel">
         <ul class="movies">
-            <li data-image="assets/gladiator.webp">
+            <li class="card" data-image="assets/gladiator.webp">
                 <a>
                     <img src="assets/gladiator.webp" />
                 </a>
@@ -174,7 +188,7 @@
                     </div>
                 </div>
             </li>
-            <li data-image="assets/lion-king.webp">
+            <li class="card" data-image="assets/lion-king.webp">
                 <a href="detail.html" class="lion-king">
                     <img src="assets/lion-king.webp" />
                 </a>
@@ -197,7 +211,7 @@
                     </div>
                 </div>
             </li>
-            <li data-image="assets/flow.jpeg">
+            <li class="card" data-image="assets/flow.jpeg">
                 <a>
                     <img src="assets/flow.jpeg" />
                 </a>
@@ -220,7 +234,7 @@
                     </div>
                 </div>
             </li>
-            <li data-image="assets/sonic.webp">
+            <li class="card" data-image="assets/sonic.webp">
                 <a>
                     <img src="assets/sonic.webp" />
                 </a>
