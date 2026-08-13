@@ -33,6 +33,20 @@ img.full-width {
   max-height: 45vh;
 }
 
+@keyframes fade-in-from-top {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+}
+
+@keyframes fade-out-to-top {
+  to {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+}
+
 header {
   z-index: 1000;
   padding-top: 2rem;
@@ -75,11 +89,10 @@ header ~ main {
 }
 
 header .back-button {
+  view-transition-name: back-button;
   background: linear-gradient(to bottom,
                 var(--button-background-color-from),
                 var(--button-background-color-to));
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
   --button-background-color-dark-from: rgba(255, 255, 255, .28);
   --button-background-color-dark-to: rgba(255, 255, 255, .42);
   --button-background-color-light-from: rgba(255, 255, 255, .5);
@@ -110,6 +123,22 @@ header .back-button:hover {
 header .back-button svg {
   width: 24px;
   height: 24px;
+}
+
+::view-transition-group(back-button) {
+  z-index: 1000;
+}
+
+::view-transition-new(back-button) {
+  border-radius: 50%;
+  animation: .3s cubic-bezier(0, 0, .2, 1) .5s both fade-in-from-top;
+  overflow: clip;
+}
+
+::view-transition-old(back-button) {
+  border-radius: 50%;
+  animation: .15s cubic-bezier(.4, 0, 1, 1) both fade-out-to-top;
+  overflow: clip;
 }
 
 @keyframes droplet-stretch {
@@ -745,8 +774,8 @@ header .back-button svg {
 .profile .profile-button {
   anchor-name: --profile-button;
   filter: drop-shadow(0 3px 6px gray);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
   z-index: 100;
   background: none;
   border: 1px solid rgba(255, 255, 255, .7);
@@ -781,8 +810,8 @@ header .back-button svg {
 
 .profile [popover] {
   view-transition-name: profile-menu;
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
   position-anchor: --profile-button;
   position-area: bottom span-left;
   color: inherit;
