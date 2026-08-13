@@ -84,8 +84,22 @@ header:after {
   }
 }
 
-header ~ main {
+header:has(.back-button) ~ main {
   margin-top: -100px;
+}
+
+header .logo {
+  view-transition-name: logo;
+  z-index: 100;
+  grid-area: 1 / content;
+  align-self: center;
+  justify-self: start;
+}
+
+header .logo img {
+  width: auto;
+  height: 48px;
+  display: block;
 }
 
 header .back-button {
@@ -131,6 +145,10 @@ header .back-button svg {
 }
 
 ::view-transition-group(back-button) {
+  z-index: 1000;
+}
+
+::view-transition-group(logo) {
   z-index: 1000;
 }
 
