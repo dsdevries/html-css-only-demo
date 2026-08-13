@@ -570,8 +570,31 @@ header {
     transform: scaleX(.8);
   }
 
+  60% {
+    animation-timing-function: var(--spring-easing);
+    transform: scaleX(.9);
+  }
+
   100% {
     transform: scaleX(1);
+  }
+}
+
+@keyframes droplet-pop {
+  0% {
+    transform: scale(.9);
+  }
+
+  40% {
+    transform: scale(1.15, .85);
+  }
+
+  70% {
+    transform: scale(.95, 1.05);
+  }
+
+  100% {
+    transform: scale(1);
   }
 }
 
@@ -626,7 +649,7 @@ header {
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .45),
                     var(--glass-edge);
   clip-path: inset(0 round 2rem);
-  z-index: -2;
+  z-index: -1;
   border-radius: 2rem;
   position: absolute;
   top: -1px;
@@ -642,18 +665,59 @@ header {
 }
 
 .profile [popover] {
-  filter: drop-shadow(0 3px 6px gray);
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   position-anchor: --profile-button;
-  position-area: bottom;
+  position-area: bottom span-left;
   color: inherit;
+  opacity: .1;
+  transform-origin: center;
+  filter: drop-shadow(0 3px 6px gray) blur(2px);
+  width: 50px;
+  min-width: 50px;
+  height: 50px;
+  transition: display .6s allow-discrete,
+            overlay .6s allow-discrete,
+            opacity .6s var(--spring-easing),
+            transform .6s var(--spring-easing),
+            width .6s var(--spring-easing),
+            min-width .6s var(--spring-easing),
+            height .6s var(--spring-easing),
+            border-radius .6s var(--spring-easing),
+            filter .6s var(--spring-easing);
   background: none;
   border: 1px solid rgba(255, 255, 255, .7);
   border-radius: 2rem;
+  margin-top: 10px;
   padding: 0;
   overflow: clip;
-  transform: translateX(50%);
+  transform: translateY(-60px) scale(.9);
+}
+
+.profile [popover]:popover-open {
+  opacity: 1;
+  filter: drop-shadow(0 3px 6px gray) blur();
+  border-radius: 2rem;
+  width: auto;
+  min-width: 160px;
+  height: auto;
+  transform: translateY(0) scale(1);
+}
+
+.profile [popover]:popover-open ul {
+  animation: .6s linear droplet-pop;
+}
+
+@starting-style {
+  .profile [popover]:popover-open {
+    opacity: .1;
+    filter: drop-shadow(0 3px 6px gray) blur(2px);
+    border-radius: 2rem;
+    width: 50px;
+    min-width: 50px;
+    height: 50px;
+    transform: translateY(-60px) scale(.9);
+  }
 }
 
 .profile [popover]::-ms-backdrop {
@@ -665,6 +729,7 @@ header {
 }
 
 .profile [popover] ul {
+  transform-origin: center;
   flex-direction: column;
   align-items: stretch;
   gap: .2rem;
@@ -798,7 +863,7 @@ header {
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .45),
                     var(--glass-edge);
   clip-path: inset(0 round 2rem);
-  z-index: -2;
+  z-index: -1;
   border-radius: 2rem;
   position: absolute;
   top: -1px;
@@ -960,6 +1025,7 @@ header {
             rgba(255, 255, 255, .6));
   --glass-edge: inset 0 0 0 1px rgba(255, 255, 255, .35);
   --spring-easing: linear(0, .0018, .0069 1.15%, .026 2.3%, .0637, .1135 5.18%, .2229 7.78%, .5977 15.84%, .7014, .7904, .8641, .9228, .9676 28.8%, 1.0032 31.68%, 1.0225, 1.0352 36.29%, 1.0431 38.88%, 1.046 42.05%, 1.0448 44.35%, 1.0407 47.23%, 1.0118 61.63%, 1.0025 69.41%, .9981 80.35%, .9992 99.94%);
+  interpolate-size: allow-keywords;
 }
 
 body {

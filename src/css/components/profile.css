@@ -7,11 +7,27 @@
         transform: scaleX(0.8);
         animation-timing-function: var(--spring-easing);
     }
-    60% {.9);
+    60% {
+        transform: scaleX(0.9);
         animation-timing-function: var(--spring-easing);
     }
     100% {
         transform: scaleX(1);
+    }
+}
+
+@keyframes droplet-pop {
+    0% {
+        transform: scale(0.9);
+    }
+    40% {
+        transform: scale(1.15, 0.85);
+    }
+    70% {
+        transform: scale(0.95, 1.05);
+    }
+    100% {
+        transform: scale(1);
     }
 }
 
@@ -66,7 +82,7 @@
                     0 4px 10px 0 rgba(0, 0, 0, 0.45),
                     var(--glass-edge);
             clip-path: inset(0 round 2rem);
-            z-index: -2;
+            z-index: -1;
             top: -1px;
             right: -1px;
             bottom:-1px;
@@ -83,15 +99,56 @@
     [popover] {
         background: none;
         border: 1px solid rgba(255, 255, 255, .7);
-        border-radius: 2rem;
-        filter: drop-shadow(0 3px 6px gray);
         backdrop-filter: blur(5px);
         padding: 0;
         position-anchor: --profile-button;
-        position-area: bottom;
-        transform: translateX(50%);
+        position-area: bottom span-left;
+        margin-top: 10px;
         color: inherit;
         overflow: clip;
+        opacity: 0.1;
+        transform: translateY(-60px) scale(0.9);
+        transform-origin: center;
+        width: 50px;
+        min-width: 50px;
+        height: 50px;
+        border-radius: 2rem;
+        filter: drop-shadow(0 3px 6px gray) blur(2px);
+
+        transition:
+            display 0.6s allow-discrete,
+            overlay 0.6s allow-discrete,
+            opacity 0.6s var(--spring-easing),
+            transform 0.6s var(--spring-easing),
+            width 0.6s var(--spring-easing),
+            min-width 0.6s var(--spring-easing),
+            height 0.6s var(--spring-easing),
+            border-radius 0.6s var(--spring-easing),
+            filter 0.6s var(--spring-easing);
+
+        &:popover-open {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            width: auto;
+            min-width: 160px;
+            height: auto;
+            border-radius: 2rem;
+            filter: drop-shadow(0 3px 6px gray) blur(0);
+
+            ul {
+                animation: droplet-pop 0.6s linear;
+            }
+
+            @starting-style {
+                opacity: 0.1;
+                transform: translateY(-60px) scale(0.9);
+                width: 50px;
+                min-width: 50px;
+                height: 50px;
+                border-radius: 2rem;
+                filter: drop-shadow(0 3px 6px gray) blur(2px);
+            }
+        }
 
         &::backdrop {
             background: none;
@@ -105,6 +162,7 @@
             padding: 0.2rem;
             margin: 0;
             gap: 0.2rem;
+            transform-origin: center; /* Ensure droplet effect scales from center */
 
             &::after,
             &::before {
@@ -208,7 +266,7 @@
                     0 4px 10px 0 rgba(0, 0, 0, 0.45),
                     var(--glass-edge);
             clip-path: inset(0 round 2rem);
-            z-index: -2;
+            z-index: -1;
             top: -1px;
             right: -1px;
             bottom:-1px;
