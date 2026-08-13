@@ -1,0 +1,152 @@
+@property --button-background-color-from {
+    syntax: '<color>';
+    initial-value: white;
+    inherits: false;
+}
+
+@property --button-background-color-to {
+    syntax: '<color>';
+    initial-value: white;
+    inherits: false;
+}
+
+@property --marker-background-color-from {
+    syntax: '<color>';
+    initial-value: white;
+    inherits: false;
+}
+
+@property --marker-background-color-to {
+    syntax: '<color>';
+    initial-value: white;
+    inherits: false;
+}
+
+.carousel {
+    position: relative;
+
+
+    ul {
+        overflow-x: hidden;
+        scroll-snap-type: x mandatory;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+        padding: 0;
+        width: 100%;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+
+
+        > li {
+            scroll-snap-align: center;
+        }
+
+        &::scroll-button(left),
+        &::scroll-button(right) {
+            --button-background-color-dark-from: rgba(255, 255, 255, 0.28);
+            --button-background-color-dark-to: rgba(255, 255, 255, 0.42);
+            --button-background-color-light-from: rgba(255, 255, 255, 0.50);
+            --button-background-color-light-to: rgba(255, 255, 255, 0.60);
+
+            --button-background-color-from: var(--button-background-color-dark-from);
+            --button-background-color-to: var(--button-background-color-dark-to);
+
+            filter: drop-shadow(0 3px 6px gray);
+            box-shadow:
+                    0 4px 10px 0 rgba(0, 0, 0, 0.45),
+                    var(--glass-edge);
+            clip-path: inset(0 round 50%);
+            font-size: 1.2rem;
+            line-height: 3rem;
+            padding: .1rem 1rem;
+            background: #FFF;
+            color: #000;
+            border: none;
+            border-radius: 2em;
+            transform-origin: center center;
+            background: linear-gradient(
+                    to bottom,
+                    var(--button-background-color-from),
+                    var(--button-background-color-to)
+            );
+            box-shadow: var(--glass-edge);
+            transition:
+                    --button-background-color-from 1s var(--spring-easing),
+                    --button-background-color-to 1s var(--spring-easing);
+
+            &:hover {
+                --button-background-color-from: var(--button-background-color-light-from);
+                --button-background-color-to: var(--button-background-color-light-to);
+
+            }
+        }
+
+        &::scroll-button(left) {
+            content: "⬅" / "Scroll Left";
+        }
+
+        &::scroll-button(right) {
+            content: "⮕" / "Scroll Right";
+            position: absolute;
+            right: 0;
+        }
+
+        &::scroll-button(*):focus-visible {
+            outline-offset: 5px;
+        }
+
+        scroll-marker-group: after;
+
+        &::scroll-marker-group {
+            position: absolute;
+            bottom: 15px;
+            height: 10px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        > li::scroll-marker {
+            content: '';
+            display: block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            filter: drop-shadow(0 3px 6px gray);
+            box-shadow:
+                    0 4px 10px 0 rgba(0, 0, 0, 0.45),
+                    var(--glass-edge);
+            clip-path: inset(0 round 10px);
+
+            --marker-background-color-dark-from: rgba(255, 255, 255, 0.28);
+            --marker-background-color-dark-to: rgba(255, 255, 255, 0.42);
+            --marker-background-color-light-from: rgba(255, 255, 255, 0.50);
+            --marker-background-color-light-to: rgba(255, 255, 255, 0.60);
+
+            --marker-background-color-from: var(--marker-background-color-dark-from);
+            --marker-background-color-to: var(--marker-background-color-dark-to);
+
+            background: linear-gradient(
+                    to bottom,
+                    var(--marker-background-color-from),
+                    var(--marker-background-color-to)
+            );
+            transition: --marker-background-color-from 1s var(--spring-easing),
+            --marker-background-color-to 1s var(--spring-easing);
+
+
+            &:hover {
+                --marker-background-color-from: var(--marker-background-color-light-from);
+                --marker-background-color-to: var(--marker-background-color-light-to);
+            }
+        }
+
+        > li::scroll-marker:target-current {
+        }
+    }
+}

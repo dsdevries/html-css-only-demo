@@ -1,3 +1,38 @@
+.content-grid {
+  --padding-inline: 1rem;
+  --content-max-width: 900px;
+  --breakout-max-width: 1200px;
+  --breakout-size: calc((var(--breakout-max-width) - var(--content-max-width)) / 2);
+  grid-template-columns: [full-width-start] minmax(var(--padding-inline), 1fr)
+    [breakout-start] minmax(0, var(--breakout-size))
+    [content-start] min(100% - (var(--padding-inline) * 2),
+      var(--content-max-width))
+    [content-end]
+    minmax(0, var(--breakout-size)) [breakout-end]
+    minmax(var(--padding-inline), 1fr) [full-width-end];
+  display: grid;
+}
+
+.content-grid > :not(:is(.breakout, .full-width)), .full-width > :not(:is(.breakout, .full-width)) {
+  grid-column: content;
+}
+
+.content-grid > .breakout {
+  grid-column: breakout;
+}
+
+.content-grid > .full-width {
+  grid-column: full-width;
+  grid-template-columns: inherit;
+  display: grid;
+}
+
+img.full-width {
+  object-fit: cover;
+  width: 100%;
+  max-height: 45vh;
+}
+
 @keyframes droplet-stretch {
   0% {
     margin-left: 0;
@@ -107,21 +142,21 @@
 .main-nav {
   view-transition-name: main-nav;
   filter: drop-shadow(0 3px 6px gray);
-  z-index: 0;
+  z-index: 10;
   background: none;
   border: 1px solid rgba(255, 255, 255, .7);
   border-radius: 2rem;
   position: fixed;
   bottom: 10px;
-  left: auto;
-  right: auto;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .main-nav:before {
   content: "";
   background: var(--glass-panel-medium);
   color: #6a1b9a;
-  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, .45),
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .45),
                 var(--glass-edge);
   clip-path: inset(0 round 2rem);
   z-index: -2;
@@ -274,6 +309,400 @@
   anchor-name: --hover;
 }
 
+@property --button-background-color-from {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #fff;
+}
+
+@property --button-background-color-to {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #fff;
+}
+
+.button {
+  --button-background-color-dark-from: rgba(255, 255, 255, .28);
+  --button-background-color-dark-to: rgba(255, 255, 255, .42);
+  --button-background-color-light-from: rgba(255, 255, 255, .5);
+  --button-background-color-light-to: rgba(255, 255, 255, .6);
+  --button-background-color-from: var(--button-background-color-dark-from);
+  --button-background-color-to: var(--button-background-color-dark-to);
+  color: #000;
+  transform-origin: center;
+  background: #fff;
+  background: linear-gradient(to bottom,
+            var(--button-background-color-from),
+            var(--button-background-color-to));
+  box-shadow: var(--glass-edge);
+  transition: --button-background-color-from 1s var(--spring-easing),
+            --button-background-color-to 1s var(--spring-easing);
+  border: none;
+  border-radius: 2em;
+  padding: .1rem 1rem;
+  font-size: 1.2rem;
+  line-height: 3rem;
+}
+
+.button:hover {
+  --button-background-color-from: var(--button-background-color-light-from);
+  --button-background-color-to: var(--button-background-color-light-to);
+}
+
+@property --marker-background-color-from {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #fff;
+}
+
+@property --marker-background-color-to {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #fff;
+}
+
+.carousel {
+  position: relative;
+}
+
+.carousel ul {
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  padding: 0;
+  display: flex;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.carousel ul > li {
+  scroll-snap-align: center;
+}
+
+.carousel ul::scroll-button(left) {
+  --button-background-color-dark-from: rgba(255, 255, 255, .28);
+  --button-background-color-dark-to: rgba(255, 255, 255, .42);
+  --button-background-color-light-from: rgba(255, 255, 255, .5);
+  --button-background-color-light-to: rgba(255, 255, 255, .6);
+  --button-background-color-from: var(--button-background-color-dark-from);
+  --button-background-color-to: var(--button-background-color-dark-to);
+  filter: drop-shadow(0 3px 6px gray);
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .45),
+                    var(--glass-edge);
+  clip-path: inset(0 round 50%);
+  color: #000;
+  transform-origin: center;
+  background: #fff;
+  background: linear-gradient(to bottom,
+                    var(--button-background-color-from),
+                    var(--button-background-color-to));
+  box-shadow: var(--glass-edge);
+  transition: --button-background-color-from 1s var(--spring-easing),
+                    --button-background-color-to 1s var(--spring-easing);
+  border: none;
+  border-radius: 2em;
+  padding: .1rem 1rem;
+  font-size: 1.2rem;
+  line-height: 3rem;
+}
+
+.carousel ul::scroll-button(left):hover {
+  --button-background-color-from: var(--button-background-color-light-from);
+  --button-background-color-to: var(--button-background-color-light-to);
+}
+
+.carousel ul::scroll-button(right) {
+  --button-background-color-dark-from: rgba(255, 255, 255, .28);
+  --button-background-color-dark-to: rgba(255, 255, 255, .42);
+  --button-background-color-light-from: rgba(255, 255, 255, .5);
+  --button-background-color-light-to: rgba(255, 255, 255, .6);
+  --button-background-color-from: var(--button-background-color-dark-from);
+  --button-background-color-to: var(--button-background-color-dark-to);
+  filter: drop-shadow(0 3px 6px gray);
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .45),
+                    var(--glass-edge);
+  clip-path: inset(0 round 50%);
+  color: #000;
+  transform-origin: center;
+  background: #fff;
+  background: linear-gradient(to bottom,
+                    var(--button-background-color-from),
+                    var(--button-background-color-to));
+  box-shadow: var(--glass-edge);
+  transition: --button-background-color-from 1s var(--spring-easing),
+                    --button-background-color-to 1s var(--spring-easing);
+  border: none;
+  border-radius: 2em;
+  padding: .1rem 1rem;
+  font-size: 1.2rem;
+  line-height: 3rem;
+}
+
+.carousel ul::scroll-button(right):hover {
+  --button-background-color-from: var(--button-background-color-light-from);
+  --button-background-color-to: var(--button-background-color-light-to);
+}
+
+.carousel ul::scroll-button(left) {
+  content: "⬅" / "Scroll Left";
+}
+
+.carousel ul::scroll-button(right) {
+  content: "⮕" / "Scroll Right";
+  position: absolute;
+  right: 0;
+}
+
+.carousel ul::scroll-button(*):focus-visible {
+  outline-offset: 5px;
+}
+
+.carousel ul {
+  scroll-marker-group: after;
+}
+
+.carousel ul::scroll-marker-group {
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  height: 10px;
+  display: flex;
+  position: absolute;
+  bottom: 15px;
+}
+
+.carousel ul > li::scroll-marker {
+  content: "";
+  filter: drop-shadow(0 3px 6px gray);
+  width: 20px;
+  height: 20px;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .45),
+                    var(--glass-edge);
+  clip-path: inset(0 round 10px);
+  --marker-background-color-dark-from: rgba(255, 255, 255, .28);
+  --marker-background-color-dark-to: rgba(255, 255, 255, .42);
+  --marker-background-color-light-from: rgba(255, 255, 255, .5);
+  --marker-background-color-light-to: rgba(255, 255, 255, .6);
+  --marker-background-color-from: var(--marker-background-color-dark-from);
+  --marker-background-color-to: var(--marker-background-color-dark-to);
+  background: linear-gradient(to bottom,
+                    var(--marker-background-color-from),
+                    var(--marker-background-color-to));
+  transition: --marker-background-color-from 1s var(--spring-easing),
+            --marker-background-color-to 1s var(--spring-easing);
+  border-radius: 50%;
+  display: block;
+}
+
+.carousel ul > li::scroll-marker:hover {
+  --marker-background-color-from: var(--marker-background-color-light-from);
+  --marker-background-color-to: var(--marker-background-color-light-to);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+::view-transition-group(*) {
+  animation-duration: .5s;
+}
+
+::view-transition-old(image) {
+  mix-blend-mode: normal;
+  border-radius: 2rem;
+  height: 100%;
+  animation: none;
+  overflow: clip;
+}
+
+::view-transition-new(image) {
+  mix-blend-mode: normal;
+  border-radius: 2rem;
+  height: 100%;
+  animation: none;
+  overflow: clip;
+}
+
+#overview::view-transition-old(image) {
+  animation: .3s both fade-out;
+}
+
+#overview::view-transition-new(image) {
+  opacity: 0;
+  animation: none;
+}
+
+::view-transition-group(image) {
+  z-index: 1;
+}
+
+::view-transition-group(title) {
+  z-index: 2;
+}
+
+::view-transition-group(movie-description) {
+  z-index: 2;
+  border-radius: 2rem;
+  overflow: clip;
+}
+
+::view-transition-new(movie-description) {
+  animation: .3s cubic-bezier(0, 0, .2, 1) .5s both fade-in;
+}
+
+::view-transition-old(movie-description) {
+  animation: .15s cubic-bezier(.4, 0, 1, 1) both fade-out;
+}
+
+#overview {
+  position: relative;
+}
+
+#overview .content-grid {
+  anchor-name: --active-movie;
+}
+
+#overview::view-transition-new(image) {
+  object-fit: contain;
+}
+
+#overview::view-transition-old(image) {
+  object-fit: cover;
+}
+
+#overview .active-movie-indicator {
+  position-anchor: --active-movie;
+  top: anchor(top);
+  left: anchor(left);
+  width: anchor-size(width);
+  height: anchor-size(height);
+  background-image: attr(data-image url);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: top .6s var(--spring-easing),
+            left .6s var(--spring-easing),
+            width .6s var(--spring-easing),
+            height .6s var(--spring-easing),
+            opacity .3s ease;
+  background-position: center;
+  background-size: cover;
+  border-radius: 2rem;
+  position: absolute;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .3);
+}
+
+#overview .movies:has(li:hover) ~ .active-movie-indicator {
+  opacity: 1;
+}
+
+#overview .movies li {
+  gap: 2rem;
+  display: flex;
+}
+
+#overview .movies li:hover {
+  anchor-name: --active-movie;
+}
+
+#overview .movies li a {
+  width: 250px;
+  text-decoration: none;
+  display: block;
+  position: relative;
+}
+
+#overview .movies li a img {
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 2rem;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+#overview .movies li .details {
+  display: none;
+}
+
+#overview .movies li h3 {
+  color: #000;
+  margin-bottom: 0;
+  display: inline-block;
+}
+
+#overview .movies .column {
+  flex-direction: column;
+}
+
+#overview .movies .column li a {
+  width: 150px;
+}
+
+#overview .movies .column li .details {
+  display: block;
+}
+
+#overview .movies .column li .details .cast {
+  color: #777;
+  gap: 2rem;
+  font-size: .8rem;
+  display: flex;
+}
+
+#overview .movies .column li .details .cast .name {
+  font-weight: bold;
+}
+
+#detail::view-transition-new(image) {
+  object-fit: cover;
+}
+
+#detail .container {
+  margin: 15px 0;
+  position: relative;
+}
+
+#detail .hero {
+  border-radius: 2rem;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+#detail .content {
+  box-sizing: border-box;
+  color: #fff;
+  view-transition-name: movie-description;
+  background: linear-gradient(0deg, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0));
+  border-radius: 2rem;
+  padding: 2rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: clip;
+}
+
+#detail h1 {
+  margin-bottom: 0;
+  display: inline-block;
+}
+
 :root {
   --glass-panel-dark: linear-gradient(to bottom,
         rgba(255, 255, 255, .2),
@@ -289,12 +718,6 @@
 }
 
 body {
-  view-transition-name: main-background;
-  background: url("https://images.unsplash.com/photo-1757611933690-3012dff2a62f?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") 0 0 / cover;
-  justify-content: center;
-  align-items: end;
-  height: 100dvh;
   margin: 0;
   font-family: sans-serif;
-  display: flex;
 }

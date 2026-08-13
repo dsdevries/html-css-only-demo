@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="overview">
 <head>
     <meta charset="UTF-8">
     <meta name="view-transition" content="same-origin">
@@ -8,9 +8,12 @@
         @view-transition {
             navigation: auto;
         }
+
+        .active-movie-indicator {
+            view-transition-name: image;
+        }
     </style>
     <link rel="stylesheet" href="styles.css">
-    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1757611933690-3012dff2a62f?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" blocking="render">
 </head>
 <body>
 <nav class="main-nav">
@@ -21,6 +24,236 @@
         <li><a href="search.html">Search</a></li>
     </ul>
 </nav>
+<main class="content-grid">
+    <div class="active-movie-indicator"></div>
+    <h1>What to watch</h1>
+    <div class="carousel">
+        <ul class="movies">
+            <li data-image="assets/gladiator.webp">
+                <a>
+                    <img src="assets/gladiator.webp" />
+                </a>
+                <div class="details">
+                    <h3>Gladiator II</h3>
+                    <div class="rating">⭐️⭐️⭐️</div>
+                    <p>
+                        Years after witnessing the death of the revered hero Maximus at
+                        the hands of his uncle, Lucius is forced...
+                    </p>
+                    <div class="cast">
+                        <div>
+                            <div class="name">David Scarpa</div>
+                            <div class="role">Screenplay, Story</div>
+                        </div>
+                        <div>
+                            <div class="name">David Franzoni</div>
+                            <div class="role">Characters</div>
+                        </div>
+                        <div>
+                            <div class="name">Ridley Scott</div>
+                            <div class="role">Director</div>
+                        </div>
+                        <div>
+                            <div class="name">Peter Craig</div>
+                            <div class="role">Story</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li data-image="assets/lion-king.webp">
+                <a href="detail.html" id="lion-king-poster" class="lion-king">
+                    <img src="assets/lion-king.webp" />
+                </a>
+                <div class="details">
+                    <h3>Mufasa: The Lion King</h3>
+                    <div class="rating">⭐️⭐️⭐️⭐️</div>
+                    <p>
+                        Mufasa, a cub lost and alone, meets a sympathetic lion named
+                        Taka, the heir to a royal bloodline...
+                    </p>
+                    <div class="cast">
+                        <div>
+                            <div class="name">Barry Jenkins</div>
+                            <div class="role">Director</div>
+                        </div>
+                        <div>
+                            <div class="name">Jeff Nathanson</div>
+                            <div class="role">Screenplay</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li data-image="assets/flow.jpeg">
+                <a>
+                    <img src="assets/flow.jpeg" />
+                </a>
+                <div class="details">
+                    <h3>Flow</h3>
+                    <div class="rating">⭐️⭐️⭐️⭐️⭐️</div>
+                    <p>
+                        A solitary cat, displaced by a great flood, finds refuge on a
+                        boat with various species...
+                    </p>
+                    <div class="cast">
+                        <div>
+                            <div class="name">Gints Zilbalodis</div>
+                            <div class="role">Director, Screenplay</div>
+                        </div>
+                        <div>
+                            <div class="name">Matīss Kaža</div>
+                            <div class="role">Screenplay</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li data-image="assets/sonic.webp">
+                <a>
+                    <img src="assets/sonic.webp" />
+                </a>
+                <div class="details">
+                    <h3>Sonic the Hedgehog 3</h3>
+                    <div class="rating">⭐️⭐️⭐️⭐️</div>
+                    <p>
+                        Sonic, Knuckles, and Tails reunite against a powerful new
+                        adversary, Shadow, a mysterious villain...
+                    </p>
+                    <div class="cast">
+                        <div>
+                            <div class="name">Patrick Casey</div>
+                            <div class="role">Screenplay, Story</div>
+                        </div>
+                        <div>
+                            <div class="name">Josh Miller</div>
+                            <div class="role">Screenplay, Story</div>
+                        </div>
+                        <div>
+                            <div class="name">Naoto Ohshima</div>
+                            <div class="role">Characters</div>
+                        </div>
+                        <div>
+                            <div class="name">Hirokazu Yasuhara</div>
+                            <div class="role">Characters</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <h1>Editor Picks</h1>
+    <div class="carousel">
+        <ul class="movies">
+            <li data-image="assets/gladiator.webp">
+                <a>
+                    <img src="assets/gladiator.webp" />
+                </a>
+                <div class="details">
+                    <h3>Gladiator II</h3>
+                    <div class="rating">⭐️⭐️⭐️</div>
+                    <p>
+                        Years after witnessing the death of the revered hero Maximus at
+                        the hands of his uncle, Lucius is forced...
+                    </p>
+                    <div class="cast">
+                        <div>
+                            <div class="name">David Scarpa</div>
+                            <div class="role">Screenplay, Story</div>
+                        </div>
+                        <div>
+                            <div class="name">David Franzoni</div>
+                            <div class="role">Characters</div>
+                        </div>
+                        <div>
+                            <div class="name">Ridley Scott</div>
+                            <div class="role">Director</div>
+                        </div>
+                        <div>
+                            <div class="name">Peter Craig</div>
+                            <div class="role">Story</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li data-image="assets/lion-king.webp">
+                <a href="detail.html" class="lion-king">
+                    <img src="assets/lion-king.webp" />
+                </a>
+                <div class="details">
+                    <h3>Mufasa: The Lion King</h3>
+                    <div class="rating">⭐️⭐️⭐️⭐️</div>
+                    <p>
+                        Mufasa, a cub lost and alone, meets a sympathetic lion named
+                        Taka, the heir to a royal bloodline...
+                    </p>
+                    <div class="cast">
+                        <div>
+                            <div class="name">Barry Jenkins</div>
+                            <div class="role">Director</div>
+                        </div>
+                        <div>
+                            <div class="name">Jeff Nathanson</div>
+                            <div class="role">Screenplay</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li data-image="assets/flow.jpeg">
+                <a>
+                    <img src="assets/flow.jpeg" />
+                </a>
+                <div class="details">
+                    <h3>Flow</h3>
+                    <div class="rating">⭐️⭐️⭐️⭐️⭐️</div>
+                    <p>
+                        A solitary cat, displaced by a great flood, finds refuge on a
+                        boat with various species...
+                    </p>
+                    <div class="cast">
+                        <div>
+                            <div class="name">Gints Zilbalodis</div>
+                            <div class="role">Director, Screenplay</div>
+                        </div>
+                        <div>
+                            <div class="name">Matīss Kaža</div>
+                            <div class="role">Screenplay</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li data-image="assets/sonic.webp">
+                <a>
+                    <img src="assets/sonic.webp" />
+                </a>
+                <div class="details">
+                    <h3>Sonic the Hedgehog 3</h3>
+                    <div class="rating">⭐️⭐️⭐️⭐️</div>
+                    <p>
+                        Sonic, Knuckles, and Tails reunite against a powerful new
+                        adversary, Shadow, a mysterious villain...
+                    </p>
+                    <div class="cast">
+                        <div>
+                            <div class="name">Patrick Casey</div>
+                            <div class="role">Screenplay, Story</div>
+                        </div>
+                        <div>
+                            <div class="name">Josh Miller</div>
+                            <div class="role">Screenplay, Story</div>
+                        </div>
+                        <div>
+                            <div class="name">Naoto Ohshima</div>
+                            <div class="role">Characters</div>
+                        </div>
+                        <div>
+                            <div class="name">Hirokazu Yasuhara</div>
+                            <div class="role">Characters</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</main>
 
 <script src="index.js"></script>
 <script src="//localhost:35729/livereload.js?snipver=1"></script>
