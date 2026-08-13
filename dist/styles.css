@@ -35,20 +35,46 @@ img.full-width {
 
 header {
   z-index: 1000;
-  background: var(--glass-panel-medium);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  box-sizing: border-box;
   width: 100%;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  position: fixed;
+  margin: 0;
+  padding: 2rem 0 1rem;
+  position: sticky;
   top: 0;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, .1);
+  container-type: scroll-state;
 }
 
-.profile {
-  grid-column: content;
-  justify-self: end;
+header:after {
+  content: "";
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  width: 100%;
+  height: 100%;
+  box-shadow: none;
+  z-index: -1;
+  background: none;
+  transition: background .2s ease-in-out, -webkit-backdrop-filter .2s ease-in-out, backdrop-filter .2s ease-in-out, box-shadow .2s ease-in-out;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@container scroll-state(stuck: top) {
+  header:after {
+    background: var(--glass-panel-medium);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .1),
+                    var(--glass-edge);
+    transition: background .6s ease-in-out, -webkit-backdrop-filter .2s ease-in-out, backdrop-filter .2s ease-in-out, box-shadow .6s ease-in-out;
+  }
+}
+
+header ~ main {
+  margin-top: -100px;
 }
 
 @keyframes droplet-stretch {
@@ -628,11 +654,55 @@ header {
   border-radius: 2em;
 }
 
+::view-transition-group(profile-menu) {
+  animation-duration: .8s;
+  animation-timing-function: var(--spring-easing);
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+::view-transition-old(profile-menu) {
+  animation: .8s var(--spring-easing) both profile-menu-exit;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+::view-transition-new(profile-menu) {
+  opacity: 0;
+  animation: none;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+@keyframes profile-menu-exit {
+  from {
+    opacity: 1;
+    filter: drop-shadow(0 3px 6px gray);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    transform: translateY(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    filter: drop-shadow(0 3px 6px gray) blur(2px);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    transform: translateY(-60px) scale(.9);
+  }
+}
+
+.profile {
+  grid-column: content;
+  justify-self: end;
+}
+
 .profile .profile-button {
   anchor-name: --profile-button;
   filter: drop-shadow(0 3px 6px gray);
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
+  z-index: 100;
   background: none;
   border: 1px solid rgba(255, 255, 255, .7);
   border-radius: 2rem;
@@ -665,12 +735,13 @@ header {
 }
 
 .profile [popover] {
+  view-transition-name: profile-menu;
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   position-anchor: --profile-button;
   position-area: bottom span-left;
   color: inherit;
-  opacity: .1;
+  opacity: 0;
   transform-origin: center;
   filter: drop-shadow(0 3px 6px gray) blur(2px);
   width: 50px;
@@ -710,7 +781,7 @@ header {
 
 @starting-style {
   .profile [popover]:popover-open {
-    opacity: .1;
+    opacity: 0;
     filter: drop-shadow(0 3px 6px gray) blur(4px);
     border-radius: 2rem;
     width: 50px;
@@ -1033,6 +1104,6 @@ body {
   font-family: sans-serif;
 }
 
-body:has(header) {
-  padding-top: 80px;
+h1 {
+  margin-top: 3rem;
 }
