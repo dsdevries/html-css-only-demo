@@ -48,28 +48,25 @@ header {
 
 header:after {
   content: "";
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
-  width: 100%;
-  height: 100%;
-  box-shadow: none;
+  background: var(--glass-panel-medium);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .1),
+                var(--glass-edge);
+  opacity: 0;
   z-index: -1;
-  background: none;
-  transition: background .2s ease-in-out, -webkit-backdrop-filter .2s ease-in-out, backdrop-filter .2s ease-in-out, box-shadow .2s ease-in-out;
+  transition: opacity .4s ease-in-out;
   display: block;
   position: absolute;
   top: 0;
+  bottom: 0;
   left: 0;
+  right: 0;
 }
 
 @container scroll-state(stuck: top) {
   header:after {
-    background: var(--glass-panel-medium);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .1),
-                    var(--glass-edge);
-    transition: background .6s ease-in-out, -webkit-backdrop-filter .2s ease-in-out, backdrop-filter .2s ease-in-out, box-shadow .6s ease-in-out;
+    opacity: 1;
   }
 }
 

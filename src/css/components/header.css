@@ -13,32 +13,21 @@ header {
         content: "";
         position: absolute;
         display: block;
-        height: 1px;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
-        background: none;
-        backdrop-filter: none;
-        box-shadow: none;
-        transition:
-                background 0.2s ease-in-out,
-                backdrop-filter 0.2s ease-in-out,
-                box-shadow 0.2s ease-in-out;
-
+        bottom: 0;
+        right: 0;
+        background: var(--glass-panel-medium);
+        backdrop-filter: blur(10px);
+        box-shadow:
+                0 4px 10px 0 rgba(0, 0, 0, 0.1),
+                var(--glass-edge);
+        opacity: 0;
+        transition: opacity 0.4s ease-in-out;
         z-index: -1;
 
         @container scroll-state(stuck: top) {
-            background: var(--glass-panel-medium);
-            backdrop-filter: blur(10px);
-            box-shadow:
-                    0 4px 10px 0 rgba(0, 0, 0, 0.1),
-                    var(--glass-edge);
-
-            transition:
-                    background 0.6s ease-in-out,
-                    backdrop-filter 0.2s ease-in-out,
-                    box-shadow 0.6s ease-in-out;
+            opacity: 1;
         }
     }
 
