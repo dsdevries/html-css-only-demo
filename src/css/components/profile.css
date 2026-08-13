@@ -99,6 +99,11 @@
     grid-row: 1;
     justify-self: end;
     view-transition-name: profile-avatar;
+    transition: margin-right 0.8s var(--spring-easing);
+
+    &.breakout {
+        margin-right: 1rem;
+    }
 
     .profile-button {
         anchor-name: --profile-button;

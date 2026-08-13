@@ -80,8 +80,13 @@ header {
         text-decoration: none;
         transition:
                 --button-background-color-from 1s var(--spring-easing),
-                --button-background-color-to 1s var(--spring-easing);
+                --button-background-color-to 1s var(--spring-easing),
+                margin-left 0.8s var(--spring-easing);
         z-index: 100;
+
+        &.breakout {
+            margin-left: 1rem;
+        }
 
         &:hover {
             --button-background-color-from: var(--button-background-color-light-from);

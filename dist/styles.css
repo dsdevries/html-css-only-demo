@@ -104,7 +104,8 @@ header .back-button {
   box-shadow: var(--glass-edge);
   color: #000;
   transition: --button-background-color-from 1s var(--spring-easing),
-                --button-background-color-to 1s var(--spring-easing);
+                --button-background-color-to 1s var(--spring-easing),
+                margin-left .8s var(--spring-easing);
   z-index: 100;
   border-radius: 50%;
   grid-area: 1 / content;
@@ -113,6 +114,10 @@ header .back-button {
   align-items: center;
   text-decoration: none;
   display: flex;
+}
+
+header .back-button.breakout {
+  margin-left: 1rem;
 }
 
 header .back-button:hover {
@@ -767,8 +772,13 @@ header .back-button svg {
 
 .profile {
   view-transition-name: profile-avatar;
+  transition: margin-right .8s var(--spring-easing);
   grid-area: 1 / content;
   justify-self: end;
+}
+
+.profile.breakout {
+  margin-right: 1rem;
 }
 
 .profile .profile-button {
