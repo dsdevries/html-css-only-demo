@@ -654,6 +654,10 @@ header ~ main {
   border-radius: 2em;
 }
 
+::view-transition-group(profile-avatar) {
+  z-index: 1000;
+}
+
 ::view-transition-group(profile-menu) {
   animation-duration: .8s;
   animation-timing-function: var(--spring-easing);
@@ -693,6 +697,7 @@ header ~ main {
 }
 
 .profile {
+  view-transition-name: profile-avatar;
   grid-column: content;
   justify-self: end;
 }

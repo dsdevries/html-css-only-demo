@@ -58,6 +58,10 @@
     box-shadow: var(--glass-edge);
 }
 
+::view-transition-group(profile-avatar) {
+    z-index: 1000;
+}
+
 ::view-transition-group(profile-menu) {
     animation-duration: 0.8s;
     animation-timing-function: var(--spring-easing);
@@ -93,6 +97,7 @@
 .profile {
     grid-column: content;
     justify-self: end;
+    view-transition-name: profile-avatar;
 
     .profile-button {
         anchor-name: --profile-button;
