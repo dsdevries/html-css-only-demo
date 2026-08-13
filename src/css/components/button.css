@@ -1,14 +1,14 @@
 
 @property --button-background-color-from {
     syntax: '<color>';
-    initial-value: white;
-    inherits: false;
+    initial-value: rgba(255, 255, 255, 0);
+    inherits: true;
 }
 
 @property --button-background-color-to {
     syntax: '<color>';
-    initial-value: white;
-    inherits: false;
+    initial-value: rgba(255, 255, 255, 0);
+    inherits: true;
 }
 
 .button {
@@ -23,7 +23,6 @@
     font-size: 1.2rem;
     line-height: 3rem;
     padding: .1rem 1rem;
-    background: #FFF;
     color: #000;
     border: none;
     border-radius: 2em;
@@ -33,6 +32,8 @@
             var(--button-background-color-from),
             var(--button-background-color-to)
     );
+    backdrop-filter: blur(5px);
+
     box-shadow: var(--glass-edge);
     transition:
             --button-background-color-from 1s var(--spring-easing),

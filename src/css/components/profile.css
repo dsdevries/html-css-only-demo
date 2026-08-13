@@ -84,18 +84,19 @@
         opacity: 1;
         transform: translateY(0) scale(1);
         filter: drop-shadow(0 3px 6px gray);
-        backdrop-filter: blur(5px);
+        backdrop-filter: blur(10px);
     }
     to {
         opacity: 0;
         transform: translateY(-60px) scale(0.9);
         filter: drop-shadow(0 3px 6px gray) blur(2px);
-        backdrop-filter: blur(5px);
+        backdrop-filter: blur(10px);
     }
 }
 
 .profile {
     grid-column: content;
+    grid-row: 1;
     justify-self: end;
     view-transition-name: profile-avatar;
 
@@ -105,7 +106,8 @@
         border: 1px solid rgba(255, 255, 255, .7);
         border-radius: 2rem;
         filter: drop-shadow(0 3px 6px gray);
-        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
         width: 50px;
         height: 50px;
         padding: 0;
@@ -141,7 +143,8 @@
         view-transition-name: profile-menu;
         background: none;
         border: 1px solid rgba(255, 255, 255, .7);
-        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
         padding: 0;
         position-anchor: --profile-button;
         position-area: bottom span-left;

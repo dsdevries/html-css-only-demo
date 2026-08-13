@@ -34,4 +34,49 @@ header {
     & ~ main {
         margin-top: -100px;
     }
+
+    .back-button {
+        grid-column: content;
+        grid-row: 1;
+        justify-self: start;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: linear-gradient(
+                to bottom,
+                var(--button-background-color-from),
+                var(--button-background-color-to)
+        );
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+
+        --button-background-color-dark-from: rgba(255, 255, 255, 0.28);
+        --button-background-color-dark-to: rgba(255, 255, 255, 0.42);
+        --button-background-color-light-from: rgba(255, 255, 255, 0.50);
+        --button-background-color-light-to: rgba(255, 255, 255, 0.60);
+
+        --button-background-color-from: var(--button-background-color-dark-from);
+        --button-background-color-to: var(--button-background-color-dark-to);
+
+        box-shadow: var(--glass-edge);
+        color: black;
+        text-decoration: none;
+        transition:
+                --button-background-color-from 1s var(--spring-easing),
+                --button-background-color-to 1s var(--spring-easing);
+        z-index: 100;
+
+        &:hover {
+            --button-background-color-from: var(--button-background-color-light-from);
+            --button-background-color-to: var(--button-background-color-light-to);
+        }
+
+        svg {
+            width: 24px;
+            height: 24px;
+        }
+    }
 }

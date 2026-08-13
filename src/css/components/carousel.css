@@ -1,24 +1,24 @@
 @property --button-background-color-from {
     syntax: '<color>';
-    initial-value: white;
+    initial-value: rgba(255, 255, 255, 0);
     inherits: false;
 }
 
 @property --button-background-color-to {
     syntax: '<color>';
-    initial-value: white;
+    initial-value: rgba(255, 255, 255, 0);
     inherits: false;
 }
 
 @property --marker-background-color-from {
     syntax: '<color>';
-    initial-value: white;
+    initial-value: rgba(255, 255, 255, 0);
     inherits: false;
 }
 
 @property --marker-background-color-to {
     syntax: '<color>';
-    initial-value: white;
+    initial-value: rgba(255, 255, 255, 0);
     inherits: false;
 }
 
@@ -62,7 +62,6 @@
             font-size: 1.2rem;
             line-height: 3rem;
             padding: .1rem 1rem;
-            background: #FFF;
             color: #000;
             border: none;
             border-radius: 2em;
@@ -72,6 +71,7 @@
                     var(--button-background-color-from),
                     var(--button-background-color-to)
             );
+            backdrop-filter: blur(5px);
             box-shadow: var(--glass-edge);
             transition:
                     --button-background-color-from 1s var(--spring-easing),
@@ -136,6 +136,7 @@
                     var(--marker-background-color-from),
                     var(--marker-background-color-to)
             );
+            backdrop-filter: blur(5px);
             transition: --marker-background-color-from 1s var(--spring-easing),
             --marker-background-color-to 1s var(--spring-easing);
 
