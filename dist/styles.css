@@ -676,15 +676,15 @@ header {
   width: 50px;
   min-width: 50px;
   height: 50px;
-  transition: display .6s allow-discrete,
-            overlay .6s allow-discrete,
-            opacity .6s var(--spring-easing),
-            transform .6s var(--spring-easing),
-            width .6s var(--spring-easing),
-            min-width .6s var(--spring-easing),
-            height .6s var(--spring-easing),
-            border-radius .6s var(--spring-easing),
-            filter .6s var(--spring-easing);
+  transition: display .8s allow-discrete,
+            overlay .8s allow-discrete,
+            opacity .5s ease-out,
+            transform .8s var(--spring-easing),
+            width .8s var(--spring-easing),
+            min-width .8s var(--spring-easing),
+            height .8s var(--spring-easing),
+            border-radius .8s var(--spring-easing),
+            filter .8s var(--spring-easing);
   background: none;
   border: 1px solid rgba(255, 255, 255, .7);
   border-radius: 2rem;
@@ -705,13 +705,13 @@ header {
 }
 
 .profile [popover]:popover-open ul {
-  animation: .6s linear droplet-pop;
+  animation: droplet-pop .6s var(--spring-easing);
 }
 
 @starting-style {
   .profile [popover]:popover-open {
     opacity: .1;
-    filter: drop-shadow(0 3px 6px gray) blur(2px);
+    filter: drop-shadow(0 3px 6px gray) blur(4px);
     border-radius: 2rem;
     width: 50px;
     min-width: 50px;
