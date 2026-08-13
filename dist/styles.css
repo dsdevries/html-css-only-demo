@@ -33,6 +33,24 @@ img.full-width {
   max-height: 45vh;
 }
 
+header {
+  z-index: 1000;
+  background: var(--glass-panel-medium);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  position: fixed;
+  top: 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .1);
+}
+
+.profile {
+  grid-column: content;
+  justify-self: end;
+}
+
 @keyframes droplet-stretch {
   0% {
     margin-left: 0;
@@ -947,4 +965,8 @@ img.full-width {
 body {
   margin: 0;
   font-family: sans-serif;
+}
+
+body:has(header) {
+  padding-top: 80px;
 }

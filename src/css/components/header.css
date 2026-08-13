@@ -1,0 +1,15 @@
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding-block: 1rem;
+    background: var(--glass-panel-medium);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile {
+    grid-column: content;
+    justify-self: end;
+}
