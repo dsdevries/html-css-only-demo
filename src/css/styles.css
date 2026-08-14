@@ -7,7 +7,8 @@
 @import url(components/carousel.css);
 @import url(components/card.css);
 @import url(components/profile.css);
-@import url(main.css);
+@import url(templates/main.css);
+@import url(templates/new.css);
 
 :root {
     interpolate-size: allow-keywords;
