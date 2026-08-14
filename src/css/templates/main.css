@@ -24,6 +24,10 @@
     border-radius: var(--radius-large);
 }
 
+::view-transition-old(image):only-child {
+    animation: 0.1s both fade-out;
+}
+
 ::view-transition-group(image) {
     z-index: 1;
 }
