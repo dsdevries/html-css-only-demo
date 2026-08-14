@@ -7,7 +7,6 @@
         justify-content: center;
         text-align: center;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.3);
         position: relative;
         overflow: hidden;
 
@@ -30,37 +29,37 @@
 
         h3 {
             font-size: 1.5rem;
-            color: rgba(0, 0, 0, 0.7);
-            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+            color: white;
+            text-shadow: 0 1px 10px rgba(0,0,0, 0.6);
             margin: 0;
         }
     }
 
     .category-action {
-        background: linear-gradient(to bottom, #e8b4b8, #d6959a 30%, #c27a80);
+        background: linear-gradient(to bottom, #d69095, #c57177 30%, #b35961);
     }
 
     .category-comedy {
-        background: linear-gradient(to bottom, #f3e5ab, #e8d48c 30%, #d9c36d);
+        background: linear-gradient(to bottom, #e3cd7f, #d9c05c 30%, #c9b140);
     }
 
     .category-family {
-        background: linear-gradient(to bottom, #d4e0c8, #b8c8a8 30%, #9db088);
+        background: linear-gradient(to bottom, #bdccab, #a1b887 30%, #85a363);
     }
 
     .category-sci-fi {
-        background: linear-gradient(to bottom, #cbdde6, #afc4d1 30%, #94abbc);
+        background: linear-gradient(to bottom, #b2c9d6, #92b2c7 30%, #729ab5);
     }
 
     .category-classics {
-        background: linear-gradient(to bottom, #f5f0e1, #e6dfc6 30%, #d7cea8);
+        background: linear-gradient(to bottom, #e3dac1, #d4cba3 30%, #c5ba85);
     }
 
     .category-thriller {
-        background: linear-gradient(to bottom, #bbc7d4, #9caab8 30%, #7e8d9c);
+        background: linear-gradient(to bottom, #a2b3c5, #859bb3 30%, #6883a1);
     }
 
     .category-horror {
-        background: linear-gradient(to bottom, #d1c8d4, #b2a8b8 30%, #93899c);
+        background: linear-gradient(to bottom, #b9adbf, #9c89a8 30%, #7f6591);
     }
 }
