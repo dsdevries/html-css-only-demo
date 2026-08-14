@@ -8,8 +8,8 @@ const port = process.env.PORT || 3000;
 const isProduction = process.env.NODE_ENV === 'production';
 
 // Serve static files from the 'src' directory for HTML and CSS
-const srcPath = path.join(__dirname, '..', 'src');
-const distPath = path.join(__dirname, '..', 'dist');
+const srcPath = path.join(process.cwd(), 'src');
+const distPath = path.join(process.cwd(), 'dist');
 
 // LiveReload setup
 if (!isProduction) {
@@ -32,8 +32,10 @@ app.use(express.static(distPath));
 // Serve static files from the 'src' directory (for HTML)
 app.use(express.static(srcPath));
 
-app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(port, () => {
+        console.log(`Server is running at http://localhost:${port}`);
+    });
+}
 
 export default app;
