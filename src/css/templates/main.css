@@ -68,31 +68,8 @@
         object-fit: cover;
     }
 
-    .container {
-        margin: 15px 0;
-        position: relative;
-        min-height: 400px;
-    }
-
-    .hero {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-    }
-
-    .content {
-        position: absolute;
-        bottom: 0;
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
-        color: #fff;
-        padding-bottom: 2rem;
-        overflow: clip;
+    .hero .content {
         view-transition-name: movie-description;
-    }
-
-    h1 {
-        margin-bottom: 0;
     }
 }
 
