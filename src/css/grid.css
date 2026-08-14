@@ -20,8 +20,7 @@
     minmax(var(--padding-inline), 1fr) [full-width-end];
 }
 
-.content-grid > :not(.breakout, .full-width),
-.full-width > :not(.breakout, .full-width) {
+.content-grid > :not(.breakout){
     grid-column: content;
 }
 
