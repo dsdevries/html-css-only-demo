@@ -195,12 +195,11 @@ header .logo {
   align-self: center;
   justify-self: start;
   margin-left: 0;
-  transition: margin-left .3s ease-in-out;
 }
 
 @media (max-width: 1100px) {
   header:has(.back-button) :is(header .logo) {
-    margin-left: max(0rem, min(825px - 75vw, 4.4rem));
+    margin-left: max(0rem, min(542.5px - 50vw, 4.8rem));
   }
 }
 
@@ -1028,6 +1027,7 @@ header .back-button svg {
   background: none;
   justify-content: center;
   align-items: center;
+  width: 100%;
   transition: color .3s;
   display: flex;
   position: relative;

@@ -253,6 +253,7 @@
             justify-content: center;
             background: none;
             transition: color 0.3s ease;
+            width: 100%;
 
             &.selected {
                 color: red;
