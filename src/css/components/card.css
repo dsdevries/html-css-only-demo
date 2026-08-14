@@ -2,6 +2,8 @@
     display: flex;
     gap: 2rem;
     overflow: clip;
+    padding: 1rem;
+    box-sizing: border-box;
 
     a {
         width: 250px;
@@ -9,6 +11,7 @@
         position: relative;
         text-decoration: none;
         overflow: hidden;
+        margin: -1rem;
 
         img {
             width: 100%;
@@ -18,10 +21,6 @@
             display: block;
             border-radius: var(--radius-large);
         }
-    }
-
-    .details {
-        display: none;
     }
 
     h3 {

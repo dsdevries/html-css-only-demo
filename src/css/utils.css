@@ -18,6 +18,24 @@
     }
 }
 
+.glass-container-mild {
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-large);
+    backdrop-filter: blur(2px);
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: -1px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: inherit;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+        clip-path: inset(0 round var(--radius-large));
+        z-index: -1;
+    }
+}
+
 .radius-large { border-radius: var(--radius-large); }
 .radius-medium { border-radius: var(--radius-medium); }
 .radius-round { border-radius: var(--radius-round); }

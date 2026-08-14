@@ -61,6 +61,10 @@
     &::view-transition-old(image) {
         object-fit: cover;
     }
+
+    .details {
+        display: none;
+    }
 }
 
 #main-detail {

@@ -8,6 +8,8 @@
 @import url(components/card.css);
 @import url(components/profile.css);
 @import url(components/hero.css);
+@import url(components/masonry.css);
+@import url(templates/categories.css);
 @import url(templates/main.css);
 @import url(templates/new.css);
 
