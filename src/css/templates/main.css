@@ -28,16 +28,7 @@
     animation: 0.1s both fade-out;
 }
 
-::view-transition-group(image) {
-    z-index: 1;
-}
-
-::view-transition-group(title) {
-    z-index: 2;
-}
-
 ::view-transition-group(movie-description) {
-    z-index: 2;
     overflow: clip;
     border-radius: var(--radius-large);
 }
