@@ -11,10 +11,6 @@
 @import url(templates/main.css);
 @import url(templates/new.css);
 
-:root {
-    interpolate-size: allow-keywords;
-}
-
 body {
     margin: 0;
     font-family: sans-serif;
