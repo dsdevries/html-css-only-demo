@@ -1,24 +1,24 @@
 @property --button-background-color-from {
     syntax: '<color>';
-    initial-value: rgba(255, 255, 255, 0);
+    initial-value: var(--color-transparent-white);
     inherits: false;
 }
 
 @property --button-background-color-to {
     syntax: '<color>';
-    initial-value: rgba(255, 255, 255, 0);
+    initial-value: var(--color-transparent-white);
     inherits: false;
 }
 
 @property --marker-background-color-from {
     syntax: '<color>';
-    initial-value: rgba(255, 255, 255, 0);
+    initial-value: var(--color-transparent-white);
     inherits: false;
 }
 
 @property --marker-background-color-to {
     syntax: '<color>';
-    initial-value: rgba(255, 255, 255, 0);
+    initial-value: var(--color-transparent-white);
     inherits: false;
 }
 
@@ -57,7 +57,7 @@
             font-size: 1.2rem;
             line-height: 3rem;
             padding: .1rem 1rem;
-            color: #000;
+            color: var(--color-black);
             border: none;
             border-radius: var(--radius-medium);
             transform-origin: center center;

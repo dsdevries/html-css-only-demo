@@ -256,7 +256,7 @@
             width: 100%;
 
             &.selected {
-                color: red;
+                color: var(--color-red);
                 anchor-name: --profile-selected;
             }
         }

@@ -173,7 +173,7 @@
         }
 
         &.selected {
-            color: red;
+            color: var(--color-red);
             anchor-name: --selected;
         }
     }

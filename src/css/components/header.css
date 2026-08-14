@@ -35,7 +35,7 @@ header {
         background: var(--glass-panel-medium);
         backdrop-filter: blur(var(--blur-heavy));
         box-shadow:
-                0 4px 10px 0 rgba(0, 0, 0, 0.1),
+                0 4px 10px 0 var(--color-black-10),
                 var(--glass-edge);
         opacity: 0;
         transition: opacity 0.4s ease-in-out;
@@ -85,7 +85,7 @@ header {
         align-items: center;
         justify-content: center;
         padding: 0;
-        color: black;
+        color: var(--color-black);
         text-decoration: none;
         z-index: 100;
 

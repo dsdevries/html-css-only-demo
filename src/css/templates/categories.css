@@ -6,7 +6,7 @@
         align-items: center;
         justify-content: center;
         text-align: center;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 4px 12px var(--color-black-08);
         position: relative;
         overflow: hidden;
 
@@ -35,37 +35,37 @@
 
         h3 {
             font-size: 1.5rem;
-            color: white;
-            text-shadow: 0 1px 10px rgba(0,0,0, 0.6);
+            color: var(--color-white);
+            text-shadow: 0 1px 10px var(--color-black-60);
             margin: 0;
         }
     }
 
     .category-action {
-        background: linear-gradient(to bottom, #d69095, #c57177 30%, #b35961);
+        background: linear-gradient(to bottom, var(--color-category-action-1), var(--color-category-action-2) 30%, var(--color-category-action-3));
     }
 
     .category-comedy {
-        background: linear-gradient(to bottom, #e3cd7f, #d9c05c 30%, #c9b140);
+        background: linear-gradient(to bottom, var(--color-category-comedy-1), var(--color-category-comedy-2) 30%, var(--color-category-comedy-3));
     }
 
     .category-family {
-        background: linear-gradient(to bottom, #bdccab, #a1b887 30%, #85a363);
+        background: linear-gradient(to bottom, var(--color-category-family-1), var(--color-category-family-2) 30%, var(--color-category-family-3));
     }
 
     .category-sci-fi {
-        background: linear-gradient(to bottom, #b2c9d6, #92b2c7 30%, #729ab5);
+        background: linear-gradient(to bottom, var(--color-category-sci-fi-1), var(--color-category-sci-fi-2) 30%, var(--color-category-sci-fi-3));
     }
 
     .category-classics {
-        background: linear-gradient(to bottom, #e3dac1, #d4cba3 30%, #c5ba85);
+        background: linear-gradient(to bottom, var(--color-category-classics-1), var(--color-category-classics-2) 30%, var(--color-category-classics-3));
     }
 
     .category-thriller {
-        background: linear-gradient(to bottom, #a2b3c5, #859bb3 30%, #6883a1);
+        background: linear-gradient(to bottom, var(--color-category-thriller-1), var(--color-category-thriller-2) 30%, var(--color-category-thriller-3));
     }
 
     .category-horror {
-        background: linear-gradient(to bottom, #b9adbf, #9c89a8 30%, #7f6591);
+        background: linear-gradient(to bottom, var(--color-category-horror-1), var(--color-category-horror-2) 30%, var(--color-category-horror-3));
     }
 }
