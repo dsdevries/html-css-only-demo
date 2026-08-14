@@ -12,27 +12,20 @@
 }
 
 .button {
-    --button-background-color-dark-from: rgba(255, 255, 255, 0.28);
-    --button-background-color-dark-to: rgba(255, 255, 255, 0.42);
-    --button-background-color-light-from: rgba(255, 255, 255, 0.50);
-    --button-background-color-light-to: rgba(255, 255, 255, 0.60);
-
-    --button-background-color-from: var(--button-background-color-dark-from);
-    --button-background-color-to: var(--button-background-color-dark-to);
+    --button-background-color-from: var(--button-bg-dark-from);
+    --button-background-color-to: var(--button-bg-dark-to);
 
     font-size: 1.2rem;
     line-height: 3rem;
     padding: .1rem 1rem;
     color: #000;
     border: none;
-    border-radius: 2em;
     transform-origin: center center;
     background: linear-gradient(
             to bottom,
             var(--button-background-color-from),
             var(--button-background-color-to)
     );
-    backdrop-filter: blur(5px);
 
     box-shadow: var(--glass-edge);
     transition:
@@ -40,9 +33,7 @@
             --button-background-color-to 1s var(--spring-easing);
 
     &:hover {
-        --button-background-color-from: var(--button-background-color-light-from);
-        --button-background-color-to: var(--button-background-color-light-to);
-
+        --button-background-color-from: var(--button-bg-light-from);
+        --button-background-color-to: var(--button-bg-light-to);
     }
-
 }

@@ -1,3 +1,103 @@
+:root {
+  --radius-large: 2rem;
+  --radius-medium: 2em;
+  --radius-small: 1rem;
+  --radius-round: 50%;
+  --shadow-heavy: 0 4px 10px 0 rgba(0, 0, 0, .45);
+  --shadow-light: 0 3px 6px gray;
+  --shadow-floating: 0 10px 30px rgba(0, 0, 0, .3);
+  --blur-standard: 5px;
+  --blur-heavy: 10px;
+  --glass-border-color: rgba(255, 255, 255, .7);
+  --glass-border: 1px solid var(--glass-border-color);
+  --glass-panel-dark: linear-gradient(to bottom,
+        rgba(255, 255, 255, .2),
+        rgba(255, 255, 255, .3));
+  --glass-panel-medium: linear-gradient(to bottom,
+            rgba(255, 255, 255, .42),
+            rgba(255, 255, 255, .28));
+  --glass-panel-light: linear-gradient(to bottom,
+            rgba(255, 255, 255, .5),
+            rgba(255, 255, 255, .6));
+  --glass-edge: inset 0 0 0 1px rgba(255, 255, 255, .35);
+  --spring-easing: linear(0, .0018, .0069 1.15%, .026 2.3%, .0637, .1135 5.18%, .2229 7.78%, .5977 15.84%, .7014, .7904, .8641, .9228, .9676 28.8%, 1.0032 31.68%, 1.0225, 1.0352 36.29%, 1.0431 38.88%, 1.046 42.05%, 1.0448 44.35%, 1.0407 47.23%, 1.0118 61.63%, 1.0025 69.41%, .9981 80.35%, .9992 99.94%);
+  --button-bg-dark-from: rgba(255, 255, 255, .28);
+  --button-bg-dark-to: rgba(255, 255, 255, .42);
+  --button-bg-light-from: rgba(255, 255, 255, .5);
+  --button-bg-light-to: rgba(255, 255, 255, .6);
+}
+
+.glass-container {
+  border: var(--glass-border);
+  border-radius: var(--radius-large);
+  filter: drop-shadow(var(--shadow-light));
+  -webkit-backdrop-filter: blur(var(--blur-standard));
+  backdrop-filter: blur(var(--blur-standard));
+  position: relative;
+}
+
+.glass-container:before {
+  content: "";
+  background: var(--glass-panel-medium);
+  border-radius: inherit;
+  box-shadow: var(--shadow-heavy), var(--glass-edge);
+  clip-path: inset(0 round var(--radius-large));
+  z-index: -1;
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  left: -1px;
+  right: -1px;
+}
+
+.radius-large {
+  border-radius: var(--radius-large);
+}
+
+.radius-medium {
+  border-radius: var(--radius-medium);
+}
+
+.radius-round {
+  border-radius: var(--radius-round);
+}
+
+.radius-none {
+  border-radius: 0;
+}
+
+.shadow-light {
+  filter: drop-shadow(var(--shadow-light));
+}
+
+.shadow-heavy {
+  box-shadow: var(--shadow-heavy);
+}
+
+.shadow-floating {
+  box-shadow: var(--shadow-floating);
+}
+
+.shadow-none {
+  box-shadow: none;
+  filter: none;
+}
+
+.blur-standard {
+  -webkit-backdrop-filter: blur(var(--blur-standard));
+  backdrop-filter: blur(var(--blur-standard));
+}
+
+.blur-heavy {
+  -webkit-backdrop-filter: blur(var(--blur-heavy));
+  backdrop-filter: blur(var(--blur-heavy));
+}
+
+.blur-none {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
 .content-grid {
   --padding-inline: 1rem;
   --content-max-width: 900px;
@@ -63,8 +163,8 @@ header {
 header:after {
   content: "";
   background: var(--glass-panel-medium);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(var(--blur-heavy));
+  backdrop-filter: blur(var(--blur-heavy));
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .1),
                 var(--glass-edge);
   opacity: 0;
@@ -104,39 +204,21 @@ header .logo img {
 
 header .back-button {
   view-transition-name: back-button;
-  background: linear-gradient(to bottom,
-                var(--button-background-color-from),
-                var(--button-background-color-to));
-  --button-background-color-dark-from: rgba(255, 255, 255, .28);
-  --button-background-color-dark-to: rgba(255, 255, 255, .42);
-  --button-background-color-light-from: rgba(255, 255, 255, .5);
-  --button-background-color-light-to: rgba(255, 255, 255, .6);
-  --button-background-color-from: var(--button-background-color-dark-from);
-  --button-background-color-to: var(--button-background-color-dark-to);
-  width: 48px;
-  height: 48px;
-  box-shadow: var(--glass-edge);
   color: #000;
-  transition: --button-background-color-from 1s var(--spring-easing),
-                --button-background-color-to 1s var(--spring-easing),
-                margin-left .8s var(--spring-easing);
   z-index: 100;
-  border-radius: 50%;
   grid-area: 1 / content;
   justify-content: center;
   justify-self: start;
   align-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
   text-decoration: none;
   display: flex;
 }
 
 header .back-button.breakout {
   margin-left: 1rem;
-}
-
-header .back-button:hover {
-  --button-background-color-from: var(--button-background-color-light-from);
-  --button-background-color-to: var(--button-background-color-light-to);
 }
 
 header .back-button svg {
@@ -245,8 +327,8 @@ header .back-button svg {
 ::view-transition-group(selected-indicator) {
   animation-duration: 1s;
   animation-timing-function: var(--spring-easing);
+  border-radius: var(--radius-medium);
   z-index: 1;
-  border-radius: 2em;
 }
 
 ::view-transition-group(selected-indicator) {
@@ -272,33 +354,11 @@ header .back-button svg {
 
 .main-nav {
   view-transition-name: main-nav;
-  filter: drop-shadow(0 3px 6px gray);
-  -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
   z-index: 10;
-  background: none;
-  border: 1px solid rgba(255, 255, 255, .7);
-  border-radius: 2rem;
   position: fixed;
   bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
-}
-
-.main-nav:before {
-  content: "";
-  background: var(--glass-panel-medium);
-  color: #6a1b9a;
-  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .45),
-                var(--glass-edge);
-  clip-path: inset(0 round 2rem);
-  z-index: -2;
-  border-radius: 2rem;
-  position: absolute;
-  top: -1px;
-  bottom: -1px;
-  left: -1px;
-  right: -1px;
 }
 
 .main-nav ul {
@@ -316,6 +376,7 @@ header .back-button svg {
   left: anchor(left);
   right: anchor(right);
   height: anchor-size(height);
+  border-radius: var(--radius-medium);
   transition: left 1s var(--spring-easing),
                     right 1s var(--spring-easing),
                     top 1s var(--spring-easing),
@@ -326,7 +387,6 @@ header .back-button svg {
   transform-origin: center;
   z-index: -1;
   background: none;
-  border-radius: 2em;
   animation-duration: .6s;
   animation-timing-function: linear;
   display: block;
@@ -339,6 +399,7 @@ header .back-button svg {
   left: anchor(left);
   right: anchor(right);
   height: anchor-size(height);
+  border-radius: var(--radius-medium);
   transition: left 1s var(--spring-easing),
                     right 1s var(--spring-easing),
                     top 1s var(--spring-easing),
@@ -349,7 +410,6 @@ header .back-button svg {
   transform-origin: center;
   z-index: -1;
   background: none;
-  border-radius: 2em;
   animation-duration: .6s;
   animation-timing-function: linear;
   display: block;
@@ -459,32 +519,25 @@ header .back-button svg {
 }
 
 .button {
-  --button-background-color-dark-from: rgba(255, 255, 255, .28);
-  --button-background-color-dark-to: rgba(255, 255, 255, .42);
-  --button-background-color-light-from: rgba(255, 255, 255, .5);
-  --button-background-color-light-to: rgba(255, 255, 255, .6);
-  --button-background-color-from: var(--button-background-color-dark-from);
-  --button-background-color-to: var(--button-background-color-dark-to);
+  --button-background-color-from: var(--button-bg-dark-from);
+  --button-background-color-to: var(--button-bg-dark-to);
   color: #000;
   transform-origin: center;
   background: linear-gradient(to bottom,
             var(--button-background-color-from),
             var(--button-background-color-to));
-  -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
   box-shadow: var(--glass-edge);
   transition: --button-background-color-from 1s var(--spring-easing),
             --button-background-color-to 1s var(--spring-easing);
   border: none;
-  border-radius: 2em;
   padding: .1rem 1rem;
   font-size: 1.2rem;
   line-height: 3rem;
 }
 
 .button:hover {
-  --button-background-color-from: var(--button-background-color-light-from);
-  --button-background-color-to: var(--button-background-color-light-to);
+  --button-background-color-from: var(--button-bg-light-from);
+  --button-background-color-to: var(--button-bg-light-to);
 }
 
 @property --marker-background-color-from {
@@ -522,69 +575,61 @@ header .back-button svg {
 }
 
 .carousel ul::scroll-button(left) {
-  --button-background-color-dark-from: rgba(255, 255, 255, .28);
-  --button-background-color-dark-to: rgba(255, 255, 255, .42);
-  --button-background-color-light-from: rgba(255, 255, 255, .5);
-  --button-background-color-light-to: rgba(255, 255, 255, .6);
-  --button-background-color-from: var(--button-background-color-dark-from);
-  --button-background-color-to: var(--button-background-color-dark-to);
-  filter: drop-shadow(0 3px 6px gray);
-  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .45),
+  --button-background-color-from: var(--button-bg-dark-from);
+  --button-background-color-to: var(--button-bg-dark-to);
+  filter: drop-shadow(var(--shadow-light));
+  box-shadow: var(--shadow-heavy),
                     var(--glass-edge);
-  clip-path: inset(0 round 50%);
+  clip-path: inset(0 round var(--radius-round));
   color: #000;
+  border-radius: var(--radius-medium);
   transform-origin: center;
   background: linear-gradient(to bottom,
                     var(--button-background-color-from),
                     var(--button-background-color-to));
-  -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(var(--blur-standard));
+  backdrop-filter: blur(var(--blur-standard));
   box-shadow: var(--glass-edge);
   transition: --button-background-color-from 1s var(--spring-easing),
                     --button-background-color-to 1s var(--spring-easing);
   border: none;
-  border-radius: 2em;
   padding: .1rem 1rem;
   font-size: 1.2rem;
   line-height: 3rem;
 }
 
 .carousel ul::scroll-button(left):hover {
-  --button-background-color-from: var(--button-background-color-light-from);
-  --button-background-color-to: var(--button-background-color-light-to);
+  --button-background-color-from: var(--button-bg-light-from);
+  --button-background-color-to: var(--button-bg-light-to);
 }
 
 .carousel ul::scroll-button(right) {
-  --button-background-color-dark-from: rgba(255, 255, 255, .28);
-  --button-background-color-dark-to: rgba(255, 255, 255, .42);
-  --button-background-color-light-from: rgba(255, 255, 255, .5);
-  --button-background-color-light-to: rgba(255, 255, 255, .6);
-  --button-background-color-from: var(--button-background-color-dark-from);
-  --button-background-color-to: var(--button-background-color-dark-to);
-  filter: drop-shadow(0 3px 6px gray);
-  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .45),
+  --button-background-color-from: var(--button-bg-dark-from);
+  --button-background-color-to: var(--button-bg-dark-to);
+  filter: drop-shadow(var(--shadow-light));
+  box-shadow: var(--shadow-heavy),
                     var(--glass-edge);
-  clip-path: inset(0 round 50%);
+  clip-path: inset(0 round var(--radius-round));
   color: #000;
+  border-radius: var(--radius-medium);
   transform-origin: center;
   background: linear-gradient(to bottom,
                     var(--button-background-color-from),
                     var(--button-background-color-to));
-  -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(var(--blur-standard));
+  backdrop-filter: blur(var(--blur-standard));
   box-shadow: var(--glass-edge);
   transition: --button-background-color-from 1s var(--spring-easing),
                     --button-background-color-to 1s var(--spring-easing);
   border: none;
-  border-radius: 2em;
   padding: .1rem 1rem;
   font-size: 1.2rem;
   line-height: 3rem;
 }
 
 .carousel ul::scroll-button(right):hover {
-  --button-background-color-from: var(--button-background-color-light-from);
-  --button-background-color-to: var(--button-background-color-light-to);
+  --button-background-color-from: var(--button-bg-light-from);
+  --button-background-color-to: var(--button-bg-light-to);
 }
 
 .carousel ul::scroll-button(left) {
@@ -618,37 +663,34 @@ header .back-button svg {
 
 .carousel ul > li::scroll-marker {
   content: "";
-  filter: drop-shadow(0 3px 6px gray);
+  border-radius: var(--radius-round);
   width: 20px;
   height: 20px;
-  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .45),
+  filter: drop-shadow(var(--shadow-light));
+  box-shadow: var(--shadow-heavy),
                     var(--glass-edge);
   clip-path: inset(0 round 10px);
-  --marker-background-color-dark-from: rgba(255, 255, 255, .28);
-  --marker-background-color-dark-to: rgba(255, 255, 255, .42);
-  --marker-background-color-light-from: rgba(255, 255, 255, .5);
-  --marker-background-color-light-to: rgba(255, 255, 255, .6);
-  --marker-background-color-from: var(--marker-background-color-dark-from);
-  --marker-background-color-to: var(--marker-background-color-dark-to);
+  --marker-background-color-from: var(--button-bg-dark-from);
+  --marker-background-color-to: var(--button-bg-dark-to);
   background: linear-gradient(to bottom,
                     var(--marker-background-color-from),
                     var(--marker-background-color-to));
-  -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(var(--blur-standard));
+  backdrop-filter: blur(var(--blur-standard));
   transition: --marker-background-color-from 1s var(--spring-easing),
             --marker-background-color-to 1s var(--spring-easing);
-  border-radius: 50%;
   display: block;
 }
 
 .carousel ul > li::scroll-marker:hover {
-  --marker-background-color-from: var(--marker-background-color-light-from);
-  --marker-background-color-to: var(--marker-background-color-light-to);
+  --marker-background-color-from: var(--button-bg-light-from);
+  --marker-background-color-to: var(--button-bg-light-to);
 }
 
 .card {
   gap: 2rem;
   display: flex;
+  overflow: clip;
 }
 
 .card a {
@@ -661,7 +703,6 @@ header .back-button svg {
 .card a img {
   aspect-ratio: 2 / 3;
   object-fit: cover;
-  border-radius: 2rem;
   width: 100%;
   height: auto;
   display: block;
@@ -740,10 +781,10 @@ header .back-button svg {
 ::view-transition-group(profile-selected-indicator) {
   animation-duration: 1s;
   animation-timing-function: var(--spring-easing);
+  border-radius: var(--radius-medium);
   z-index: 1;
   background: var(--glass-panel-light);
   box-shadow: var(--glass-edge);
-  border-radius: 2em;
 }
 
 ::view-transition-group(profile-avatar) {
@@ -773,17 +814,17 @@ header .back-button svg {
 @keyframes profile-menu-exit {
   from {
     opacity: 1;
-    filter: drop-shadow(0 3px 6px gray);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
+    filter: drop-shadow(var(--shadow-light));
+    -webkit-backdrop-filter: blur(var(--blur-heavy));
+    backdrop-filter: blur(var(--blur-heavy));
     transform: translateY(0) scale(1);
   }
 
   to {
     opacity: 0;
-    filter: drop-shadow(0 3px 6px gray) blur(2px);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
+    filter: drop-shadow(var(--shadow-light)) blur(2px);
+    -webkit-backdrop-filter: blur(var(--blur-heavy));
+    backdrop-filter: blur(var(--blur-heavy));
     transform: translateY(-60px) scale(.9);
   }
 }
@@ -801,13 +842,7 @@ header .back-button svg {
 
 .profile .profile-button {
   anchor-name: --profile-button;
-  filter: drop-shadow(0 3px 6px gray);
-  -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
   z-index: 100;
-  background: none;
-  border: 1px solid rgba(255, 255, 255, .7);
-  border-radius: 2rem;
   width: 50px;
   height: 50px;
   padding: 0;
@@ -815,37 +850,23 @@ header .back-button svg {
 }
 
 .profile .profile-button:before {
-  content: "";
-  background: var(--glass-panel-medium);
-  color: #6a1b9a;
-  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .45),
-                    var(--glass-edge);
-  clip-path: inset(0 round 2rem);
   z-index: -1;
-  border-radius: 2rem;
-  position: absolute;
-  top: -1px;
-  bottom: -1px;
-  left: -1px;
-  right: -1px;
 }
 
 .profile .profile-button img {
   object-fit: cover;
-  width: 100%;
-  height: 100%;
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  margin: 1px;
 }
 
 .profile [popover] {
   view-transition-name: profile-menu;
-  -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
   position-anchor: --profile-button;
   position-area: bottom span-left;
   color: inherit;
   opacity: 0;
   transform-origin: center;
-  filter: drop-shadow(0 3px 6px gray) blur(2px);
   width: 50px;
   min-width: 50px;
   height: 50px;
@@ -859,8 +880,6 @@ header .back-button svg {
             border-radius .8s var(--spring-easing),
             filter .8s var(--spring-easing);
   background: none;
-  border: 1px solid rgba(255, 255, 255, .7);
-  border-radius: 2rem;
   margin-top: 10px;
   padding: 0;
   overflow: clip;
@@ -869,8 +888,6 @@ header .back-button svg {
 
 .profile [popover]:popover-open {
   opacity: 1;
-  filter: drop-shadow(0 3px 6px gray) blur();
-  border-radius: 2rem;
   width: auto;
   min-width: 160px;
   height: auto;
@@ -884,8 +901,6 @@ header .back-button svg {
 @starting-style {
   .profile [popover]:popover-open {
     opacity: 0;
-    filter: drop-shadow(0 3px 6px gray) blur(4px);
-    border-radius: 2rem;
     width: 50px;
     min-width: 50px;
     height: 50px;
@@ -918,6 +933,7 @@ header .back-button svg {
   left: anchor(left);
   right: anchor(right);
   height: anchor-size(height);
+  border-radius: var(--radius-medium);
   transition: top 1s var(--spring-easing),
                         left 1s var(--spring-easing),
                         right 1s var(--spring-easing),
@@ -930,7 +946,6 @@ header .back-button svg {
   animation-timing-function: var(--spring-easing);
   z-index: -1;
   background: none;
-  border-radius: 2em;
   display: block;
   position: absolute;
 }
@@ -941,6 +956,7 @@ header .back-button svg {
   left: anchor(left);
   right: anchor(right);
   height: anchor-size(height);
+  border-radius: var(--radius-medium);
   transition: top 1s var(--spring-easing),
                         left 1s var(--spring-easing),
                         right 1s var(--spring-easing),
@@ -953,7 +969,6 @@ header .back-button svg {
   animation-timing-function: var(--spring-easing);
   z-index: -1;
   background: none;
-  border-radius: 2em;
   display: block;
   position: absolute;
 }
@@ -1030,19 +1045,7 @@ header .back-button svg {
 }
 
 .profile [popover]:before {
-  content: "";
-  background: var(--glass-panel-medium);
-  color: #6a1b9a;
-  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .45),
-                    var(--glass-edge);
-  clip-path: inset(0 round 2rem);
   z-index: -1;
-  border-radius: 2rem;
-  position: absolute;
-  top: -1px;
-  bottom: -1px;
-  left: -1px;
-  right: -1px;
 }
 
 @keyframes fade-in {
@@ -1064,7 +1067,7 @@ header .back-button svg {
 
 ::view-transition-old(image) {
   mix-blend-mode: normal;
-  border-radius: 2rem;
+  border-radius: var(--radius-large);
   height: 100%;
   animation: none;
   overflow: clip;
@@ -1072,7 +1075,7 @@ header .back-button svg {
 
 ::view-transition-new(image) {
   mix-blend-mode: normal;
-  border-radius: 2rem;
+  border-radius: var(--radius-large);
   height: 100%;
   animation: none;
   overflow: clip;
@@ -1097,7 +1100,7 @@ header .back-button svg {
 
 ::view-transition-group(movie-description) {
   z-index: 2;
-  border-radius: 2rem;
+  border-radius: var(--radius-large);
   overflow: clip;
 }
 
@@ -1142,9 +1145,7 @@ header .back-button svg {
             opacity .3s ease;
   background-position: center;
   background-size: cover;
-  border-radius: 2rem;
   position: absolute;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, .3);
 }
 
 #overview .movies:has(li:hover) ~ .active-movie-indicator {
@@ -1165,7 +1166,6 @@ header .back-button svg {
 }
 
 #detail .hero {
-  border-radius: 2rem;
   width: 100%;
   height: auto;
   display: block;
@@ -1175,7 +1175,6 @@ header .back-button svg {
   color: #fff;
   view-transition-name: movie-description;
   background: linear-gradient(0deg, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0));
-  border-radius: 2rem;
   padding-bottom: 2rem;
   position: absolute;
   bottom: 0;
@@ -1187,17 +1186,6 @@ header .back-button svg {
 }
 
 :root {
-  --glass-panel-dark: linear-gradient(to bottom,
-        rgba(255, 255, 255, .2),
-        rgba(255, 255, 255, .3));
-  --glass-panel-medium: linear-gradient(to bottom,
-            rgba(255, 255, 255, .42),
-            rgba(255, 255, 255, .28));
-  --glass-panel-light: linear-gradient(to bottom,
-            rgba(255, 255, 255, .5),
-            rgba(255, 255, 255, .6));
-  --glass-edge: inset 0 0 0 1px rgba(255, 255, 255, .35);
-  --spring-easing: linear(0, .0018, .0069 1.15%, .026 2.3%, .0637, .1135 5.18%, .2229 7.78%, .5977 15.84%, .7014, .7904, .8641, .9228, .9676 28.8%, 1.0032 31.68%, 1.0225, 1.0352 36.29%, 1.0431 38.88%, 1.046 42.05%, 1.0448 44.35%, 1.0407 47.23%, 1.0118 61.63%, 1.0025 69.41%, .9981 80.35%, .9992 99.94%);
   interpolate-size: allow-keywords;
 }
 

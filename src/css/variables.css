@@ -1,0 +1,44 @@
+:root {
+    /* Border Radii */
+    --radius-large: 2rem;
+    --radius-medium: 2em;
+    --radius-small: 1rem;
+    --radius-round: 50%;
+
+    /* Shadows & Effects */
+    --shadow-heavy: 0 4px 10px 0 rgba(0, 0, 0, 0.45);
+    --shadow-light: 0 3px 6px gray;
+    --shadow-floating: 0 10px 30px rgba(0,0,0,0.3);
+    --blur-standard: 5px;
+    --blur-heavy: 10px;
+
+    /* Glass Colors & Gradients */
+    --glass-border-color: rgba(255, 255, 255, 0.7);
+    --glass-border: 1px solid var(--glass-border-color);
+    
+    --glass-panel-dark: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.20),
+        rgba(255, 255, 255, 0.30)
+    );
+    --glass-panel-medium: linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.42),
+            rgba(255, 255, 255, 0.28)
+    );
+    --glass-panel-light: linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.50),
+            rgba(255, 255, 255, 0.60)
+    );
+    --glass-edge: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+
+    /* Animation Easing */
+    --spring-easing: linear(0, 0.0018, 0.0069 1.15%, 0.026 2.3%, 0.0637, 0.1135 5.18%, 0.2229 7.78%, 0.5977 15.84%, 0.7014, 0.7904, 0.8641, 0.9228, 0.9676 28.8%, 1.0032 31.68%, 1.0225, 1.0352 36.29%, 1.0431 38.88%, 1.046 42.05%, 1.0448 44.35%, 1.0407 47.23%, 1.0118 61.63%, 1.0025 69.41%, 0.9981 80.35%, 0.9992 99.94%);
+
+    /* Button Colors */
+    --button-bg-dark-from: rgba(255, 255, 255, 0.28);
+    --button-bg-dark-to: rgba(255, 255, 255, 0.42);
+    --button-bg-light-from: rgba(255, 255, 255, 0.50);
+    --button-bg-light-to: rgba(255, 255, 255, 0.60);
+}

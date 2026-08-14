@@ -21,7 +21,7 @@
     mix-blend-mode: normal;
     height: 100%;
     overflow: clip;
-    border-radius: 2rem;
+    border-radius: var(--radius-large);
 }
 
 #overview::view-transition-old(image) {
@@ -44,7 +44,7 @@
 ::view-transition-group(movie-description) {
     z-index: 2;
     overflow: clip;
-    border-radius: 2rem;
+    border-radius: var(--radius-large);
 }
 
 ::view-transition-new(movie-description) {
@@ -81,7 +81,6 @@
         background-image: attr(data-image url);
         background-size: cover;
         background-position: center;
-        border-radius: 2rem;
         z-index: 0;
         pointer-events: none;
         opacity: 0;
@@ -91,8 +90,6 @@
             width 0.6s var(--spring-easing),
             height 0.6s var(--spring-easing),
             opacity 0.3s ease;
-        
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
 
     .movies {
@@ -120,7 +117,6 @@
         width: 100%;
         height: auto;
         display: block;
-        border-radius: 2rem;
     }
 
     .content {
@@ -129,7 +125,6 @@
         background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
         color: #fff;
         padding-bottom: 2rem;
-        border-radius: 2rem;
         overflow: clip;
         view-transition-name: movie-description;
     }

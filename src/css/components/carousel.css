@@ -46,41 +46,35 @@
 
         &::scroll-button(left),
         &::scroll-button(right) {
-            --button-background-color-dark-from: rgba(255, 255, 255, 0.28);
-            --button-background-color-dark-to: rgba(255, 255, 255, 0.42);
-            --button-background-color-light-from: rgba(255, 255, 255, 0.50);
-            --button-background-color-light-to: rgba(255, 255, 255, 0.60);
+            --button-background-color-from: var(--button-bg-dark-from);
+            --button-background-color-to: var(--button-bg-dark-to);
 
-            --button-background-color-from: var(--button-background-color-dark-from);
-            --button-background-color-to: var(--button-background-color-dark-to);
-
-            filter: drop-shadow(0 3px 6px gray);
+            filter: drop-shadow(var(--shadow-light));
             box-shadow:
-                    0 4px 10px 0 rgba(0, 0, 0, 0.45),
+                    var(--shadow-heavy),
                     var(--glass-edge);
-            clip-path: inset(0 round 50%);
+            clip-path: inset(0 round var(--radius-round));
             font-size: 1.2rem;
             line-height: 3rem;
             padding: .1rem 1rem;
             color: #000;
             border: none;
-            border-radius: 2em;
+            border-radius: var(--radius-medium);
             transform-origin: center center;
             background: linear-gradient(
                     to bottom,
                     var(--button-background-color-from),
                     var(--button-background-color-to)
             );
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(var(--blur-standard));
             box-shadow: var(--glass-edge);
             transition:
                     --button-background-color-from 1s var(--spring-easing),
                     --button-background-color-to 1s var(--spring-easing);
 
             &:hover {
-                --button-background-color-from: var(--button-background-color-light-from);
-                --button-background-color-to: var(--button-background-color-light-to);
-
+                --button-background-color-from: var(--button-bg-light-from);
+                --button-background-color-to: var(--button-bg-light-to);
             }
         }
 
@@ -116,34 +110,29 @@
             display: block;
             width: 20px;
             height: 20px;
-            border-radius: 50%;
-            filter: drop-shadow(0 3px 6px gray);
+            border-radius: var(--radius-round);
+            filter: drop-shadow(var(--shadow-light));
             box-shadow:
-                    0 4px 10px 0 rgba(0, 0, 0, 0.45),
+                    var(--shadow-heavy),
                     var(--glass-edge);
             clip-path: inset(0 round 10px);
 
-            --marker-background-color-dark-from: rgba(255, 255, 255, 0.28);
-            --marker-background-color-dark-to: rgba(255, 255, 255, 0.42);
-            --marker-background-color-light-from: rgba(255, 255, 255, 0.50);
-            --marker-background-color-light-to: rgba(255, 255, 255, 0.60);
-
-            --marker-background-color-from: var(--marker-background-color-dark-from);
-            --marker-background-color-to: var(--marker-background-color-dark-to);
+            --marker-background-color-from: var(--button-bg-dark-from);
+            --marker-background-color-to: var(--button-bg-dark-to);
 
             background: linear-gradient(
                     to bottom,
                     var(--marker-background-color-from),
                     var(--marker-background-color-to)
             );
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(var(--blur-standard));
             transition: --marker-background-color-from 1s var(--spring-easing),
             --marker-background-color-to 1s var(--spring-easing);
 
 
             &:hover {
-                --marker-background-color-from: var(--marker-background-color-light-from);
-                --marker-background-color-to: var(--marker-background-color-light-to);
+                --marker-background-color-from: var(--button-bg-light-from);
+                --marker-background-color-to: var(--button-bg-light-to);
             }
         }
 

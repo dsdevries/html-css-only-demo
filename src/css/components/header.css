@@ -33,7 +33,7 @@ header {
         bottom: 0;
         right: 0;
         background: var(--glass-panel-medium);
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(var(--blur-heavy));
         box-shadow:
                 0 4px 10px 0 rgba(0, 0, 0, 0.1),
                 var(--glass-edge);
@@ -75,37 +75,14 @@ header {
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 50%;
-        background: linear-gradient(
-                to bottom,
-                var(--button-background-color-from),
-                var(--button-background-color-to)
-        );
+        padding: 0;
 
-        --button-background-color-dark-from: rgba(255, 255, 255, 0.28);
-        --button-background-color-dark-to: rgba(255, 255, 255, 0.42);
-        --button-background-color-light-from: rgba(255, 255, 255, 0.50);
-        --button-background-color-light-to: rgba(255, 255, 255, 0.60);
-
-        --button-background-color-from: var(--button-background-color-dark-from);
-        --button-background-color-to: var(--button-background-color-dark-to);
-
-        box-shadow: var(--glass-edge);
         color: black;
         text-decoration: none;
-        transition:
-                --button-background-color-from 1s var(--spring-easing),
-                --button-background-color-to 1s var(--spring-easing),
-                margin-left 0.8s var(--spring-easing);
         z-index: 100;
 
         &.breakout {
             margin-left: 1rem;
-        }
-
-        &:hover {
-            --button-background-color-from: var(--button-background-color-light-from);
-            --button-background-color-to: var(--button-background-color-light-to);
         }
 
         svg {

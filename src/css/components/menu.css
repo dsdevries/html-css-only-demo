@@ -54,7 +54,7 @@
 ::view-transition-group(selected-indicator) {
     animation-duration: 1s;
     animation-timing-function: var(--spring-easing);
-    border-radius: 2em;
+    border-radius: var(--radius-medium);
     z-index: 1;
 }
 
@@ -73,34 +73,11 @@
 
 .main-nav {
     view-transition-name: main-nav;
-    background: none;
-    border: 1px solid rgba(255, 255, 255, .7);
-    border-radius: 2rem;
-    filter: drop-shadow(0 3px 6px gray);
-    backdrop-filter: blur(5px);
     z-index: 10;
     position: fixed;
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
-
-    &::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: var(--glass-panel-medium);
-        border-radius: 2rem;
-        color: #6a1b9a;
-        box-shadow:
-                0 4px 10px 0 rgba(0, 0, 0, 0.45),
-                var(--glass-edge);
-        clip-path: inset(0 round 2rem);
-        z-index: -2;
-        top: -1px;
-        right: -1px;
-        bottom:-1px;
-        left: -1px;
-    }
 
     ul {
         display: flex;
@@ -120,7 +97,7 @@
             height: anchor-size(height);
             display: block;
             background: none;
-            border-radius: 2em;
+            border-radius: var(--radius-medium);
             transition:
                     left 1s var(--spring-easing),
                     right 1s var(--spring-easing),
