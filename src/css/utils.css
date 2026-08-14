@@ -4,17 +4,18 @@
     border-radius: var(--radius-large);
     filter: drop-shadow(var(--shadow-light));
     backdrop-filter: blur(var(--blur-standard));
-}
 
-.glass-container::before {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    background: var(--glass-panel-medium);
-    border-radius: inherit;
-    box-shadow: var(--shadow-heavy), var(--glass-edge);
-    clip-path: inset(0 round var(--radius-large));
-    z-index: -1;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: -1px;
+        background: var(--glass-panel-medium);
+        border-radius: inherit;
+        box-shadow: var(--shadow-heavy), var(--glass-edge);
+        clip-path: inset(0 round var(--radius-large));
+        z-index: -1;
+    }
 }
 
 .radius-large { border-radius: var(--radius-large); }
