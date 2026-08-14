@@ -1,24 +1,24 @@
 @property --button-background-color-from {
     syntax: '<color>';
-    initial-value: var(--color-transparent-white);
+    initial-value: white;
     inherits: false;
 }
 
 @property --button-background-color-to {
     syntax: '<color>';
-    initial-value: var(--color-transparent-white);
+    initial-value: white;
     inherits: false;
 }
 
 @property --marker-background-color-from {
     syntax: '<color>';
-    initial-value: var(--color-transparent-white);
+    initial-value: white;
     inherits: false;
 }
 
 @property --marker-background-color-to {
     syntax: '<color>';
-    initial-value: var(--color-transparent-white);
+    initial-value: white;
     inherits: false;
 }
 

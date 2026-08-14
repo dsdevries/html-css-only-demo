@@ -1,13 +1,13 @@
 
 @property --button-background-color-from {
     syntax: '<color>';
-    initial-value: var(--color-transparent-white);
+    initial-value: white;
     inherits: true;
 }
 
 @property --button-background-color-to {
     syntax: '<color>';
-    initial-value: var(--color-transparent-white);
+    initial-value: white;
     inherits: true;
 }
 
