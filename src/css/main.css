@@ -111,11 +111,13 @@
     .container {
         margin: 15px 0;
         position: relative;
+        min-height: 400px;
     }
 
     .hero {
         width: 100%;
-        height: auto;
+        height: 100%;
+        object-fit: cover;
         display: block;
     }
 

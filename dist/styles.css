@@ -1169,13 +1169,15 @@ header .back-button svg {
 }
 
 #detail .container {
+  min-height: 400px;
   margin: 15px 0;
   position: relative;
 }
 
 #detail .hero {
+  object-fit: cover;
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
 }
 
