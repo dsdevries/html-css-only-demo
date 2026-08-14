@@ -8,6 +8,7 @@
         display: block;
         position: relative;
         text-decoration: none;
+        overflow: hidden;
 
         img {
             width: 100%;
@@ -15,6 +16,7 @@
             aspect-ratio: 2/3;
             object-fit: cover;
             display: block;
+            border-radius: var(--radius-large);
         }
     }
 

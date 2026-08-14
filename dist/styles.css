@@ -706,11 +706,13 @@ header .back-button svg {
   text-decoration: none;
   display: block;
   position: relative;
+  overflow: hidden;
 }
 
 .card a img {
   aspect-ratio: 2 / 3;
   object-fit: cover;
+  border-radius: var(--radius-large);
   width: 100%;
   height: auto;
   display: block;
@@ -1089,15 +1091,6 @@ header .back-button svg {
   overflow: clip;
 }
 
-#overview::view-transition-old(image) {
-  animation: .3s both fade-out;
-}
-
-#overview::view-transition-new(image) {
-  opacity: 0;
-  animation: none;
-}
-
 ::view-transition-group(image) {
   z-index: 1;
 }
@@ -1124,44 +1117,12 @@ header .back-button svg {
   position: relative;
 }
 
-#overview .content-grid {
-  anchor-name: --active-movie;
-}
-
 #overview::view-transition-new(image) {
   object-fit: contain;
 }
 
 #overview::view-transition-old(image) {
   object-fit: cover;
-}
-
-#overview .active-movie-indicator {
-  position-anchor: --active-movie;
-  top: anchor(top);
-  left: anchor(left);
-  width: anchor-size(width);
-  height: anchor-size(height);
-  background-image: attr(data-image url);
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0;
-  transition: top .6s var(--spring-easing),
-            left .6s var(--spring-easing),
-            width .6s var(--spring-easing),
-            height .6s var(--spring-easing),
-            opacity .3s ease;
-  background-position: center;
-  background-size: cover;
-  position: absolute;
-}
-
-#overview .movies:has(li:hover) ~ .active-movie-indicator {
-  opacity: 1;
-}
-
-#overview .movies li:hover {
-  anchor-name: --active-movie;
 }
 
 #detail::view-transition-new(image) {

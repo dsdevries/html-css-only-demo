@@ -24,15 +24,6 @@
     border-radius: var(--radius-large);
 }
 
-#overview::view-transition-old(image) {
-    animation: 0.3s ease both fade-out;
-}
-
-#overview::view-transition-new(image) {
-    animation: none;
-    opacity: 0;
-}
-
 ::view-transition-group(image) {
     z-index: 1;
 }
@@ -59,47 +50,12 @@
 #overview {
     position: relative;
 
-    .content-grid {
-        anchor-name: --active-movie;
-    }
-
     &::view-transition-new(image) {
         object-fit: contain;
     }
 
     &::view-transition-old(image) {
         object-fit: cover;
-    }
-
-    .active-movie-indicator {
-        position: absolute;
-        position-anchor: --active-movie;
-        top: anchor(top);
-        left: anchor(left);
-        width: anchor-size(width);
-        height: anchor-size(height);
-        background-image: attr(data-image url);
-        background-size: cover;
-        background-position: center;
-        z-index: 0;
-        pointer-events: none;
-        opacity: 0;
-        transition:
-            top 0.6s var(--spring-easing),
-            left 0.6s var(--spring-easing),
-            width 0.6s var(--spring-easing),
-            height 0.6s var(--spring-easing),
-            opacity 0.3s ease;
-    }
-
-    .movies {
-        &:has(li:hover) ~ .active-movie-indicator {
-            opacity: 1;
-        }
-
-        li:hover {
-            anchor-name: --active-movie;
-        }
     }
 }
 
