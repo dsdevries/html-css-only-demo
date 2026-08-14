@@ -1,6 +1,7 @@
 import express from 'express';
 import path from 'path';
 import livereload from 'livereload';
+import connectLiveReload from 'connect-livereload';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -23,6 +24,8 @@ if (!isProduction) {
             console.error('LiveReload error:', err);
         }
     });
+
+    app.use(connectLiveReload());
 }
 
 // Serve static files from the 'dist' directory
