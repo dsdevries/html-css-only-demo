@@ -64,9 +64,7 @@ header {
         }
 
         header:has(.back-button) & {
-            @media (max-width: 1100px) {
-                margin-left: clamp(0rem, (1085px - 100vw) * 0.5, 4.8rem);
-            }
+            margin-left: clamp(0rem, (1085px - 100vw) * 0.5, 4.8rem);
         }
 
         img {
