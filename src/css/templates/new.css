@@ -68,16 +68,8 @@
         object-fit: cover;
     }
 
-    .hero {
-        margin: 0;
-
-        img {
-            position: absolute;
-        }
-
-        .content {
-            view-transition-name: movie-description;
-        }
+    .hero .content {
+        view-transition-name: movie-description;
     }
 }
 
