@@ -61,12 +61,6 @@
     &::view-transition-old(image) {
         object-fit: cover;
     }
-}
-
-#new-overview {
-    &::view-transition-new(image) {
-        object-fit: cover;
-    }
 
     .hero .content {
         view-transition-name: movie-description;
