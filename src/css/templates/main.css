@@ -66,5 +66,9 @@
     .hero .content {
         view-transition-name: movie-description;
     }
+
+    .details {
+        display: none;
+    }
 }
 
