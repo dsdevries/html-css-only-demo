@@ -19,7 +19,7 @@ header {
     padding-block: 2rem;
     container-type: scroll-state;
     position: sticky;
-    top: 0px;
+    top: 0;
     padding: 2rem 0 1rem;
     margin: 0;
     box-sizing: border-box;
@@ -57,6 +57,14 @@ header {
         justify-self: start;
         align-self: center;
         z-index: 100;
+        margin-left: 0;
+        transition: margin-left 0.3s ease-in-out;
+
+        header:has(.back-button) & {
+            @media (max-width: 1100px) {
+                margin-left: clamp(0rem, (1100px - 100vw) * 0.75, 4.4rem);
+            }
+        }
 
         img {
             height: 48px;

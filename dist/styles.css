@@ -194,6 +194,14 @@ header .logo {
   grid-area: 1 / content;
   align-self: center;
   justify-self: start;
+  margin-left: 0;
+  transition: margin-left .3s ease-in-out;
+}
+
+@media (max-width: 1100px) {
+  header:has(.back-button) :is(header .logo) {
+    margin-left: max(0rem, min(825px - 75vw, 4.4rem));
+  }
 }
 
 header .logo img {
