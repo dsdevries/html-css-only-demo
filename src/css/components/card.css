@@ -25,7 +25,7 @@
 
     h3 {
         display: inline-block;
-        color: var(--color-black);
+        color: var(--color-text-primary);
         margin-bottom: 0;
     }
 }

@@ -9,8 +9,12 @@
     --color-black-05: rgba(0, 0, 0, 0.05);
     --color-black-08: rgba(0, 0, 0, 0.08);
     --color-black-10: rgba(0, 0, 0, 0.1);
+    --color-black-30: rgba(0, 0, 0, 0.3);
+    --color-black-45: rgba(0, 0, 0, 0.45);
     --color-black-50: rgba(0, 0, 0, 0.5);
     --color-black-60: rgba(0, 0, 0, 0.6);
+    --color-white-05: rgba(255, 255, 255, 0.05);
+    --color-white-08: rgba(255, 255, 255, 0.08);
     --color-white-10: rgba(255, 255, 255, 0.1);
     --color-white-15: rgba(255, 255, 255, 0.15);
     --color-white-20: rgba(255, 255, 255, 0.2);
@@ -21,8 +25,27 @@
     --color-white-50: rgba(255, 255, 255, 0.5);
     --color-white-60: rgba(255, 255, 255, 0.6);
     --color-white-70: rgba(255, 255, 255, 0.7);
-    --color-black-30: rgba(0, 0, 0, 0.3);
-    --color-black-45: rgba(0, 0, 0, 0.45);
+
+    /* Theme Variables (Light by default) */
+    --color-bg-page: var(--color-white);
+    --color-text-primary: var(--color-black);
+    
+    --glass-border-color: var(--color-white-70);
+    --glass-panel-dark-from: var(--color-white-20);
+    --glass-panel-dark-to: var(--color-white-30);
+    --glass-panel-medium-from: var(--color-white-42);
+    --glass-panel-medium-to: var(--color-white-28);
+    --glass-panel-light-from: var(--color-white-50);
+    --glass-panel-light-to: var(--color-white-60);
+    --glass-edge-color: var(--color-white-35);
+
+    --glass-mild-border-color: var(--color-white-20);
+    --glass-mild-bg: var(--color-white-10);
+    --glass-mild-edge-color: var(--color-white-15);
+
+    --shadow-heavy-color: var(--color-black-45);
+    --shadow-light-color: var(--color-gray);
+    --shadow-floating-color: var(--color-black-30);
 
     /* Category Colors */
     --color-category-action-1: #d69095;
@@ -54,32 +77,31 @@
     --radius-round: 50%;
 
     /* Shadows & Effects */
-    --shadow-heavy: 0 4px 10px 0 var(--color-black-45);
-    --shadow-light: 0 3px 6px var(--color-gray);
-    --shadow-floating: 0 10px 30px var(--color-black-30);
+    --shadow-heavy: 0 4px 10px 0 var(--shadow-heavy-color);
+    --shadow-light: 0 3px 6px var(--shadow-light-color);
+    --shadow-floating: 0 10px 30px var(--shadow-floating-color);
     --blur-standard: 5px;
     --blur-heavy: 10px;
 
     /* Glass Colors & Gradients */
-    --glass-border-color: var(--color-white-70);
     --glass-border: 1px solid var(--glass-border-color);
     
     --glass-panel-dark: linear-gradient(
         to bottom,
-        var(--color-white-20),
-        var(--color-white-30)
+        var(--glass-panel-dark-from),
+        var(--glass-panel-dark-to)
     );
     --glass-panel-medium: linear-gradient(
             to bottom,
-            var(--color-white-42),
-            var(--color-white-28)
+            var(--glass-panel-medium-from),
+            var(--glass-panel-medium-to)
     );
     --glass-panel-light: linear-gradient(
             to bottom,
-            var(--color-white-50),
-            var(--color-white-60)
+            var(--glass-panel-light-from),
+            var(--glass-panel-light-to)
     );
-    --glass-edge: inset 0 0 0 1px var(--color-white-35);
+    --glass-edge: inset 0 0 0 1px var(--glass-edge-color);
 
     /* Animation Easing */
     --spring-easing: linear(0, 0.0018, 0.0069 1.15%, 0.026 2.3%, 0.0637, 0.1135 5.18%, 0.2229 7.78%, 0.5977 15.84%, 0.7014, 0.7904, 0.8641, 0.9228, 0.9676 28.8%, 1.0032 31.68%, 1.0225, 1.0352 36.29%, 1.0431 38.88%, 1.046 42.05%, 1.0448 44.35%, 1.0407 47.23%, 1.0118 61.63%, 1.0025 69.41%, 0.9981 80.35%, 0.9992 99.94%);
@@ -89,4 +111,33 @@
     --button-bg-dark-to: var(--color-white-42);
     --button-bg-light-from: var(--color-white-50);
     --button-bg-light-to: var(--color-white-60);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-bg-page: var(--color-black);
+        --color-text-primary: var(--color-white);
+
+        --glass-border-color: var(--color-white-15);
+        --glass-panel-dark-from: var(--color-white-10);
+        --glass-panel-dark-to: var(--color-white-15);
+        --glass-panel-medium-from: var(--color-white-20);
+        --glass-panel-medium-to: var(--color-white-15);
+        --glass-panel-light-from: var(--color-white-20);
+        --glass-panel-light-to: var(--color-white-28);
+        --glass-edge-color: var(--color-white-10);
+
+        --glass-mild-border-color: var(--color-white-10);
+        --glass-mild-bg: var(--color-black-10);
+        --glass-mild-edge-color: var(--color-white-05);
+
+        --shadow-heavy-color: var(--color-black-60);
+        --shadow-light-color: var(--color-black-50);
+        --shadow-floating-color: var(--color-black-60);
+        
+        --button-bg-dark-from: var(--color-black-10);
+        --button-bg-dark-to: var(--color-black-30);
+        --button-bg-light-from: var(--color-black-05);
+        --button-bg-light-to: var(--color-black-08);
+    }
 }

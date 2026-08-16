@@ -54,12 +54,23 @@
     animation-timing-function: var(--spring-easing);
     border-radius: var(--radius-medium);
     z-index: 1;
+    overflow: hidden;
+    backdrop-filter: blur(var(--blur-standard));
+}
+
+::view-transition-old(profile-selected-indicator),
+::view-transition-new(profile-selected-indicator) {
+    animation: none;
+    height: 100%;
+    width: 100%;
     background: var(--glass-panel-light);
     box-shadow: var(--glass-edge);
+    border-radius: inherit;
 }
 
 ::view-transition-group(profile-avatar) {
-    z-index: 1000;
+    z-index: 1002;
+    backdrop-filter: blur(var(--blur-standard));
 }
 
 ::view-transition-group(profile-menu) {
@@ -157,6 +168,12 @@
             width: auto;
             min-width: 160px;
             height: auto;
+            background: var(--glass-panel-medium);
+            box-shadow: var(--glass-edge);
+            filter: drop-shadow(var(--shadow-light));
+            border: var(--glass-border);
+            border-radius: var(--radius-medium);
+            backdrop-filter: blur(var(--blur-heavy));
 
             ul {
                 animation: droplet-pop 0.6s var(--spring-easing);

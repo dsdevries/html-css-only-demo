@@ -85,7 +85,7 @@ header {
         align-items: center;
         justify-content: center;
         padding: 0;
-        color: var(--color-black);
+        color: var(--color-text-primary);
         text-decoration: none;
         z-index: 100;
 
