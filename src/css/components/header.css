@@ -110,12 +110,8 @@ header {
 ::view-transition-new(back-button) {
     animation: 300ms cubic-bezier(0, 0, 0.2, 1) both fade-in-from-top;
     animation-delay: 0.5s;
-    border-radius: var(--radius-round);
-    overflow: clip;
 }
 
 ::view-transition-old(back-button) {
     animation: 150ms cubic-bezier(0.4, 0, 1, 1) both fade-out-to-top;
-    border-radius: var(--radius-round);
-    overflow: clip;
 }

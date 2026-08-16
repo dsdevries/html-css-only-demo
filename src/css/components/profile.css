@@ -95,13 +95,13 @@
         opacity: 1;
         transform: translateY(0) scale(1);
         filter: drop-shadow(var(--shadow-light));
-        backdrop-filter: blur(var(--blur-heavy));
+        backdrop-filter: blur(var(--blur-standard));
     }
     to {
         opacity: 0;
         transform: translateY(-60px) scale(0.9);
         filter: drop-shadow(var(--shadow-light)) blur(2px);
-        backdrop-filter: blur(var(--blur-heavy));
+        backdrop-filter: blur(var(--blur-standard));
     }
 }
 
@@ -168,11 +168,10 @@
             width: auto;
             min-width: 160px;
             height: auto;
-            background: var(--glass-panel-medium);
             filter: drop-shadow(var(--shadow-light));
             border: var(--glass-border);
             border-radius: var(--radius-medium);
-            backdrop-filter: blur(var(--blur-heavy));
+            backdrop-filter: blur(var(--blur-standard));
 
             ul {
                 animation: droplet-pop 0.6s var(--spring-easing);
