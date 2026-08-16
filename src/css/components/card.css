@@ -6,7 +6,8 @@
     box-sizing: border-box;
 
     a {
-        width: 250px;
+        width: 175px;
+        flex-shrink: 0;
         display: block;
         position: relative;
         text-decoration: none;
@@ -21,6 +22,11 @@
             display: block;
             border-radius: var(--radius-large);
         }
+    }
+
+    .details {
+        flex: 1;
+        min-width: 0;
     }
 
     h3 {
