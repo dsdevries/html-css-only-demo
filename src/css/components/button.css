@@ -38,6 +38,10 @@
         filter: var(--icon-filter);
     }
 
+    &:disabled {
+        opacity: 0.5;
+    }
+
     &:hover {
         --button-background-color-from: var(--button-bg-light-from);
         --button-background-color-to: var(--button-bg-light-to);
