@@ -23,6 +23,7 @@ header {
     padding: 2rem 0 1rem;
     margin: 0;
     box-sizing: border-box;
+    overflow: clip;
 
     &::after {
         content: "";
@@ -32,6 +33,7 @@ header {
         left: -1px;
         bottom: 0;
         right: -1px;
+        grid-column: full-width;
 
         background: var(--glass-panel-medium);
         backdrop-filter: blur(var(--blur-heavy));
