@@ -14,6 +14,10 @@
 @import url(templates/new.css);
 @import url(templates/search.css);
 
+:root {
+    interpolate-size: allow-keywords;
+}
+
 body {
     margin: 0;
     font-family: sans-serif;
