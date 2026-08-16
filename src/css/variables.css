@@ -1,4 +1,9 @@
 :root {
+    /* Grid */
+    --padding-inline: 1.5rem;
+    --content-max-width: 900px;
+    --breakout-max-width: 1200px;
+
     /* Base Colors */
     --color-black: #000;
     --color-white: #fff;

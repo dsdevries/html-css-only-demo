@@ -9,7 +9,7 @@
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-        gap: 2rem;
+        gap: var(--padding-inline);
         padding: 0 0 4rem 0;
         width: 100%;
         scroll-behavior: smooth;
