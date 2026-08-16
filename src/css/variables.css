@@ -31,6 +31,7 @@
     --color-bg-page: var(--color-white);
     --color-text-primary: var(--color-black);
     --text-shadow: none;
+    --icon-filter: none;
     
     --glass-border-color: var(--color-white-70);
     --glass-panel-dark-from: var(--color-white-20);
@@ -121,6 +122,7 @@
         --color-bg-page: var(--color-black);
         --color-text-primary: var(--color-white);
         --text-shadow: 0 1px 10px var(--color-black-60);
+        --icon-filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.6));
 
         --glass-border-color: var(--color-white-15);
         --glass-panel-dark-from: var(--color-white-10);
@@ -150,6 +152,7 @@
         --color-bg-page: var(--color-white);
         --color-text-primary: var(--color-black);
         --text-shadow: none;
+        --icon-filter: none;
 
         --glass-border-color: var(--color-white-70);
         --glass-panel-dark-from: var(--color-white-20);
@@ -180,6 +183,7 @@ html:has(#theme-toggle:checked) {
     --color-bg-page: var(--color-black);
     --color-text-primary: var(--color-white);
     --text-shadow: 0 1px 10px var(--color-black-60);
+    --icon-filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.6));
 
     --glass-border-color: var(--color-white-15);
     --glass-panel-dark-from: var(--color-white-10);

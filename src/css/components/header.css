@@ -96,6 +96,8 @@ header {
         svg {
             width: 24px;
             height: 24px;
+            overflow: visible;
+            filter: var(--icon-filter);
         }
     }
 }

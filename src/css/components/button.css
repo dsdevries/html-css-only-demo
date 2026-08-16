@@ -33,6 +33,11 @@
             --button-background-color-from 1s var(--spring-easing),
             --button-background-color-to 1s var(--spring-easing);
 
+    svg {
+        overflow: visible;
+        filter: var(--icon-filter);
+    }
+
     &:hover {
         --button-background-color-from: var(--button-bg-light-from);
         --button-background-color-to: var(--button-bg-light-to);
