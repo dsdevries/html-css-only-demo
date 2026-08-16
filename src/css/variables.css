@@ -5,7 +5,7 @@
     --color-red: red;
     --color-red-50: rgba(255, 0, 0, 0.5);
     --color-red-70: rgba(255, 0, 0, 0.7);
-    --color-gray: gray;
+    --color-gray: rgb(120,120,120);
     --color-transparent-white: rgba(255, 255, 255, 0);
     --color-transparent-black: rgba(0, 0, 0, 0);
     --color-black-05: rgba(0, 0, 0, 0.05);
@@ -35,7 +35,7 @@
     --text-shadow: none;
     --icon-filter: none;
     
-    --glass-border-color: var(--color-white-70);
+    --glass-border-color: var(--color-white-42);
     --glass-panel-dark-from: var(--color-white-20);
     --glass-panel-dark-to: var(--color-white-30);
     --glass-panel-medium-from: var(--color-white-42);
@@ -156,7 +156,7 @@
         --text-shadow: none;
         --icon-filter: none;
 
-        --glass-border-color: var(--color-white-70);
+        --glass-border-color: var(--color-white-42);
         --glass-panel-dark-from: var(--color-white-20);
         --glass-panel-dark-to: var(--color-white-30);
         --glass-panel-medium-from: var(--color-white-42);

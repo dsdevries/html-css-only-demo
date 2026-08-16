@@ -178,6 +178,7 @@
 
         &.selected {
             color: var(--color-red);
+            text-shadow: none;
             anchor-name: --selected;
         }
     }
