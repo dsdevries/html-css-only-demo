@@ -14,7 +14,7 @@
         justify-content: center;
         background: linear-gradient(135deg, #1b1035 0%, #3b1d60 40%, #7e22ce 75%, #db2777 100%);
         border-radius: var(--radius-large);
-        padding: 3rem 1.5rem;
+        padding: 3rem 1rem;
         box-sizing: border-box;
         min-height: 350px;
     }
