@@ -6,7 +6,7 @@
     box-sizing: border-box;
 
     a {
-        width: 175px;
+        width: 250px;
         flex-shrink: 0;
         display: block;
         position: relative;

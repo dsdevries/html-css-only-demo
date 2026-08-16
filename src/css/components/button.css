@@ -19,6 +19,7 @@
     line-height: 3rem;
     padding: .1rem 1rem;
     color: var(--color-text-primary);
+    text-shadow: var(--text-shadow);
     border: none;
     transform-origin: center center;
     background: linear-gradient(
