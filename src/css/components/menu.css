@@ -71,7 +71,6 @@
 }
 
 ::view-transition-group(main-nav) {
-    overflow: clip;
     border-radius: var(--radius-large);
 }
 
