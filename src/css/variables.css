@@ -156,7 +156,7 @@
         --button-bg-light-to: var(--color-white-50);
     }
 
-    html:has(#theme-toggle:not(:checked)) {
+    html:has(#theme-light:checked) {
         color-scheme: light;
         --color-bg-page: var(--color-white);
         --color-text-primary: var(--color-black);
@@ -188,7 +188,7 @@
     }
 }
 
-html:has(#theme-toggle:checked) {
+html:has(#theme-dark:checked) {
     color-scheme: dark;
     --color-bg-page: var(--color-black);
     --color-text-primary: var(--color-white);

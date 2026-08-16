@@ -164,7 +164,7 @@
             filter 0.8s var(--spring-easing);
 
         ul {
-            min-width: 160px;
+            min-width: 210px;
         }
 
         &:popover-open {
@@ -280,7 +280,9 @@
             }
 
             &:has(.theme-switch) {
-                justify-content: space-between;
+                justify-content: center;
+                padding: 4px 8px;
+                box-sizing: border-box;
             }
         }
 
@@ -288,43 +290,62 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 15px 15px;
+            padding: 3px;
             width: 100%;
-            cursor: pointer;
-            user-select: none;
-            color: inherit;
-            font: inherit;
+            background: var(--glass-mild-bg);
+            border: 1px solid var(--glass-mild-border-color);
+            border-radius: var(--radius-large);
+            box-shadow: var(--glass-edge);
+            box-sizing: border-box;
+            gap: 2px;
 
-            input {
-                appearance: none;
-                width: 34px;
-                height: 18px;
-                background: var(--color-black-10);
-                border-radius: 20px;
-                position: relative;
+            .theme-option {
+                flex: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+                padding: 6px 4px;
+                border-radius: var(--radius-medium);
                 cursor: pointer;
-                transition: background 0.3s;
-                box-shadow: var(--glass-edge);
-                margin: 0;
+                user-select: none;
+                color: inherit;
+                font-size: 0.75rem;
+                font-weight: 500;
+                opacity: 0.7;
+                transition:
+                    background 0.3s var(--spring-easing),
+                    color 0.3s var(--spring-easing),
+                    opacity 0.3s var(--spring-easing),
+                    box-shadow 0.3s var(--spring-easing);
+                white-space: nowrap;
 
-                &::before {
-                    content: '';
+                input[type="radio"] {
                     position: absolute;
-                    width: 14px;
-                    height: 14px;
-                    background: var(--color-text-primary);
-                    border-radius: 50%;
-                    top: 2px;
-                    left: 2px;
-                    transition: transform 0.3s var(--spring-easing);
+                    opacity: 0;
+                    width: 0;
+                    height: 0;
+                    pointer-events: none;
+                    margin: 0;
                 }
 
-                &:checked {
-                    background: var(--color-red);
-                    
-                    &::before {
-                        transform: translateX(16px);
-                    }
+                svg {
+                    width: 14px;
+                    height: 14px;
+                    flex-shrink: 0;
+                }
+
+                &:hover {
+                    opacity: 1;
+                    background: var(--glass-panel-dark-from);
+                }
+
+                &:has(input:checked) {
+                    opacity: 1;
+                    background: var(--glass-panel-light);
+                    box-shadow: var(--glass-edge);
+                    color: var(--color-red);
+                    font-weight: 600;
                 }
             }
 
