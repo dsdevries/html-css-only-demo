@@ -293,7 +293,6 @@
             padding: 3px;
             width: 100%;
             background: var(--glass-mild-bg);
-            border: 1px solid var(--glass-mild-border-color);
             border-radius: var(--radius-large);
             box-shadow: var(--glass-edge);
             box-sizing: border-box;
@@ -345,7 +344,6 @@
                     background: var(--glass-panel-light);
                     box-shadow: var(--glass-edge);
                     color: var(--color-red);
-                    font-weight: 600;
                 }
             }
 
