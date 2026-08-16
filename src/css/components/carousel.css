@@ -61,7 +61,7 @@
                 opacity: 0.5;
             }
 
-            &:not(:disabled) {
+            &:enabled {
                 cursor: pointer;
 
                 &:hover {
@@ -100,6 +100,9 @@
         }
 
         > li::scroll-marker {
+            --button-background-color-from: var(--button-bg-dark-from);
+            --button-background-color-to: var(--button-bg-dark-to);
+
             content: '';
             display: block;
             width: 20px;
@@ -107,10 +110,6 @@
             border-radius: var(--radius-round);
             border: none;
             transform-origin: center center;
-
-            --button-background-color-from: var(--button-bg-dark-from);
-            --button-background-color-to: var(--button-bg-dark-to);
-
             background: linear-gradient(
                     to bottom,
                     var(--button-background-color-from),
@@ -118,32 +117,23 @@
             );
             filter: drop-shadow(var(--shadow-light));
             border: var(--glass-border);
-
             transition: --button-background-color-from 1s var(--spring-easing),
             --button-background-color-to 1s var(--spring-easing);
 
 
-            &:disabled {
-                opacity: 0.5;
+            &:hover {
+                --button-background-color-from: var(--button-bg-light-from);
+                --button-background-color-to: var(--button-bg-light-to);
             }
 
-            &:not(:disabled) {
-                cursor: pointer;
+            &:target-current {
+                --button-background-color-from: var(--color-red-50);
+                --button-background-color-to: var(--color-red);
 
                 &:hover {
-                    --button-background-color-from: var(--button-bg-light-from);
-                    --button-background-color-to: var(--button-bg-light-to);
+                    --button-background-color-from: var(--color-red-70);
+                    --button-background-color-to: var(--color-red);
                 }
-            }
-        }
-
-        > li::scroll-marker:target-current {
-            --button-background-color-from: var(--color-red-50);
-            --button-background-color-to: var(--color-red);
-
-            &:hover {
-                --button-background-color-from: var(--color-red-70);
-                --button-background-color-to: var(--color-red);
             }
         }
     }
