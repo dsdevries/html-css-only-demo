@@ -142,6 +142,34 @@
         --button-bg-light-from: var(--color-black-05);
         --button-bg-light-to: var(--color-black-08);
     }
+
+    html:has(#theme-toggle:not(:checked)) {
+        color-scheme: light;
+        --color-bg-page: var(--color-white);
+        --color-text-primary: var(--color-black);
+
+        --glass-border-color: var(--color-white-70);
+        --glass-panel-dark-from: var(--color-white-20);
+        --glass-panel-dark-to: var(--color-white-30);
+        --glass-panel-medium-from: var(--color-white-42);
+        --glass-panel-medium-to: var(--color-white-28);
+        --glass-panel-light-from: var(--color-white-50);
+        --glass-panel-light-to: var(--color-white-60);
+        --glass-edge-color: var(--color-white-35);
+
+        --glass-mild-border-color: var(--color-white-20);
+        --glass-mild-bg: var(--color-white-10);
+        --glass-mild-edge-color: var(--color-white-15);
+
+        --shadow-heavy-color: var(--color-black-45);
+        --shadow-light-color: var(--color-gray);
+        --shadow-floating-color: var(--color-black-30);
+
+        --button-bg-dark-from: var(--color-white-28);
+        --button-bg-dark-to: var(--color-white-42);
+        --button-bg-light-from: var(--color-white-50);
+        --button-bg-light-to: var(--color-white-60);
+    }
 }
 
 html:has(#theme-toggle:checked) {
