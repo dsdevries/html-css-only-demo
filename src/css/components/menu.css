@@ -70,6 +70,11 @@
     z-index: 2;
 }
 
+::view-transition-group(main-nav) {
+    overflow: clip;
+    border-radius: var(--radius-large);
+}
+
 
 .main-nav {
     view-transition-name: main-nav;
