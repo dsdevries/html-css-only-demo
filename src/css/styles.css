@@ -12,6 +12,7 @@
 @import url(templates/categories.css);
 @import url(templates/main.css);
 @import url(templates/new.css);
+@import url(templates/search.css);
 
 body {
     margin: 0;
