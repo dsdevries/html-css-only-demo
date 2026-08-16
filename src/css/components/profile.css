@@ -150,6 +150,8 @@
         width: 50px;
         min-width: 50px;
         height: 50px;
+        border: 1px solid var(--glass-border-color-strong) !important;
+
         transition:
             display 0.8s allow-discrete,
             overlay 0.8s allow-discrete,
@@ -161,11 +163,14 @@
             border-radius 0.8s var(--spring-easing),
             filter 0.8s var(--spring-easing);
 
+        ul {
+            min-width: 160px;
+        }
+
         &:popover-open {
             opacity: 1;
             transform: translateY(0) scale(1);
             width: auto;
-            min-width: 160px;
             height: auto;
             filter: drop-shadow(var(--shadow-light));
             border: var(--glass-border);

@@ -36,6 +36,7 @@
     --icon-filter: none;
     
     --glass-border-color: var(--color-white-42);
+    --glass-border-color-strong: var(--color-white-70);
     --glass-panel-dark-from: var(--color-white-20);
     --glass-panel-dark-to: var(--color-white-30);
     --glass-panel-medium-from: var(--color-white-42);
@@ -127,6 +128,7 @@
         --icon-filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.6));
 
         --glass-border-color: var(--color-white-15);
+        --glass-border-color-strong: var(--color-white-30);
         --glass-panel-dark-from: var(--color-white-10);
         --glass-panel-dark-to: var(--color-white-15);
         --glass-panel-medium-from: var(--color-white-20);
@@ -157,6 +159,7 @@
         --icon-filter: none;
 
         --glass-border-color: var(--color-white-42);
+        --glass-border-color-strong: var(--color-white-70);
         --glass-panel-dark-from: var(--color-white-20);
         --glass-panel-dark-to: var(--color-white-30);
         --glass-panel-medium-from: var(--color-white-42);
@@ -188,6 +191,7 @@ html:has(#theme-toggle:checked) {
     --icon-filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.6));
 
     --glass-border-color: var(--color-white-15);
+    --glass-border-color-strong: var(--color-white-30);
     --glass-panel-dark-from: var(--color-white-10);
     --glass-panel-dark-to: var(--color-white-15);
     --glass-panel-medium-from: var(--color-white-20);
