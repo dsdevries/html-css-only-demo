@@ -240,25 +240,25 @@
                 opacity: 0;
             }
 
-            &:not(:has(li a:hover)) {
+            &:not(:has(li a:hover, .theme-switch:hover)) {
                 anchor-name: --profile-hover;
             }
 
-            &:has(li a:hover)::after {
+            &:has(li a:hover, .theme-switch:hover)::after {
                 opacity: 1;
             }
 
-            &:has(li:nth-child(odd) a:hover)::after,
+            &:has(li:nth-child(odd) :is(a:hover, .theme-switch:hover))::after,
             &:has(li:nth-child(odd).selected)::before {
                 animation-name: droplet-stretch-vertical;
             }
 
-            &:has(li:nth-child(even) a:hover)::after,
+            &:has(li:nth-child(even) :is(a:hover, .theme-switch:hover))::after,
             &:has(li:nth-child(even).selected)::before {
                 animation-name: droplet-stretch-vertical-alt;
             }
 
-            &:has(li a:active)::after {
+            &:has(li :is(a, .theme-switch):active)::after {
                 transform: scale(0.8, 1.3);
             }
         }
@@ -275,6 +275,59 @@
             &.selected {
                 color: var(--color-red);
                 anchor-name: --profile-selected;
+            }
+
+            &:has(.theme-switch) {
+                justify-content: space-between;
+            }
+        }
+
+        .theme-switch {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 15px;
+            width: 100%;
+            cursor: pointer;
+            user-select: none;
+            color: inherit;
+            font: inherit;
+
+            input {
+                appearance: none;
+                width: 34px;
+                height: 18px;
+                background: var(--color-black-10);
+                border-radius: 20px;
+                position: relative;
+                cursor: pointer;
+                transition: background 0.3s;
+                box-shadow: var(--glass-edge);
+                margin: 0;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    width: 14px;
+                    height: 14px;
+                    background: var(--color-text-primary);
+                    border-radius: 50%;
+                    top: 2px;
+                    left: 2px;
+                    transition: transform 0.3s var(--spring-easing);
+                }
+
+                &:checked {
+                    background: var(--color-red);
+                    
+                    &::before {
+                        transform: translateX(16px);
+                    }
+                }
+            }
+
+            &:hover {
+                anchor-name: --profile-hover;
             }
         }
 
