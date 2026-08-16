@@ -28,7 +28,9 @@
             var(--button-background-color-to)
     );
 
-    box-shadow: var(--glass-edge);
+    filter: drop-shadow(var(--shadow-light));
+    border: var(--glass-border);
+
     transition:
             --button-background-color-from 1s var(--spring-easing),
             --button-background-color-to 1s var(--spring-easing);
@@ -42,7 +44,7 @@
         opacity: 0.5;
     }
 
-    &:hover {
+    &:not(:disabled):hover {
         --button-background-color-from: var(--button-bg-light-from);
         --button-background-color-to: var(--button-bg-light-to);
     }

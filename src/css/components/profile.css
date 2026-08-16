@@ -169,7 +169,6 @@
             min-width: 160px;
             height: auto;
             background: var(--glass-panel-medium);
-            box-shadow: var(--glass-edge);
             filter: drop-shadow(var(--shadow-light));
             border: var(--glass-border);
             border-radius: var(--radius-medium);
