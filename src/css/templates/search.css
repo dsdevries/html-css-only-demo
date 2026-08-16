@@ -1,3 +1,12 @@
+::view-transition-new(search-field) {
+    animation: 300ms cubic-bezier(0, 0, 0.2, 1) both fade-in;
+    animation-delay: 0.5s;
+}
+
+::view-transition-old(search-field) {
+    animation: 150ms cubic-bezier(0.4, 0, 1, 1) both fade-out;
+}
+
 #search {
     .search-hero {
         display: flex;
@@ -18,12 +27,14 @@
     }
 
     .search-input-wrapper {
+        view-transition-name: search-field;
         width: 100%;
         display: flex;
         align-items: center;
         gap: 0.75rem;
         padding: 0.5rem 0.75rem 0.5rem 1.25rem;
         box-sizing: border-box;
+        backdrop-filter: none;
     }
 
     .search-icon {
