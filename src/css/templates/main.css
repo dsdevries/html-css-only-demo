@@ -1,11 +1,27 @@
 @keyframes fade-in {
     from {
         opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
         transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
 @keyframes fade-out {
+    from {
+        opacity: 1;
+    }
     to {
         opacity: 0;
     }
@@ -28,18 +44,13 @@
     animation: 0.1s both fade-out;
 }
 
-::view-transition-group(movie-description) {
-    overflow: clip;
-    border-radius: var(--radius-large);
-}
-
 ::view-transition-new(movie-description) {
-    animation: 300ms cubic-bezier(0, 0, 0.2, 1) both fade-in;
+    animation: 300ms cubic-bezier(0, 0, 0.2, 1) both fade-in-up;
     animation-delay: 0.5s;
 }
 
 ::view-transition-old(movie-description) {
-    animation: 150ms cubic-bezier(0.4, 0, 1, 1) both fade-out;
+    animation: 300ms cubic-bezier(0.4, 0, 1, 1) both fade-out;
 }
 
 #main-overview {
@@ -59,6 +70,11 @@
 }
 
 #main-detail {
+    ::view-transition-group(movie-description) {
+        overflow: clip;
+        border-radius: var(--radius-large);
+    }
+
     &::view-transition-new(image) {
         object-fit: cover;
     }
