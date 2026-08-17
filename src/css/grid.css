@@ -14,6 +14,7 @@
     [content-end]
     minmax(0, var(--breakout-size)) [breakout-end]
     minmax(var(--padding-inline), 1fr) [full-width-end];
+    width: 100%;
 }
 
 .content-grid > :not(.breakout){
@@ -25,14 +26,13 @@
 }
 
 .content-grid > .full-width {
+    width: 100%;
     grid-column: full-width;
-
     display: grid;
     grid-template-columns: inherit;
 }
 
 img.full-width {
-    width: 100%;
     max-height: 45vh;
     object-fit: cover;
 }
