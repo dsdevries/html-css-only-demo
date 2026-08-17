@@ -4,7 +4,7 @@
 }
 
 ::view-transition-old(search-field) {
-    animation: 150ms cubic-bezier(0.4, 0, 1, 1) both fade-out;
+    animation: 300ms cubic-bezier(0.4, 0, 1, 1) both fade-out;
 }
 
 #search {
@@ -13,6 +13,7 @@
         align-items: center;
         justify-content: center;
         background: linear-gradient(135deg, #1b1035 0%, #3b1d60 40%, #7e22ce 75%, #db2777 100%);
+        background: linear-gradient(random(0deg, 360deg), #1b1035 0%, #3b1d60 random(20%, 45%), #7e22ce random(65%, 80%), #db2777 100%);
         border-radius: var(--radius-large);
         padding: 3rem 1rem;
         box-sizing: border-box;
