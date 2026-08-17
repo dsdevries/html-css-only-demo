@@ -1,11 +1,9 @@
-
-
 ::view-transition-group(*) {
     animation-duration: 0.5s;
 }
 
-::view-transition-old(image),
-::view-transition-new(image) {
+::view-transition-old(main-image),
+::view-transition-new(main-image) {
     animation: none;
     mix-blend-mode: normal;
     height: 100%;
@@ -13,27 +11,32 @@
     border-radius: var(--radius-large);
 }
 
-::view-transition-old(image):only-child {
+::view-transition-old(main-image):only-child {
     animation: 0.1s both fade-out;
 }
 
-::view-transition-new(movie-description) {
+::view-transition-new(main-movie-description) {
     animation: 800ms cubic-bezier(0, 0, 0.2, 1) both fade-in-up;
     animation-delay: 0.5s;
 }
 
-::view-transition-old(movie-description) {
+::view-transition-old(main-movie-description) {
     animation: 300ms cubic-bezier(0.4, 0, 1, 1) both fade-out;
+}
+
+::view-transition-group(main-movie-description) {
+    overflow: clip;
+    border-radius: var(--radius-large);
 }
 
 #main-overview {
     position: relative;
 
-    &::view-transition-new(image) {
+    &::view-transition-new(main-image) {
         object-fit: contain;
     }
 
-    &::view-transition-old(image) {
+    &::view-transition-old(main-image) {
         object-fit: cover;
     }
 
@@ -43,17 +46,13 @@
 }
 
 #main-detail {
-    ::view-transition-group(movie-description) {
-        overflow: clip;
-        border-radius: var(--radius-large);
-    }
 
-    &::view-transition-new(image) {
+    &::view-transition-new(main-image) {
         object-fit: cover;
     }
 
     .hero .content {
-        view-transition-name: movie-description;
+        view-transition-name: main-movie-description;
     }
 
     .details {

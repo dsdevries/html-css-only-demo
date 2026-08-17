@@ -2,44 +2,44 @@
     animation-duration: 0.5s;
 }
 
-::view-transition-old(image),
-::view-transition-new(image) {
+::view-transition-old(new-image),
+::view-transition-new(new-image) {
     animation: none;
     mix-blend-mode: normal;
     height: 100%;
     overflow: clip;
 }
 
-::view-transition-old(image):only-child {
+::view-transition-old(new-image):only-child {
     animation: 0.1s both fade-out;
 }
 
-::view-transition-group(movie-description) {
+::view-transition-group(new-movie-description) {
     overflow: clip;
 }
 
-::view-transition-new(movie-description) {
+::view-transition-new(new-movie-description) {
     animation: 300ms cubic-bezier(0, 0, 0.2, 1) both fade-in-up;
     animation-delay: 0.5s;
 }
 
-::view-transition-old(movie-description) {
+::view-transition-old(new-movie-description) {
     animation: 150ms cubic-bezier(0.4, 0, 1, 1) both fade-out;
 }
 
 #new-overview {
     position: relative;
 
-    &::view-transition-new(image) {
+    &::view-transition-new(new-image) {
         object-fit: contain;
     }
 
-    &::view-transition-old(image) {
+    &::view-transition-old(new-image) {
         object-fit: cover;
     }
 
     .hero .content {
-        view-transition-name: movie-description;
+        view-transition-name: new-movie-description;
     }
 
     .details {
