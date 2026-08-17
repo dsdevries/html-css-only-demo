@@ -5,6 +5,7 @@ import connectLiveReload from 'connect-livereload';
 
 const app = express();
 const port = process.env.PORT || 3000;
+const liveReloadPort = process.env.LIVERELOAD_PORT ? parseInt(process.env.LIVERELOAD_PORT, 10) : 35729;
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -13,7 +14,11 @@ const distPath = path.join(__dirname, '..', 'dist');
 
 // LiveReload setup
 if (!isProduction) {
-    const liveReloadServer = livereload.createServer();
+    const liveReloadServer = livereload.createServer({
+        port: liveReloadPort,
+        extraExts: ['svg', 'webp'],
+        delay: 100
+    });
     liveReloadServer.watch(distPath);
 
     // Error handling for livereload to prevent crash on EADDRINUSE
@@ -25,7 +30,9 @@ if (!isProduction) {
         }
     });
 
-    app.use(connectLiveReload());
+    app.use(connectLiveReload({
+        port: liveReloadPort
+    }));
 }
 
 // Serve static files from the 'dist' directory

@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc && lightningcss --bundle --targets '>= 0.25%' src/css/styles.css -o dist/styles.css && cp src/*.html dist/ && cp -r src/assets dist/",
     "start": "npm run build && node dist/server.js",
-    "watch": "nodemon --watch src -e ts,html,css --exec \"npm run build && node dist/server.js\""
+    "watch": "node scripts/watch.js",
+    "dev": "node scripts/watch.js"
   },
   "dependencies": {
     "express": "^5.2.1"
