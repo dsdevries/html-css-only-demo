@@ -52,7 +52,7 @@ header {
         }
 
         header:has(.back-button) & {
-            margin-left: clamp(0rem, (1085px - 100vw) * 0.5, 4.8rem);
+            margin-left: clamp(0rem, (1110px - 100vw) * 0.5, 5rem);
         }
 
         img {
