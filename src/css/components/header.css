@@ -5,8 +5,7 @@ header {
     container-type: scroll-state;
     position: sticky;
     top: 0;
-    padding: 2rem 0 1rem;
-    margin: 0;
+    padding: 2rem 0 2rem;
     box-sizing: border-box;
     overflow: clip;
 
@@ -16,7 +15,7 @@ header {
         display: block;
         top: -1px;
         left: -1px;
-        bottom: 0;
+        bottom: 1rem;
         right: -1px;
         grid-column: full-width;
 
@@ -25,6 +24,7 @@ header {
         box-shadow:
                 0 4px 10px 0 var(--color-black-10),
                 var(--glass-edge);
+
         opacity: 0;
         transition: opacity 0.4s ease-in-out;
         z-index: -1;
@@ -35,7 +35,7 @@ header {
     }
 
     & ~ main.snap-top {
-        margin-top: -100px;
+        margin-top: -116px;
     }
 
     .logo {
