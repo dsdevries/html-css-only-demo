@@ -17,15 +17,16 @@ export interface Movie {
 
 export interface Props {
   movie: Movie;
+  id?: string;
   imageId?: string;
   class?: string;
 }
 
-const { movie, imageId, class: className } = Astro.props;
+const { movie, id, imageId, class: className } = Astro.props;
 ---
 
-<div class:list={["card radius-large", className]} data-image={movie.image}>
-    <a class="radius-large" href={`/detail/${movie.slug}`}>
+<div id={id} class:list={["card radius-large", className]} data-image={movie.image} style={id ? `anchor-name: --${id};` : undefined}>
+    <a class="radius-large" href={id ? `/detail/${movie.slug}?id=${id}` : `/detail/${movie.slug}`}>
         <img
             id={imageId}
             class="radius-large"

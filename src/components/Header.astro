@@ -7,7 +7,10 @@ interface Props {
   backHref?: string;
 }
 
-const { showBackButton = false, breakout = false, backHref = '/' } = Astro.props;
+const { showBackButton = false, breakout = false, backHref } = Astro.props;
+
+const id = Astro.url.searchParams.get('id');
+const computedBackHref = backHref ?? (id ? `/?id=${id}` : '/');
 ---
 
 <header class="content-grid">
@@ -17,11 +20,30 @@ const { showBackButton = false, breakout = false, backHref = '/' } = Astro.props
         </a>
     </div>
     {showBackButton && (
-        <a href={backHref} class="button back-button breakout radius-round" aria-label="Go back">
+        <a href={computedBackHref} class="button back-button breakout radius-round" aria-label="Go back">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="m15 18-6-6 6-6"/>
             </svg>
         </a>
+        <script is:inline>
+            (function() {
+                function updateBackButton() {
+                    const params = new URLSearchParams(window.location.search);
+                    const id = params.get('id') || params.get('cardId');
+                    if (id) {
+                        const backButtons = document.querySelectorAll('.back-button');
+                        backButtons.forEach(btn => {
+                            const currentHref = btn.getAttribute('href') || '/';
+                            const url = new URL(currentHref, window.location.origin);
+                            url.searchParams.set('id', id);
+                            btn.setAttribute('href', url.pathname + url.search + url.hash);
+                        });
+                    }
+                }
+                updateBackButton();
+                document.addEventListener('astro:page-load', updateBackButton);
+            })();
+        </script>
     )}
     <div class:list={["profile", { breakout }]}>
         <button class="button profile-button radius-round" popovertarget="profile-menu">

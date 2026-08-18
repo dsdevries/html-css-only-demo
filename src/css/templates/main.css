@@ -43,6 +43,18 @@
     .details {
         display: none;
     }
+
+    #main-image {
+        position: absolute;
+        view-transition-name: main-image;
+        position-anchor: --active-card;
+        top: anchor(--active-card top, anchor(top));
+        left: anchor(--active-card left, anchor(left));
+        right: anchor(--active-card right, anchor(right));
+        bottom: anchor(--active-card bottom, anchor(bottom));
+        pointer-events: none;
+        margin-bottom: 0;
+    }
 }
 
 #main-detail {

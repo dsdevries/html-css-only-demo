@@ -5,6 +5,11 @@
     padding: 1rem;
     box-sizing: border-box;
 
+    &:hover,
+    &:has(a:active) {
+        anchor-name: --active-card !important;
+    }
+
     a {
         width: 250px;
         flex-shrink: 0;

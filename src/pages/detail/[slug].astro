@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 const { movie } = Astro.props;
 ---
 
-<Layout title={movie.title} htmlId="main-detail" currentNav="featured" showBackButton={true} breakoutHeader={true} backHref="/">
+<Layout title={movie.title} htmlId="main-detail" currentNav="featured" showBackButton={true} breakoutHeader={true}>
     <style is:global>
         #main-movie-poster {
             view-transition-name: main-image;
