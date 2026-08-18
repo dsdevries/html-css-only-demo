@@ -1,0 +1,49 @@
+---
+export interface CastMember {
+  name: string;
+  role: string;
+}
+
+export interface Movie {
+  id?: string;
+  slug: string;
+  title: string;
+  rating: string;
+  description?: string;
+  shortDescription?: string;
+  image: string;
+  cast: CastMember[];
+}
+
+export interface Props {
+  movie: Movie;
+  imageId?: string;
+  class?: string;
+}
+
+const { movie, imageId, class: className } = Astro.props;
+---
+
+<div class:list={["card radius-large", className]} data-image={movie.image}>
+    <a class="radius-large" href={`/detail/${movie.slug}`}>
+        <img
+            id={imageId}
+            class="radius-large"
+            src={movie.image}
+            alt={movie.title}
+        />
+    </a>
+    <div class="details">
+        <h3>{movie.title}</h3>
+        <div class="rating">{movie.rating}</div>
+        <p>{movie.shortDescription || movie.description}</p>
+        <div class="cast">
+            {movie.cast.map((member) => (
+                <div>
+                    <div class="name">{member.name}</div>
+                    <div class="role">{member.role}</div>
+                </div>
+            ))}
+        </div>
+    </div>
+</div>

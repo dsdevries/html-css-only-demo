@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import movies from '../data/movies.json';
 ---
 
 <Layout title="Search" htmlId="search" currentNav="search" breakoutHeader={true}>
@@ -19,97 +20,28 @@ import Layout from '../layouts/Layout.astro';
 
         <h1>Search results</h1>
         <ul class="search-results">
-            <li class="card radius-large glass-container-mild">
-                <a href="/detail">
-                    <img src="/assets/lion-king.webp" alt="Mufasa: The Lion King" />
-                </a>
-                <div class="details">
-                    <h3>Mufasa: The Lion King</h3>
-                    <div class="rating">⭐️⭐️⭐️⭐️</div>
-                    <p>
-                        Mufasa, a cub lost and alone, meets a sympathetic lion named
-                        Taka, the heir to a royal bloodline. The chance meeting sets in motion an
-                        expansive journey of a group of misfits searching for their destiny.
-                    </p>
-                    <div class="cast">
-                        <div>
-                            <div class="name">Barry Jenkins</div>
-                            <div class="role">Director</div>
-                        </div>
-                        <div>
-                            <div class="name">Jeff Nathanson</div>
-                            <div class="role">Screenplay</div>
+            {movies.map((movie) => (
+                <li class="card radius-large glass-container-mild">
+                    <a href={`/detail/${movie.slug}`}>
+                        <img src={movie.image} alt={movie.title} />
+                    </a>
+                    <div class="details">
+                        <h3>{movie.title}</h3>
+                        <div class="rating">{movie.rating}</div>
+                        <p>
+                            {movie.description}
+                        </p>
+                        <div class="cast">
+                            {movie.cast.map((member) => (
+                                <div>
+                                    <div class="name">{member.name}</div>
+                                    <div class="role">{member.role}</div>
+                                </div>
+                            ))}
                         </div>
                     </div>
-                </div>
-            </li>
-            <li class="card radius-large glass-container-mild">
-                <a>
-                    <img src="/assets/gladiator.webp" alt="Gladiator II" />
-                </a>
-                <div class="details">
-                    <h3>Gladiator II</h3>
-                    <div class="rating">⭐️⭐️⭐️</div>
-                    <p>
-                        Years after witnessing the death of the revered hero Maximus at
-                        the hands of his uncle, Lucius is forced to enter the Colosseum after his home is conquered.
-                    </p>
-                    <div class="cast">
-                        <div>
-                            <div class="name">Ridley Scott</div>
-                            <div class="role">Director</div>
-                        </div>
-                        <div>
-                            <div class="name">David Scarpa</div>
-                            <div class="role">Screenplay, Story</div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="card radius-large glass-container-mild">
-                <a>
-                    <img src="/assets/flow.jpeg" alt="Flow" />
-                </a>
-                <div class="details">
-                    <h3>Flow</h3>
-                    <div class="rating">⭐️⭐️⭐️⭐️⭐️</div>
-                    <p>
-                        A solitary cat, displaced by a great flood, finds refuge on a boat with various species, having to learn how to cooperate despite their differences.
-                    </p>
-                    <div class="cast">
-                        <div>
-                            <div class="name">Gints Zilbalodis</div>
-                            <div class="role">Director, Screenplay</div>
-                        </div>
-                        <div>
-                            <div class="name">Matīss Kaža</div>
-                            <div class="role">Screenplay</div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="card radius-large glass-container-mild">
-                <a>
-                    <img src="/assets/sonic.webp" alt="Sonic the Hedgehog 3" />
-                </a>
-                <div class="details">
-                    <h3>Sonic the Hedgehog 3</h3>
-                    <div class="rating">⭐️⭐️⭐️⭐️</div>
-                    <p>
-                        Sonic, Knuckles, and Tails reunite against a powerful new adversary, Shadow, a mysterious villain with powers unlike anything they have faced before.
-                    </p>
-                    <div class="cast">
-                        <div>
-                            <div class="name">Patrick Casey</div>
-                            <div class="role">Screenplay, Story</div>
-                        </div>
-                        <div>
-                            <div class="name">Josh Miller</div>
-                            <div class="role">Screenplay, Story</div>
-                        </div>
-                    </div>
-                </div>
-            </li>
+                </li>
+            ))}
         </ul>
     </main>
 </Layout>

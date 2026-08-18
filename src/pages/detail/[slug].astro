@@ -1,0 +1,47 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Carousel from '../../components/Carousel.astro';
+import Slide from '../../components/Slide.astro';
+import MovieCard from '../../components/MovieCard.astro';
+import movies from '../../data/movies.json';
+
+export async function getStaticPaths() {
+  return movies.map((movie) => ({
+    params: { slug: movie.slug },
+    props: { movie },
+  }));
+}
+
+const { movie } = Astro.props;
+---
+
+<Layout title={movie.title} htmlId="main-detail" currentNav="featured" showBackButton={true} breakoutHeader={true} backHref="/">
+    <style is:global>
+        #main-movie-poster {
+            view-transition-name: main-image;
+        }
+    </style>
+
+    <main class="content-grid snap-top">
+        <div class="hero breakout">
+            <img id="main-movie-poster" class="radius-large" src={movie.image} alt={movie.title} />
+
+            <div class="content content-grid radius-large">
+                <h1>{movie.title}</h1>
+                <div class="rating">{movie.rating}</div>
+                <p>
+                    {movie.description}
+                </p>
+                <button class="button radius-medium">Watch now ▶</button>
+            </div>
+        </div>
+        <h1>Related content</h1>
+        <Carousel>
+            {movies.map((item) => (
+                <Slide>
+                    <MovieCard movie={item} />
+                </Slide>
+            ))}
+        </Carousel>
+    </main>
+</Layout>

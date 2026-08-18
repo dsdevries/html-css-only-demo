@@ -1,0 +1,94 @@
+[
+  {
+    "id": "gladiator",
+    "slug": "gladiator",
+    "title": "Gladiator II",
+    "rating": "⭐️⭐️⭐️",
+    "description": "Years after witnessing the death of the revered hero Maximus at the hands of his uncle, Lucius is forced to enter the Colosseum after his home is conquered.",
+    "shortDescription": "Years after witnessing the death of the revered hero Maximus at the hands of his uncle, Lucius is forced...",
+    "image": "/assets/gladiator.webp",
+    "cast": [
+      {
+        "name": "David Scarpa",
+        "role": "Screenplay, Story"
+      },
+      {
+        "name": "David Franzoni",
+        "role": "Characters"
+      },
+      {
+        "name": "Ridley Scott",
+        "role": "Director"
+      },
+      {
+        "name": "Peter Craig",
+        "role": "Story"
+      }
+    ]
+  },
+  {
+    "id": "lion-king",
+    "slug": "lion-king",
+    "title": "Mufasa: The Lion King",
+    "rating": "⭐️⭐️⭐️⭐️",
+    "description": "Mufasa, a cub lost and alone, meets a sympathetic lion named Taka, the heir to a royal bloodline. The chance meeting sets in motion an expansive journey of a group of misfits searching for their destiny.",
+    "shortDescription": "Mufasa, a cub lost and alone, meets a sympathetic lion named Taka, the heir to a royal bloodline...",
+    "image": "/assets/lion-king.webp",
+    "cast": [
+      {
+        "name": "Barry Jenkins",
+        "role": "Director"
+      },
+      {
+        "name": "Jeff Nathanson",
+        "role": "Screenplay"
+      }
+    ]
+  },
+  {
+    "id": "flow",
+    "slug": "flow",
+    "title": "Flow",
+    "rating": "⭐️⭐️⭐️⭐️⭐️",
+    "description": "A solitary cat, displaced by a great flood, finds refuge on a boat with various species, having to learn how to cooperate despite their differences.",
+    "shortDescription": "A solitary cat, displaced by a great flood, finds refuge on a boat with various species...",
+    "image": "/assets/flow.jpeg",
+    "cast": [
+      {
+        "name": "Gints Zilbalodis",
+        "role": "Director, Screenplay"
+      },
+      {
+        "name": "Matīss Kaža",
+        "role": "Screenplay"
+      }
+    ]
+  },
+  {
+    "id": "sonic",
+    "slug": "sonic",
+    "title": "Sonic the Hedgehog 3",
+    "rating": "⭐️⭐️⭐️⭐️",
+    "description": "Sonic, Knuckles, and Tails reunite against a powerful new adversary, Shadow, a mysterious villain with powers unlike anything they have faced before.",
+    "shortDescription": "Sonic, Knuckles, and Tails reunite against a powerful new adversary, Shadow, a mysterious villain...",
+    "image": "/assets/sonic.webp",
+    "cast": [
+      {
+        "name": "Patrick Casey",
+        "role": "Screenplay, Story"
+      },
+      {
+        "name": "Josh Miller",
+        "role": "Screenplay, Story"
+      },
+      {
+        "name": "Naoto Ohshima",
+        "role": "Characters"
+      },
+      {
+        "name": "Hirokazu Yasuhara",
+        "role": "Characters"
+      }
+    ]
+  }
+]

@@ -1,0 +1,17 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import type Slide from './Slide.astro';
+
+export interface Props extends HTMLAttributes<'div'> {
+  class?: string;
+  children: ReturnType<typeof Slide> | ReturnType<typeof Slide>[];
+}
+
+const { class: className, ...rest } = Astro.props;
+---
+
+<div class:list={["carousel", className]} {...rest}>
+    <ul class="movies">
+        <slot />
+    </ul>
+</div>
