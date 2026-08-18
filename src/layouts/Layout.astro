@@ -1,0 +1,44 @@
+---
+import Header from '../components/Header.astro';
+import Navigation from '../components/Navigation.astro';
+import '../css/styles.css';
+
+interface Props {
+  title: string;
+  htmlId?: string;
+  currentNav?: 'featured' | 'new' | 'categories' | 'search';
+  showBackButton?: boolean;
+  breakoutHeader?: boolean;
+  backHref?: string;
+}
+
+const {
+  title,
+  htmlId,
+  currentNav = 'featured',
+  showBackButton = false,
+  breakoutHeader = false,
+  backHref = '/',
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" id={htmlId}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="view-transition" content="same-origin">
+    <title>{title}</title>
+    <style is:global>
+        @view-transition {
+            navigation: auto;
+        }
+    </style>
+    <slot name="head" />
+</head>
+<body>
+    <Header showBackButton={showBackButton} breakout={breakoutHeader} backHref={backHref} />
+    <Navigation currentNav={currentNav} />
+    <slot />
+</body>
+</html>

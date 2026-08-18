@@ -1,25 +1,17 @@
 {
-  "name": "html only website",
+  "name": "html-only-website",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
   "scripts": {
-    "build": "tsc && lightningcss --bundle --targets '>= 0.25%' src/css/styles.css -o dist/styles.css && cp src/*.html dist/ && cp -r src/assets dist/",
-    "start": "npm run build && node dist/server.js",
-    "watch": "node scripts/watch.js",
-    "dev": "node scripts/watch.js"
+    "dev": "astro dev",
+    "start": "astro preview",
+    "build": "astro build",
+    "preview": "astro preview"
   },
   "dependencies": {
-    "express": "^5.2.1"
+    "astro": "^4.16.18"
   },
   "devDependencies": {
-    "@types/connect-livereload": "^0.6.3",
-    "@types/express": "^5.0.6",
-    "@types/livereload": "^0.9.5",
-    "connect-livereload": "^0.6.1",
-    "lightningcss-cli": "^1.33.0",
-    "livereload": "^0.10.3",
-    "nodemon": "^3.1.14",
     "typescript": "^5.5.3"
   },
   "private": true

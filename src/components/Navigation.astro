@@ -1,0 +1,16 @@
+---
+interface Props {
+  currentNav?: 'featured' | 'new' | 'categories' | 'search';
+}
+
+const { currentNav = 'featured' } = Astro.props;
+---
+
+<nav class="main-nav glass-container">
+    <ul>
+        <li class:list={[{ selected: currentNav === 'featured' }]}><a href="/">Featured</a></li>
+        <li class:list={[{ selected: currentNav === 'new' }]}><a href="/new">New</a></li>
+        <li class:list={[{ selected: currentNav === 'categories' }]}><a href="/categories">Categories</a></li>
+        <li class:list={[{ selected: currentNav === 'search' }]}><a href="/search">Search</a></li>
+    </ul>
+</nav>

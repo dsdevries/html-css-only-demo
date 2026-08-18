@@ -1,0 +1,41 @@
+---
+import ThemeSwitch from './ThemeSwitch.astro';
+
+interface Props {
+  showBackButton?: boolean;
+  breakout?: boolean;
+  backHref?: string;
+}
+
+const { showBackButton = false, breakout = false, backHref = '/' } = Astro.props;
+---
+
+<header class="content-grid">
+    <div class:list={["logo", { breakout: !showBackButton && breakout }]}>
+        <a href="/">
+            <img src="/assets/logo.svg" alt="Cinema Flow Logo" />
+        </a>
+    </div>
+    {showBackButton && (
+        <a href={backHref} class="button back-button breakout radius-round" aria-label="Go back">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m15 18-6-6 6-6"/>
+            </svg>
+        </a>
+    )}
+    <div class:list={["profile", { breakout }]}>
+        <button class="button profile-button radius-round" popovertarget="profile-menu">
+            <img class="radius-round" src="/assets/avatar.png" alt="Profile avatar" />
+        </button>
+        <nav class="profile-menu glass-container" popover="auto" id="profile-menu">
+            <ul>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="settings.html">Settings</a></li>
+                <li class="theme-switch-container">
+                    <ThemeSwitch />
+                </li>
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
