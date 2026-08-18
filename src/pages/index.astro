@@ -4,36 +4,15 @@ import Carousel from '../components/Carousel.astro';
 import Slide from '../components/Slide.astro';
 import MovieCard from '../components/MovieCard.astro';
 import movies from '../data/movies.json';
-
-const defaultCardId = `watch-${movies[0].id}`;
-const cardId = Astro.url.searchParams.get('id') || defaultCardId;
 ---
 
 <Layout title="Featured" htmlId="main-overview" currentNav="featured">
-    <div id="main-image" style={`position-anchor: --${cardId};`}></div>
-    <script is:inline>
-        (function() {
-            function updateAnchor() {
-                const params = new URLSearchParams(window.location.search);
-                const id = params.get('id') || params.get('cardId');
-                if (id) {
-                    const mainImage = document.getElementById('main-image');
-                    if (mainImage) {
-                        mainImage.style.setProperty('position-anchor', `--${id}`);
-                    }
-                }
-            }
-            updateAnchor();
-            document.addEventListener('astro:page-load', updateAnchor);
-        })();
-    </script>
-
     <main class="content-grid">
         <h1>What to watch</h1>
         <Carousel>
-            {movies.map((movie) => (
+            {movies.map((movie, index) => (
                 <Slide>
-                    <MovieCard id={`watch-${movie.id}`} movie={movie} />
+                    <MovieCard movie={movie} transitionName={index < 3 ? `movie-${movie.slug}` : undefined} />
                 </Slide>
             ))}
         </Carousel>
@@ -42,7 +21,7 @@ const cardId = Astro.url.searchParams.get('id') || defaultCardId;
         <Carousel>
             {movies.map((movie) => (
                 <Slide>
-                    <MovieCard id={`editor-${movie.id}`} movie={movie} />
+                    <MovieCard movie={movie} />
                 </Slide>
             ))}
         </Carousel>

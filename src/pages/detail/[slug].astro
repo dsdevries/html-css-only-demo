@@ -13,18 +13,19 @@ export async function getStaticPaths() {
 }
 
 const { movie } = Astro.props;
+const relatedMovies = movies.filter((item) => item.slug !== movie.slug);
 ---
 
-<Layout title={movie.title} htmlId="main-detail" currentNav="featured" showBackButton={true} breakoutHeader={true}>
-    <style is:global>
-        #main-movie-poster {
-            view-transition-name: main-image;
-        }
-    </style>
-
+<Layout title={movie.title} htmlId="main-detail" currentNav="featured" showBackButton={true} breakoutHeader={true} backHref="/">
     <main class="content-grid snap-top">
         <div class="hero breakout">
-            <img id="main-movie-poster" class="radius-large" src={movie.image} alt={movie.title} />
+            <img
+                id="main-movie-poster"
+                class="radius-large"
+                src={movie.image}
+                alt={movie.title}
+                style={`view-transition-name: movie-${movie.slug}; view-transition-class: movie-poster hero-poster;`}
+            />
 
             <div class="content content-grid radius-large">
                 <h1>{movie.title}</h1>
@@ -37,7 +38,7 @@ const { movie } = Astro.props;
         </div>
         <h1>Related content</h1>
         <Carousel>
-            {movies.map((item) => (
+            {relatedMovies.map((item) => (
                 <Slide>
                     <MovieCard movie={item} />
                 </Slide>
