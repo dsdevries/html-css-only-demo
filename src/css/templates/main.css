@@ -1,15 +1,18 @@
-
-
 ::view-transition-group(*) {
     animation-duration: 0.5s;
 }
 
 ::view-transition-group(.movie-poster) {
-    z-index: 10;
+    z-index: 1;
+}
+
+::view-transition-group(content-grid-before),
+::view-transition-group(content-grid-after) {
+    z-index: 2;
 }
 
 ::view-transition-group(.hero-poster) {
-    z-index: 15;
+    z-index: 4;
 }
 
 ::view-transition-old(.movie-poster),
@@ -19,6 +22,7 @@
     height: 100%;
     overflow: clip;
     border-radius: var(--radius-large);
+    z-index: 4;
 }
 
 ::view-transition-old(.movie-poster):only-child {
@@ -27,6 +31,14 @@
 
 ::view-transition-new(.movie-poster):only-child {
     animation: 0.5s cubic-bezier(0, 0, 0.2, 1) both fade-in;
+}
+
+::view-transition-old(content-grid-before),
+::view-transition-new(content-grid-before),
+::view-transition-old(content-grid-after),
+::view-transition-new(content-grid-after){
+    animation: none;
+    mix-blend-mode: normal;
 }
 
 ::view-transition-old(main-movie-description),
@@ -46,7 +58,33 @@
 ::view-transition-group(main-movie-description) {
     overflow: clip;
     border-radius: var(--radius-large);
-    z-index: 20;
+    z-index: 5;
+}
+
+#main-detail,
+#main-overview {
+    .content-grid-before,
+    .content-grid-after {
+        display: block;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        width: max(1.5rem, (100vw - var(--content-max-width))/2);
+        height: 100%;
+        background-color: var(--color-bg-page);
+        pointer-events: none;
+        z-index: 3;
+    }
+
+    .content-grid-before {
+        left: 0;
+        view-transition-name: content-grid-before;
+    }
+
+    .content-grid-after {
+        right: 0;
+        view-transition-name: content-grid-after;
+    }
 }
 
 #main-overview {
@@ -58,6 +96,7 @@
 
     &::view-transition-old(.movie-poster) {
         object-fit: cover;
+        z-index: 4;
     }
 
     .details {
@@ -68,6 +107,7 @@
 #main-detail {
     &::view-transition-new(.movie-poster) {
         object-fit: cover;
+        z-index: 4;
     }
 
     .hero .content {

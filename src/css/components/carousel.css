@@ -30,7 +30,7 @@
         list-style: none;
 
         @supports selector(::scroll-marker-group) {
-            overflow-x: hidden;
+            overflow-x: clip;
             padding: 0 0 4rem 0;
             margin-bottom: 0;
         }

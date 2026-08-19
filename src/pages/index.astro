@@ -8,11 +8,13 @@ import movies from '../data/movies.json';
 
 <Layout title="Featured" htmlId="main-overview" currentNav="featured">
     <main class="content-grid">
+        <div class="content-grid-before"></div>
+        <div class="content-grid-after"></div>
         <h1>What to watch</h1>
         <Carousel>
             {movies.map((movie, index) => (
                 <Slide>
-                    <MovieCard movie={movie} transitionName={index < 3 ? `movie-${movie.slug}` : undefined} />
+                    <MovieCard movie={movie} transitionName={`movie-${movie.slug}`} />
                 </Slide>
             ))}
         </Carousel>
