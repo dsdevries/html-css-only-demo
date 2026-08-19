@@ -70,8 +70,11 @@
 
         .card {
             animation: fade-in-up linear both;
-            animation-timeline: view();
-            animation-range: entry 50% cover 40%;
+
+            @supports (animation-timeline: view()) {
+                animation-timeline: view();
+                animation-range: entry 50% cover 40%;
+            }
 
             .rating {
                 margin: 0.5rem 0;
