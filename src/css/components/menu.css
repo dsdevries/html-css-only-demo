@@ -55,7 +55,7 @@
     animation-duration: 1s;
     animation-timing-function: var(--spring-easing);
     border-radius: var(--radius-medium);
-    z-index: 1;
+    z-index: 11;
 }
 
 ::view-transition-group(selected-indicator) {
@@ -67,11 +67,12 @@
 ::view-transition-group(nav-item-2),
 ::view-transition-group(nav-item-3),
 ::view-transition-group(nav-item-4) {
-    z-index: 2;
+    z-index: 12;
 }
 
 ::view-transition-group(main-nav) {
     border-radius: var(--radius-large);
+    z-index: 10;
 }
 
 
