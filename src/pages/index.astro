@@ -10,7 +10,7 @@ import movies from '../data/movies.json';
     <main class="content-grid">
         <h1>What to watch</h1>
         <Carousel>
-            {movies.map((movie, index) => (
+            {movies.map((movie) => (
                 <Slide>
                     <MovieCard movie={movie} />
                 </Slide>

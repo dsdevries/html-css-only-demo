@@ -16,7 +16,7 @@ const { movie } = Astro.props;
 const relatedMovies = movies.filter((item) => item.slug !== movie.slug);
 ---
 
-<Layout title={movie.title} htmlId="main-detail" currentNav="featured" showBackButton={true} breakoutHeader={true} backHref={`/#${movie.slug}`}>
+<Layout title={movie.title} htmlId="main-detail" currentNav="featured" showBackButton={true} breakoutHeader={true} backHref={`/`}>
     <main class="content-grid snap-top">
         <div class="hero breakout">
             <img
