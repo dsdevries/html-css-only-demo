@@ -6,11 +6,6 @@
     z-index: 1;
 }
 
-::view-transition-group(content-grid-before),
-::view-transition-group(content-grid-after) {
-    z-index: 2;
-}
-
 ::view-transition-group(.hero-poster) {
     z-index: 4;
 }
@@ -33,13 +28,6 @@
     animation: 0.5s cubic-bezier(0, 0, 0.2, 1) both fade-in;
 }
 
-::view-transition-old(content-grid-before),
-::view-transition-new(content-grid-before),
-::view-transition-old(content-grid-after),
-::view-transition-new(content-grid-after){
-    animation: none;
-    mix-blend-mode: normal;
-}
 
 ::view-transition-old(main-movie-description),
 ::view-transition-new(main-movie-description) {
@@ -61,31 +49,6 @@
     z-index: 5;
 }
 
-#main-detail,
-#main-overview {
-    .content-grid-before,
-    .content-grid-after {
-        display: block;
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        width: max(1.5rem, (100vw - var(--content-max-width))/2);
-        height: 100%;
-        background-color: var(--color-bg-page);
-        pointer-events: none;
-        z-index: 3;
-    }
-
-    .content-grid-before {
-        left: 0;
-        view-transition-name: content-grid-before;
-    }
-
-    .content-grid-after {
-        right: 0;
-        view-transition-name: content-grid-after;
-    }
-}
 
 #main-overview {
     position: relative;

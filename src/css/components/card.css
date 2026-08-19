@@ -1,9 +1,19 @@
 .card {
+    --movie-transition-name: none;
     display: flex;
     gap: 2rem;
     overflow: clip;
     padding: 1rem;
     box-sizing: border-box;
+
+    &:hover img,
+    &:active img,
+    &:has(a:active) img,
+    &:target img,
+    &:has(:target) img {
+        view-transition-name: var(--movie-transition-name);
+        view-transition-class: movie-poster;
+    }
 
     a {
         width: 250px;

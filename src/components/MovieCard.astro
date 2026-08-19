@@ -17,23 +17,28 @@ export interface Movie {
 
 export interface Props {
   movie: Movie;
+  id?: string;
   imageId?: string;
   class?: string;
   transitionName?: string;
 }
 
-const { movie, imageId, transitionName, class: className } = Astro.props;
+const { movie, id, imageId, transitionName, class: className } = Astro.props;
 ---
 
-<div class:list={["card radius-large", className]} data-image={movie.image}>
+<div
+    id={id || movie.slug}
+    class:list={["card radius-large", className]}
+    data-image={movie.image}
+    style={`--movie-transition-name: ${transitionName || `movie-${movie.slug}`};`}
+>
     <a class="radius-large" href={`/detail/${movie.slug}`}>
         <img
             id={imageId}
             class="radius-large"
             src={movie.image}
             alt={movie.title}
-            style={transitionName ? `view-transition-name: ${transitionName}; view-transition-class: movie-poster;` : undefined}
-/>
+        />
     </a>
     <div class="details">
         <h3>{movie.title}</h3>

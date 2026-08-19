@@ -21,7 +21,7 @@ import movies from '../data/movies.json';
         <h1>Search results</h1>
         <ul class="search-results">
             {movies.map((movie) => (
-                <li class="card radius-large glass-container-mild">
+                <li id={movie.slug} class="card radius-large glass-container-mild" style={`--movie-transition-name: movie-${movie.slug};`}>
                     <a href={`/detail/${movie.slug}`}>
                         <img src={movie.image} alt={movie.title} />
                     </a>
