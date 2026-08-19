@@ -18,7 +18,7 @@
         list-style: none;
 
         @supports selector(::scroll-marker-group) {
-            overflow-x: clip;
+            overflow-x: hidden;
             padding: 0 0 4rem 0;
             margin-bottom: 0;
         }
@@ -59,19 +59,19 @@
             transition:
                     --button-background-color-from 1s var(--spring-easing),
                     --button-background-color-to 1s var(--spring-easing);
+        }
 
-            &:disabled {
-                opacity: 0.5;
-            }
+        &::scroll-button(*):disabled {
+            opacity: 0.5;
+        }
 
-            &:enabled {
-                cursor: pointer;
+        &::scroll-button(*):not(:disabled) {
+            cursor: pointer;
+        }
 
-                &:hover {
-                    --marker-background-color-from: var(--button-bg-light-from);
-                    --marker-background-color-to: var(--button-bg-light-to);
-                }
-            }
+        &::scroll-button(*):not(:disabled):hover {
+            --button-background-color-from: var(--button-bg-light-from);
+            --button-background-color-to: var(--button-bg-light-to);
         }
 
         &::scroll-button(left) {
@@ -123,21 +123,21 @@
             transition:
                     --button-background-color-from 1s var(--spring-easing),
                     --button-background-color-to 1s var(--spring-easing);
+        }
 
-            &:hover {
-                --button-background-color-from: var(--button-bg-light-from);
-                --button-background-color-to: var(--button-bg-light-to);
-            }
+        > li::scroll-marker:hover {
+            --button-background-color-from: var(--button-bg-light-from);
+            --button-background-color-to: var(--button-bg-light-to);
+        }
 
-            &:target-current {
-                --button-background-color-from: var(--color-red-50);
-                --button-background-color-to: var(--color-red);
+        > li::scroll-marker:target-current {
+            --button-background-color-from: var(--color-red-50);
+            --button-background-color-to: var(--color-red);
+        }
 
-                &:hover {
-                    --button-background-color-from: var(--color-red-70);
-                    --button-background-color-to: var(--color-red);
-                }
-            }
+        > li::scroll-marker:target-current:hover {
+            --button-background-color-from: var(--color-red-70);
+            --button-background-color-to: var(--color-red);
         }
     }
 }
