@@ -1,15 +1,3 @@
-@property --marker-background-color-from {
-    syntax: '<color>';
-    initial-value: transparent;
-    inherits: true;
-}
-
-@property --marker-background-color-to {
-    syntax: '<color>';
-    initial-value: transparent;
-    inherits: true;
-}
-
 .carousel {
     position: relative;
 
@@ -41,8 +29,8 @@
 
         &::scroll-button(left),
         &::scroll-button(right) {
-            --marker-background-color-from: var(--button-bg-dark-from);
-            --marker-background-color-to: var(--button-bg-dark-to);
+            --button-background-color-from: var(--button-bg-dark-from);
+            --button-background-color-to: var(--button-bg-dark-to);
 
             position: absolute;
             bottom: 0;
@@ -69,8 +57,8 @@
             border: var(--glass-border);
 
             transition:
-                    --marker-background-color-from 1s var(--spring-easing),
-                    --marker-background-color-to 1s var(--spring-easing);
+                    --button-background-color-from 1s var(--spring-easing),
+                    --button-background-color-to 1s var(--spring-easing);
 
             &:disabled {
                 opacity: 0.5;
@@ -115,8 +103,8 @@
         }
 
         > li::scroll-marker {
-            --marker-background-color-from: var(--button-bg-dark-from);
-            --marker-background-color-to: var(--button-bg-dark-to);
+            --button-background-color-from: var(--button-bg-dark-from);
+            --button-background-color-to: var(--button-bg-dark-to);
 
             content: '';
             display: block;
@@ -132,22 +120,22 @@
             );
             filter: drop-shadow(var(--shadow-light));
             border: var(--glass-border);
-            transition: --marker-background-color-from 1s var(--spring-easing),
-            --marker-background-color-to 1s var(--spring-easing);
-
+            transition:
+                    --button-background-color-from 1s var(--spring-easing),
+                    --button-background-color-to 1s var(--spring-easing);
 
             &:hover {
-                --marker-background-color-from: var(--button-bg-light-from);
-                --marker-background-color-to: var(--button-bg-light-to);
+                --button-background-color-from: var(--button-bg-light-from);
+                --button-background-color-to: var(--button-bg-light-to);
             }
 
             &:target-current {
-                --marker-background-color-from: var(--color-red-50);
-                --marker-background-color-to: var(--color-red);
+                --button-background-color-from: var(--color-red-50);
+                --button-background-color-to: var(--color-red);
 
                 &:hover {
-                    --marker-background-color-from: var(--color-red-70);
-                    --marker-background-color-to: var(--color-red);
+                    --button-background-color-from: var(--color-red-70);
+                    --button-background-color-to: var(--color-red);
                 }
             }
         }

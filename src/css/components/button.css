@@ -1,20 +1,8 @@
-
-@property --button-background-color-from {
-    syntax: '<color>';
-    initial-value: transparent;
-    inherits: true;
-}
-
-@property --button-background-color-to {
-    syntax: '<color>';
-    initial-value: transparent;
-    inherits: true;
-}
-
 .button {
     --button-background-color-from: var(--button-bg-dark-from);
     --button-background-color-to: var(--button-bg-dark-to);
 
+    cursor: pointer;
     font-size: 1.2rem;
     line-height: 3rem;
     padding: .1rem 1rem;
@@ -42,6 +30,7 @@
 
     &:disabled {
         opacity: 0.5;
+        cursor: default;
     }
 
     &:not(:disabled):hover {
