@@ -1,6 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import movies from '../data/movies.json';
+
+export const prerender = false;
+
+const query = Astro.url.searchParams.get('q')?.toLowerCase() || '';
+const filteredMovies = movies.filter((movie) => {
+    if (!query) return true;
+    const searchString = `${movie.title} ${movie.description} ${movie.genre} ${movie.cast.map(c => c.name).join(' ')}`.toLowerCase();
+    return searchString.includes(query);
+});
 ---
 
 <Layout title="Search" htmlId="search" currentNav="search" breakoutHeader={true}>
@@ -12,15 +21,18 @@ import movies from '../data/movies.json';
                         <circle cx="11" cy="11" r="8"/>
                         <path d="m21 21-4.3-4.3"/>
                     </svg>
-                    <input type="search" name="q" placeholder="Search movies, TV shows, actors..." class="search-field" autocomplete="off" />
+                    <input type="search" name="q" placeholder="Search movies, TV shows, actors..." class="search-field" autocomplete="off" value={query} />
                     <button type="submit" class="button radius-medium">Search</button>
                 </div>
             </form>
         </div>
 
-        <h1>Search results</h1>
+        <h1 id="search-title">{query ? `Search results for "${query}"` : 'Search results'}</h1>
+        {filteredMovies.length === 0 && (
+            <p id="no-results" style="padding: 2rem; text-align: center; opacity: 0.7;">No movies found matching your search.</p>
+        )}
         <ul class="search-results">
-            {movies.map((movie) => (
+            {filteredMovies.map((movie) => (
                 <li id={movie.slug} class="card radius-large glass-container-mild" style={`--movie-transition-name: movie-${movie.slug};`}>
                     <a href={`/detail/${movie.slug}`}>
                         <img src={movie.image} alt={movie.title} />
