@@ -13,7 +13,9 @@ export async function getStaticPaths() {
 }
 
 const { movie } = Astro.props;
-const relatedMovies = movies.filter((item) => item.slug !== movie.slug);
+const relatedMovies = movies
+  .filter((item) => item.genre === movie.genre && item.slug !== movie.slug)
+  .slice(0, 10);
 ---
 
 <Layout title={movie.title} htmlId="main-detail" currentNav="featured" showBackButton={true} breakoutHeader={true} backHref={`/`}>

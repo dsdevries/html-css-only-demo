@@ -24,7 +24,11 @@
         "name": "Peter Craig",
         "role": "Story"
       }
-    ]
+    ],
+    "genre": "Action",
+    "releaseDate": "2023-02-19",
+    "featured": false,
+    "editor-pick": false
   },
   {
     "id": "lion-king",
@@ -43,7 +47,11 @@
         "name": "Jeff Nathanson",
         "role": "Screenplay"
       }
-    ]
+    ],
+    "genre": "Action",
+    "releaseDate": "2023-08-27",
+    "featured": false,
+    "editor-pick": true
   },
   {
     "id": "flow",
@@ -62,7 +70,11 @@
         "name": "Matīss Kaža",
         "role": "Screenplay"
       }
-    ]
+    ],
+    "genre": "Family",
+    "releaseDate": "2025-06-23",
+    "featured": false,
+    "editor-pick": true
   },
   {
     "id": "sonic",
@@ -88,6 +100,470 @@
       {
         "name": "Hirokazu Yasuhara",
         "role": "Characters"
+      }
+    ],
+    "genre": "Comedy",
+    "releaseDate": "2025-01-19",
+    "featured": true,
+    "editor-pick": false
+  },
+  {
+    "id": "fake-movie-1",
+    "slug": "fake-movie-1",
+    "title": "Fake Movie 1",
+    "rating": "⭐️⭐️⭐️⭐️⭐️",
+    "description": "This is a description for Fake Movie 1. It is full of excitement and wonder.",
+    "shortDescription": "Description for Fake Movie 1...",
+    "image": "https://loremflickr.com/400/600/movie,poster?lock=1",
+    "genre": "Thriller",
+    "releaseDate": "2023-02-03",
+    "featured": false,
+    "editor-pick": false,
+    "cast": [
+      {
+        "name": "Actor A",
+        "role": "Protagonist"
+      },
+      {
+        "name": "Director B",
+        "role": "Director"
+      }
+    ]
+  },
+  {
+    "id": "fake-movie-2",
+    "slug": "fake-movie-2",
+    "title": "Fake Movie 2",
+    "rating": "⭐️⭐️⭐️⭐️",
+    "description": "This is a description for Fake Movie 2. It is full of excitement and wonder.",
+    "shortDescription": "Description for Fake Movie 2...",
+    "image": "https://loremflickr.com/400/600/movie,poster?lock=2",
+    "genre": "Classics",
+    "releaseDate": "2024-07-23",
+    "featured": false,
+    "editor-pick": true,
+    "cast": [
+      {
+        "name": "Actor A",
+        "role": "Protagonist"
+      },
+      {
+        "name": "Director B",
+        "role": "Director"
+      }
+    ]
+  },
+  {
+    "id": "fake-movie-3",
+    "slug": "fake-movie-3",
+    "title": "Fake Movie 3",
+    "rating": "⭐️⭐️⭐️",
+    "description": "This is a description for Fake Movie 3. It is full of excitement and wonder.",
+    "shortDescription": "Description for Fake Movie 3...",
+    "image": "https://loremflickr.com/400/600/movie,poster?lock=3",
+    "genre": "Classics",
+    "releaseDate": "2024-09-26",
+    "featured": false,
+    "editor-pick": false,
+    "cast": [
+      {
+        "name": "Actor A",
+        "role": "Protagonist"
+      },
+      {
+        "name": "Director B",
+        "role": "Director"
+      }
+    ]
+  },
+  {
+    "id": "fake-movie-4",
+    "slug": "fake-movie-4",
+    "title": "Fake Movie 4",
+    "rating": "⭐️⭐️⭐️⭐️⭐️",
+    "description": "This is a description for Fake Movie 4. It is full of excitement and wonder.",
+    "shortDescription": "Description for Fake Movie 4...",
+    "image": "https://loremflickr.com/400/600/movie,poster?lock=4",
+    "genre": "Family",
+    "releaseDate": "2024-07-05",
+    "featured": false,
+    "editor-pick": true,
+    "cast": [
+      {
+        "name": "Actor A",
+        "role": "Protagonist"
+      },
+      {
+        "name": "Director B",
+        "role": "Director"
+      }
+    ]
+  },
+  {
+    "id": "fake-movie-5",
+    "slug": "fake-movie-5",
+    "title": "Fake Movie 5",
+    "rating": "⭐️⭐️⭐️⭐️",
+    "description": "This is a description for Fake Movie 5. It is full of excitement and wonder.",
+    "shortDescription": "Description for Fake Movie 5...",
+    "image": "https://loremflickr.com/400/600/movie,poster?lock=5",
+    "genre": "Action",
+    "releaseDate": "2024-02-06",
+    "featured": false,
+    "editor-pick": false,
+    "cast": [
+      {
+        "name": "Actor A",
+        "role": "Protagonist"
+      },
+      {
+        "name": "Director B",
+        "role": "Director"
+      }
+    ]
+  },
+  {
+    "id": "fake-movie-6",
+    "slug": "fake-movie-6",
+    "title": "Fake Movie 6",
+    "rating": "⭐️⭐️⭐️⭐️",
+    "description": "This is a description for Fake Movie 6. It is full of excitement and wonder.",
+    "shortDescription": "Description for Fake Movie 6...",
+    "image": "https://loremflickr.com/400/600/movie,poster?lock=6",
+    "genre": "Classics",
+    "releaseDate": "2025-08-09",
+    "featured": true,
+    "editor-pick": true,
+    "cast": [
+      {
+        "name": "Actor A",
+        "role": "Protagonist"
+      },
+      {
+        "name": "Director B",
+        "role": "Director"
+      }
+    ]
+  },
+  {
+    "id": "fake-movie-7",
+    "slug": "fake-movie-7",
+    "title": "Fake Movie 7",
+    "rating": "⭐️⭐️⭐️⭐️⭐️",
+    "description": "This is a description for Fake Movie 7. It is full of excitement and wonder.",
+    "shortDescription": "Description for Fake Movie 7...",
+    "image": "https://loremflickr.com/400/600/movie,poster?lock=7",
+    "genre": "Horror",
+    "releaseDate": "2023-01-27",
+    "featured": true,
+    "editor-pick": true,
+    "cast": [
+      {
+        "name": "Actor A",
+        "role": "Protagonist"
+      },
+      {
+        "name": "Director B",
+        "role": "Director"
+      }
+    ]
+  },
+  {
+    "id": "fake-movie-8",
+    "slug": "fake-movie-8",
+    "title": "Fake Movie 8",
+    "rating": "⭐️⭐️⭐️⭐️",
+    "description": "This is a description for Fake Movie 8. It is full of excitement and wonder.",
+    "shortDescription": "Description for Fake Movie 8...",
+    "image": "https://loremflickr.com/400/600/movie,poster?lock=8",
+    "genre": "Classics",
+    "releaseDate": "2025-07-10",
+    "featured": true,
+    "editor-pick": false,
+    "cast": [
+      {
+        "name": "Actor A",
+        "role": "Protagonist"
+      },
+      {
+        "name": "Director B",
+        "role": "Director"
+      }
+    ]
+  },
+  {
+    "id": "fake-movie-9",
+    "slug": "fake-movie-9",
+    "title": "Fake Movie 9",
+    "rating": "⭐️⭐️⭐️⭐️⭐️",
+    "description": "This is a description for Fake Movie 9. It is full of excitement and wonder.",
+    "shortDescription": "Description for Fake Movie 9...",
+    "image": "https://loremflickr.com/400/600/movie,poster?lock=9",
+    "genre": "Thriller",
+    "releaseDate": "2024-06-10",
+    "featured": false,
+    "editor-pick": true,
+    "cast": [
+      {
+        "name": "Actor A",
+        "role": "Protagonist"
+      },
+      {
+        "name": "Director B",
+        "role": "Director"
+      }
+    ]
+  },
+  {
+    "id": "fake-movie-10",
+    "slug": "fake-movie-10",
+    "title": "Fake Movie 10",
+    "rating": "⭐️⭐️⭐️",
+    "description": "This is a description for Fake Movie 10. It is full of excitement and wonder.",
+    "shortDescription": "Description for Fake Movie 10...",
+    "image": "https://loremflickr.com/400/600/movie,poster?lock=10",
+    "genre": "Comedy",
+    "releaseDate": "2024-07-20",
+    "featured": false,
+    "editor-pick": false,
+    "cast": [
+      {
+        "name": "Actor A",
+        "role": "Protagonist"
+      },
+      {
+        "name": "Director B",
+        "role": "Director"
+      }
+    ]
+  },
+  {
+    "id": "fake-movie-11",
+    "slug": "fake-movie-11",
+    "title": "Fake Movie 11",
+    "rating": "⭐️⭐️⭐️",
+    "description": "This is a description for Fake Movie 11. It is full of excitement and wonder.",
+    "shortDescription": "Description for Fake Movie 11...",
+    "image": "https://loremflickr.com/400/600/movie,poster?lock=11",
+    "genre": "Sci-Fi",
+    "releaseDate": "2025-12-02",
+    "featured": true,
+    "editor-pick": true,
+    "cast": [
+      {
+        "name": "Actor A",
+        "role": "Protagonist"
+      },
+      {
+        "name": "Director B",
+        "role": "Director"
+      }
+    ]
+  },
+  {
+    "id": "fake-movie-12",
+    "slug": "fake-movie-12",
+    "title": "Fake Movie 12",
+    "rating": "⭐️⭐️⭐️⭐️",
+    "description": "This is a description for Fake Movie 12. It is full of excitement and wonder.",
+    "shortDescription": "Description for Fake Movie 12...",
+    "image": "https://loremflickr.com/400/600/movie,poster?lock=12",
+    "genre": "Classics",
+    "releaseDate": "2026-05-27",
+    "featured": false,
+    "editor-pick": true,
+    "cast": [
+      {
+        "name": "Actor A",
+        "role": "Protagonist"
+      },
+      {
+        "name": "Director B",
+        "role": "Director"
+      }
+    ]
+  },
+  {
+    "id": "fake-movie-13",
+    "slug": "fake-movie-13",
+    "title": "Fake Movie 13",
+    "rating": "⭐️⭐️⭐️⭐️",
+    "description": "This is a description for Fake Movie 13. It is full of excitement and wonder.",
+    "shortDescription": "Description for Fake Movie 13...",
+    "image": "https://loremflickr.com/400/600/movie,poster?lock=13",
+    "genre": "Thriller",
+    "releaseDate": "2026-05-04",
+    "featured": true,
+    "editor-pick": true,
+    "cast": [
+      {
+        "name": "Actor A",
+        "role": "Protagonist"
+      },
+      {
+        "name": "Director B",
+        "role": "Director"
+      }
+    ]
+  },
+  {
+    "id": "fake-movie-14",
+    "slug": "fake-movie-14",
+    "title": "Fake Movie 14",
+    "rating": "⭐️⭐️⭐️⭐️⭐️",
+    "description": "This is a description for Fake Movie 14. It is full of excitement and wonder.",
+    "shortDescription": "Description for Fake Movie 14...",
+    "image": "https://loremflickr.com/400/600/movie,poster?lock=14",
+    "genre": "Action",
+    "releaseDate": "2023-08-23",
+    "featured": true,
+    "editor-pick": true,
+    "cast": [
+      {
+        "name": "Actor A",
+        "role": "Protagonist"
+      },
+      {
+        "name": "Director B",
+        "role": "Director"
+      }
+    ]
+  },
+  {
+    "id": "fake-movie-15",
+    "slug": "fake-movie-15",
+    "title": "Fake Movie 15",
+    "rating": "⭐️⭐️⭐️⭐️",
+    "description": "This is a description for Fake Movie 15. It is full of excitement and wonder.",
+    "shortDescription": "Description for Fake Movie 15...",
+    "image": "https://loremflickr.com/400/600/movie,poster?lock=15",
+    "genre": "Action",
+    "releaseDate": "2024-09-05",
+    "featured": true,
+    "editor-pick": true,
+    "cast": [
+      {
+        "name": "Actor A",
+        "role": "Protagonist"
+      },
+      {
+        "name": "Director B",
+        "role": "Director"
+      }
+    ]
+  },
+  {
+    "id": "fake-movie-16",
+    "slug": "fake-movie-16",
+    "title": "Fake Movie 16",
+    "rating": "⭐️⭐️⭐️⭐️",
+    "description": "This is a description for Fake Movie 16. It is full of excitement and wonder.",
+    "shortDescription": "Description for Fake Movie 16...",
+    "image": "https://loremflickr.com/400/600/movie,poster?lock=16",
+    "genre": "Thriller",
+    "releaseDate": "2023-04-13",
+    "featured": true,
+    "editor-pick": true,
+    "cast": [
+      {
+        "name": "Actor A",
+        "role": "Protagonist"
+      },
+      {
+        "name": "Director B",
+        "role": "Director"
+      }
+    ]
+  },
+  {
+    "id": "fake-movie-17",
+    "slug": "fake-movie-17",
+    "title": "Fake Movie 17",
+    "rating": "⭐️⭐️⭐️⭐️",
+    "description": "This is a description for Fake Movie 17. It is full of excitement and wonder.",
+    "shortDescription": "Description for Fake Movie 17...",
+    "image": "https://loremflickr.com/400/600/movie,poster?lock=17",
+    "genre": "Comedy",
+    "releaseDate": "2025-01-11",
+    "featured": true,
+    "editor-pick": false,
+    "cast": [
+      {
+        "name": "Actor A",
+        "role": "Protagonist"
+      },
+      {
+        "name": "Director B",
+        "role": "Director"
+      }
+    ]
+  },
+  {
+    "id": "fake-movie-18",
+    "slug": "fake-movie-18",
+    "title": "Fake Movie 18",
+    "rating": "⭐️⭐️⭐️⭐️⭐️",
+    "description": "This is a description for Fake Movie 18. It is full of excitement and wonder.",
+    "shortDescription": "Description for Fake Movie 18...",
+    "image": "https://loremflickr.com/400/600/movie,poster?lock=18",
+    "genre": "Comedy",
+    "releaseDate": "2026-04-13",
+    "featured": true,
+    "editor-pick": false,
+    "cast": [
+      {
+        "name": "Actor A",
+        "role": "Protagonist"
+      },
+      {
+        "name": "Director B",
+        "role": "Director"
+      }
+    ]
+  },
+  {
+    "id": "fake-movie-19",
+    "slug": "fake-movie-19",
+    "title": "Fake Movie 19",
+    "rating": "⭐️⭐️⭐️",
+    "description": "This is a description for Fake Movie 19. It is full of excitement and wonder.",
+    "shortDescription": "Description for Fake Movie 19...",
+    "image": "https://loremflickr.com/400/600/movie,poster?lock=19",
+    "genre": "Classics",
+    "releaseDate": "2024-01-05",
+    "featured": true,
+    "editor-pick": true,
+    "cast": [
+      {
+        "name": "Actor A",
+        "role": "Protagonist"
+      },
+      {
+        "name": "Director B",
+        "role": "Director"
+      }
+    ]
+  },
+  {
+    "id": "fake-movie-20",
+    "slug": "fake-movie-20",
+    "title": "Fake Movie 20",
+    "rating": "⭐️⭐️⭐️⭐️⭐️",
+    "description": "This is a description for Fake Movie 20. It is full of excitement and wonder.",
+    "shortDescription": "Description for Fake Movie 20...",
+    "image": "https://loremflickr.com/400/600/movie,poster?lock=20",
+    "genre": "Action",
+    "releaseDate": "2026-02-24",
+    "featured": false,
+    "editor-pick": true,
+    "cast": [
+      {
+        "name": "Actor A",
+        "role": "Protagonist"
+      },
+      {
+        "name": "Director B",
+        "role": "Director"
       }
     ]
   }

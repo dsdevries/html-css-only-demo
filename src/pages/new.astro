@@ -5,7 +5,8 @@ import Slide from '../components/Slide.astro';
 import MovieCard from '../components/MovieCard.astro';
 import movies from '../data/movies.json';
 
-const heroMovie = movies.find((m) => m.slug === 'lion-king') || movies[0];
+const heroMovie = movies.find((m) => m.featured) || movies[0];
+const newestMovies = [...movies].sort((a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime()).slice(0, 5);
 ---
 
 <Layout title="New" htmlId="new-overview" currentNav="new">
@@ -24,7 +25,7 @@ const heroMovie = movies.find((m) => m.slug === 'lion-king') || movies[0];
         </div>
         <h1>Newest releases</h1>
         <Carousel>
-            {movies.map((movie) => (
+            {newestMovies.map((movie) => (
                 <Slide>
                     <MovieCard movie={movie} />
                 </Slide>

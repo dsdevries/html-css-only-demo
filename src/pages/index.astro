@@ -10,7 +10,7 @@ import movies from '../data/movies.json';
     <main class="content-grid">
         <h1>What to watch</h1>
         <Carousel>
-            {movies.map((movie) => (
+            {movies.filter(movie => movie.featured).slice(0,10).map((movie) => (
                 <Slide>
                     <MovieCard movie={movie} />
                 </Slide>
@@ -19,7 +19,7 @@ import movies from '../data/movies.json';
 
         <h1>Editor Picks</h1>
         <Carousel>
-            {movies.map((movie) => (
+            {movies.filter(movie => movie['editor-pick']).slice(0,10).map((movie) => (
                 <Slide>
                     <MovieCard movie={movie} />
                 </Slide>
