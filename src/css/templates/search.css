@@ -72,8 +72,10 @@
             animation: fade-in-up linear both;
 
             @supports (animation-timeline: view()) {
-                animation-timeline: view();
-                animation-range: entry 50% cover 40%;
+                &:not(:first-child) {
+                    animation-timeline: view();
+                    animation-range: entry 30% cover 20%;
+                }
             }
 
             .rating {

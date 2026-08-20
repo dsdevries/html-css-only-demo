@@ -30,5 +30,41 @@ h1 {
     margin-top: 3rem;
 }
 
+header:has(.logo.breakout) ~ main .sticky-header:after {
+    margin-left: clamp(0rem, (1100px - 100vw) * 0.5, 4.8rem);
+}
+
+.sticky-header {
+    position: sticky;
+    top: -1.5rem;
+    container-type: scroll-state;
+    z-index: 2010;
+
+
+    &:after {
+        content: attr(data-title);
+        position: absolute;
+        top: -50rem;
+        left: 0;
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+        display: block;
+        font-size: 2em;
+        margin-block-start: 0.67em;
+        margin-block-end: 0.67em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        font-weight: bold;
+        unicode-bidi: isolate;
+        margin-left:  3.5rem;
+
+        @container scroll-state(stuck: top) {
+            content: attr(data-title);
+            top: 2.5rem;
+            opacity: 1;
+        };
+    }
+}
+
 
 

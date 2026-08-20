@@ -8,6 +8,7 @@ import movies from '../data/movies.json';
 
 <Layout title="Featured" htmlId="main-overview" currentNav="featured">
     <main class="content-grid">
+        <div class="sticky-header" data-title="What to watch"></div>
         <h1>What to watch</h1>
         <Carousel>
             {movies.filter(movie => movie.featured).slice(0,10).map((movie) => (
@@ -17,7 +18,9 @@ import movies from '../data/movies.json';
             ))}
         </Carousel>
 
-        <h1>Editor Picks</h1>
+        <div class="sticky-header" data-title="Editor Picks"></div>
+            <h1 >Editor Picks</h1>
+
         <Carousel>
             {movies.filter(movie => movie['editor-pick']).slice(0,10).map((movie) => (
                 <Slide>

@@ -27,6 +27,7 @@ const filteredMovies = movies.filter((movie) => {
             </form>
         </div>
 
+        <div class="sticky-header" data-title={query ? `Search results for "${query}"` : 'Search results'}></div>
         <h1 id="search-title">{query ? `Search results for "${query}"` : 'Search results'}</h1>
         {filteredMovies.length === 0 && (
             <p id="no-results" style="padding: 2rem; text-align: center; opacity: 0.7;">No movies found matching your search.</p>

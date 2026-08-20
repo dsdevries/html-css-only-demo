@@ -11,11 +11,13 @@ const newestMovies = [...movies].sort((a, b) => new Date(b.releaseDate).getTime(
 
 <Layout title="New" htmlId="new-overview" currentNav="new">
     <main class="content-grid snap-top">
+        <div class="sticky-header" data-title={heroMovie.title}></div>
+
         <div class="hero full-width">
             <img src={heroMovie.image} alt={heroMovie.title} />
 
             <div class="content content-grid">
-                <h1>{heroMovie.title}</h1>
+                <h1 data-title={heroMovie.title}>{heroMovie.title}</h1>
                 <div class="rating">{heroMovie.rating}</div>
                 <p>
                     {heroMovie.description}
