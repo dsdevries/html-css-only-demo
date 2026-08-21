@@ -17,7 +17,7 @@ const filteredMovies = movies.filter((movie) => {
     return searchString.includes(query.toLowerCase());
 });
 ---
-<style is:global>
+<style is:inline>
     /* When this component starts streaming, we hide the skeletons */
     .skeleton-card {
         display: none !important;

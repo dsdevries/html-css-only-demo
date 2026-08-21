@@ -69,9 +69,11 @@
         gap: 1.5rem;
 
         .card {
-            animation: fade-in-up linear both;
-            animation-timeline: view();
-            animation-range: entry 10% cover 30%;
+            &:not(.skeleton-card) {
+                animation: fade-in-up linear both;
+                animation-timeline: view();
+                animation-range: entry 10% cover 30%;
+            }
 
             .rating {
                 margin: 0.5rem 0;
@@ -84,6 +86,7 @@
             p {
                 margin: 0.5rem 0 1rem;
                 line-height: 1.5;
+                min-height: 4.5em;
                 color: var(--color-text-primary);
                 opacity: 0.9;
             }
