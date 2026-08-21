@@ -169,6 +169,7 @@
         --button-bg-light-to: var(--color-white-50);
     }
 
+    html[data-theme="light"],
     html:has(#theme-light:checked) {
         color-scheme: light;
         --color-bg-page: var(--color-white);
@@ -201,6 +202,7 @@
     }
 }
 
+html[data-theme="dark"],
 html:has(#theme-dark:checked) {
     color-scheme: dark;
     --color-bg-page: var(--color-black);
