@@ -23,26 +23,11 @@ const query = Astro.url.searchParams.get('q')?.toLowerCase() || '';
             </form>
         </div>
 
-        <div id="search-content-area" style="view-transition-name: search-results;">
+        <div id="search-content-area">
             <h1 id="search-title">{query ? `Search results for "${query}"` : 'Search results'}</h1>
 
-            <div id="search-results-container">
-                <template shadowrootmode="open">
-                    <style>
-                        :host { display: block; width: 100%; }
-                        .search-results {
-                            display: flex;
-                            flex-direction: column;
-                            gap: 1.5rem;
-                            list-style: none;
-                            padding: 0;
-                            margin: 1.5rem 0 5rem;
-                        }
-                    </style>
-                    <slot>
-                        <SearchResultsSkeleton />
-                    </slot>
-                </template>
+            <div id="search-results-container" class="search-results">
+                <SearchResultsSkeleton />
                 <SearchResults query={query} />
             </div>
         </div>

@@ -1,5 +1,6 @@
 ---
 import movies from '../data/movies.json';
+import MovieCard from './MovieCard.astro';
 
 interface Props {
     query: string;
@@ -8,7 +9,7 @@ interface Props {
 const { query } = Astro.props;
 
 // Artificial delay to demonstrate streaming
-await new Promise(resolve => setTimeout(resolve, 2000));
+await new Promise(resolve => setTimeout(resolve, 300));
 
 const filteredMovies = movies.filter((movie) => {
     if (!query) return true;
@@ -16,32 +17,21 @@ const filteredMovies = movies.filter((movie) => {
     return searchString.includes(query.toLowerCase());
 });
 ---
+<style is:global>
+    /* When this component starts streaming, we hide the skeletons */
+    .skeleton-card {
+        display: none !important;
+    }
+</style>
 
 {filteredMovies.length === 0 ? (
     <p id="no-results" style="padding: 2rem; text-align: center; opacity: 0.7;">No movies found matching your search.</p>
 ) : (
-    <ul class="search-results">
-        {filteredMovies.map((movie) => (
-            <li id={movie.slug} class="card radius-large glass-container-mild" style={`--movie-transition-name: movie-${movie.slug};`}>
-                <a href={`/detail/${movie.slug}`}>
-                    <img src={movie.image} alt={movie.title} />
-                </a>
-                <div class="details">
-                    <h3>{movie.title}</h3>
-                    <div class="rating">{movie.rating}</div>
-                    <p>
-                        {movie.description}
-                    </p>
-                    <div class="cast">
-                        {movie.cast.map((member) => (
-                            <div>
-                                <div class="name">{member.name}</div>
-                                <div class="role">{member.role}</div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </li>
-        ))}
-    </ul>
+    filteredMovies.map((movie) => (
+        <MovieCard 
+            movie={movie} 
+            class="glass-container-mild" 
+            loading="eager"
+        />
+    ))
 )}

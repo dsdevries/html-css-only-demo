@@ -21,9 +21,10 @@ export interface Props {
   imageId?: string;
   class?: string;
   transitionName?: string;
+  loading?: "lazy" | "eager";
 }
 
-const { movie, id, imageId, transitionName, class: className } = Astro.props;
+const { movie, id, imageId, transitionName, class: className, loading = "lazy" } = Astro.props;
 ---
 
 <div
@@ -38,6 +39,7 @@ const { movie, id, imageId, transitionName, class: className } = Astro.props;
             class="radius-large"
             src={movie.image}
             alt={movie.title}
+            loading={loading}
         />
     </a>
     <div class="details">
