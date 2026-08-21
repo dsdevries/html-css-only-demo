@@ -42,6 +42,7 @@
     h3 {
         display: inline-block;
         color: var(--color-text-primary);
+        margin-top: 0;
         margin-bottom: 0;
     }
 }

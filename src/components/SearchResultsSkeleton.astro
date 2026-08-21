@@ -1,0 +1,130 @@
+---
+---
+{Array.from({length: 5}).map((_) => (
+    <div class="card radius-large skeleton-card">
+        <div class="skeleton-image-wrapper radius-large">
+            <div class="skeleton-image skeleton-placeholder radius-large"></div>
+        </div>
+        <div class="details">
+            <h3 class="skeleton-title skeleton-placeholder"></h3>
+            <div class="rating skeleton-rating skeleton-placeholder"></div>
+            <p class="skeleton-description">
+                <span class="skeleton-text skeleton-placeholder"></span>
+                <span class="skeleton-text skeleton-placeholder"></span>
+                <span class="skeleton-text skeleton-placeholder short"></span>
+            </p>
+            <div class="cast">
+                <div class="skeleton-cast-member">
+                    <div class="name skeleton-name skeleton-placeholder"></div>
+                    <div class="role skeleton-role skeleton-placeholder"></div>
+                </div>
+                <div class="skeleton-cast-member">
+                    <div class="name skeleton-name skeleton-placeholder"></div>
+                    <div class="role skeleton-role skeleton-placeholder"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+))}
+
+<style>
+    .skeleton-card {
+        background: transparent;
+        border: none;
+        min-height: 250px;
+        position: relative;
+        overflow: hidden;
+        animation: fade-in-up linear both;
+        animation-timeline: view();
+        animation-range: entry 10% cover 30%;
+    }
+
+    .skeleton-image-wrapper {
+        width: 175px;
+        flex-shrink: 0;
+        display: block;
+        position: relative;
+        overflow: hidden;
+        margin: -1rem;
+    }
+
+    .skeleton-image {
+        width: 100%;
+        aspect-ratio: 2/3;
+        border-radius: var(--radius-large);
+    }
+
+    .skeleton-placeholder {
+        position: relative;
+        overflow: hidden;
+        background: color-mix(in srgb, var(--color-text-primary), transparent 95%);
+        border-radius: 4px;
+    }
+
+    .skeleton-placeholder::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        transform: translateX(-100%);
+        background-image: linear-gradient(
+            90deg,
+            transparent 0,
+            color-mix(in srgb, var(--color-text-primary), transparent 92%) 20%,
+            color-mix(in srgb, var(--color-text-primary), transparent 88%) 60%,
+            transparent
+        );
+        animation: shimmer 2s infinite;
+    }
+
+    .skeleton-title {
+        height: 1.5rem;
+        width: 60%;
+        display: inline-block;
+    }
+
+    .skeleton-rating {
+        height: 1rem;
+        width: 30px;
+    }
+
+    .skeleton-description {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .skeleton-text {
+        height: 1rem;
+        width: 90%;
+        display: block;
+    }
+
+    .skeleton-text.short {
+        width: 40%;
+    }
+
+    .skeleton-cast-member {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .skeleton-name {
+        height: 0.9rem;
+        width: 80px;
+    }
+
+    .skeleton-role {
+        height: 0.8rem;
+        width: 60px;
+    }
+
+    @keyframes shimmer {
+        100% {
+            transform: translateX(100%);
+        }
+    }
+</style>

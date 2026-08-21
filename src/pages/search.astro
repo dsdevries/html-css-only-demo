@@ -1,15 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import movies from '../data/movies.json';
+import SearchResults from '../components/SearchResults.astro';
+import SearchResultsSkeleton from '../components/SearchResultsSkeleton.astro';
 
 export const prerender = false;
 
 const query = Astro.url.searchParams.get('q')?.toLowerCase() || '';
-const filteredMovies = movies.filter((movie) => {
-    if (!query) return true;
-    const searchString = `${movie.title} ${movie.description} ${movie.genre} ${movie.cast.map(c => c.name).join(' ')}`.toLowerCase();
-    return searchString.includes(query);
-});
 ---
 
 <Layout title="Search" htmlId="search" currentNav="search" breakoutHeader={true}>
@@ -27,33 +23,15 @@ const filteredMovies = movies.filter((movie) => {
             </form>
         </div>
 
-        <h1 id="search-title">{query ? `Search results for "${query}"` : 'Search results'}</h1>
-        {filteredMovies.length === 0 && (
-            <p id="no-results" style="padding: 2rem; text-align: center; opacity: 0.7;">No movies found matching your search.</p>
-        )}
-        <ul class="search-results">
-            {filteredMovies.map((movie) => (
-                <li id={movie.slug} class="card radius-large glass-container-mild" style={`--movie-transition-name: movie-${movie.slug};`}>
-                    <a href={`/detail/${movie.slug}`}>
-                        <img src={movie.image} alt={movie.title} />
-                    </a>
-                    <div class="details">
-                        <h3>{movie.title}</h3>
-                        <div class="rating">{movie.rating}</div>
-                        <p>
-                            {movie.description}
-                        </p>
-                        <div class="cast">
-                            {movie.cast.map((member) => (
-                                <div>
-                                    <div class="name">{member.name}</div>
-                                    <div class="role">{member.role}</div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </li>
-            ))}
-        </ul>
+        <div id="search-content-area">
+            <h1 id="search-title">{query ? `Search results for "${query}"` : 'Search results'}</h1>
+
+            <div id="search-results-container" class="search-results-wrapper">
+                <div class="skeleton-list search-results">
+                    <SearchResultsSkeleton />
+                </div>
+                <SearchResults query={query} />
+            </div>
+        </div>
     </main>
 </Layout>

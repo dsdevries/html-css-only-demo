@@ -40,7 +40,7 @@
         }
 
         const applyTheme = (): void => {
-            const savedTheme = localStorage.getItem('theme');
+            const savedTheme = localStorage.getItem('theme') || 'system';
             if (savedTheme === 'dark' && darkInput) {
                 darkInput.checked = true;
             } else if (savedTheme === 'light' && lightInput) {
@@ -48,6 +48,7 @@
             } else if (systemInput) {
                 systemInput.checked = true;
             }
+            document.documentElement.dataset.theme = savedTheme;
         };
 
         // 1. Initialize radio state from localStorage or default to system
@@ -57,7 +58,9 @@
         themeInputs.forEach((input) => {
             input.addEventListener('change', () => {
                 if (input.checked) {
-                    localStorage.setItem('theme', input.value);
+                    const value = input.value;
+                    localStorage.setItem('theme', value);
+                    document.documentElement.dataset.theme = value;
                 }
             });
         });

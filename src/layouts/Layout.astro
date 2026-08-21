@@ -29,6 +29,11 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="view-transition" content="same-origin">
     <title>{title}</title>
+    <script is:inline>
+        // Apply theme as early as possible to prevent flash
+        const savedTheme = localStorage.getItem('theme') || 'system';
+        document.documentElement.dataset.theme = savedTheme;
+    </script>
     <style is:global>
         @view-transition {
             navigation: auto;
