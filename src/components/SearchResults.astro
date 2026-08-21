@@ -17,21 +17,29 @@ const filteredMovies = movies.filter((movie) => {
     return searchString.includes(query.toLowerCase());
 });
 ---
-<style is:inline>
-    /* When this component starts streaming, we hide the skeletons */
-    .skeleton-card {
-        display: none !important;
-    }
-</style>
+<div class="search-results results-list">
+    <style is:inline>
+        /* When this component starts streaming, we fade out the skeletons */
+        .skeleton-list {
+            animation: fade-out 0.8s forwards !important;
+            pointer-events: none !important;
+        }
 
-{filteredMovies.length === 0 ? (
-    <p id="no-results" style="padding: 2rem; text-align: center; opacity: 0.7;">No movies found matching your search.</p>
-) : (
-    filteredMovies.map((movie) => (
-        <MovieCard 
-            movie={movie} 
-            class="glass-container-mild" 
-            loading="eager"
-        />
-    ))
-)}
+        /* Ensure the results list itself fades in */
+        .results-list {
+            animation: fade-in 0.8s forwards !important;
+        }
+    </style>
+
+    {filteredMovies.length === 0 ? (
+        <p id="no-results" style="padding: 2rem; text-align: center; opacity: 0.7;">No movies found matching your search.</p>
+    ) : (
+        filteredMovies.map((movie) => (
+            <MovieCard 
+                movie={movie} 
+                class="glass-container-mild" 
+                loading="eager"
+            />
+        ))
+    )}
+</div>

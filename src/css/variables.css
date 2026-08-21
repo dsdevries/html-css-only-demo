@@ -249,6 +249,7 @@ html:has(#theme-dark:checked) {
     }
     to {
         opacity: 0;
+        visibility: hidden;
     }
 }
 

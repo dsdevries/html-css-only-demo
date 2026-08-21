@@ -60,10 +60,20 @@
         }
     }
 
+    .search-results-wrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+        margin: 1.5rem 0 5rem;
+
+        & > * {
+            grid-area: 1 / 1;
+        }
+    }
+
     .search-results {
         list-style: none;
         padding: 0;
-        margin: 1.5rem 0 5rem;
+        margin: 0;
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
