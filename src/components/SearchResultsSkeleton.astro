@@ -1,6 +1,6 @@
 ---
 ---
-{[1, 2, 3].map((_) => (
+{[1, 2, 3, 4, 5, 6, 7, 8].map((_) => (
     <div class="card radius-large skeleton-card">
         <div class="skeleton-image-wrapper radius-large">
             <div class="skeleton-image skeleton-placeholder radius-large"></div>
@@ -34,6 +34,9 @@
         min-height: 250px;
         position: relative;
         overflow: hidden;
+        animation: fade-in-up linear both;
+        animation-timeline: view();
+        animation-range: entry 10% cover 30%;
     }
 
     .skeleton-image-wrapper {
