@@ -11,7 +11,7 @@ const query = Astro.url.searchParams.get('q')?.toLowerCase() || '';
 <Layout title="Search" htmlId="search" currentNav="search" breakoutHeader={true}>
     <main class="content-grid snap-top">
         <div class="hero breakout search-hero radius-large">
-            <form class="search-form" role="search" action="/search" method="get">
+            <form class="search-form" role="search" action="/search" method="get" target="#search-content-area">
                 <div class="search-input-wrapper glass-container radius-large">
                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon">
                         <circle cx="11" cy="11" r="8"/>
@@ -23,10 +23,28 @@ const query = Astro.url.searchParams.get('q')?.toLowerCase() || '';
             </form>
         </div>
 
-        <h1 id="search-title">{query ? `Search results for "${query}"` : 'Search results'}</h1>
+        <div id="search-content-area" style="view-transition-name: search-results;">
+            <h1 id="search-title">{query ? `Search results for "${query}"` : 'Search results'}</h1>
 
-        <SearchResults server:defer query={query}>
-            <SearchResultsSkeleton slot="fallback" />
-        </SearchResults>
+            <div id="search-results-container">
+                <template shadowrootmode="open">
+                    <style>
+                        :host { display: block; width: 100%; }
+                        .search-results {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 1.5rem;
+                            list-style: none;
+                            padding: 0;
+                            margin: 1.5rem 0 5rem;
+                        }
+                    </style>
+                    <slot>
+                        <SearchResultsSkeleton />
+                    </slot>
+                </template>
+                <SearchResults query={query} />
+            </div>
+        </div>
     </main>
 </Layout>
