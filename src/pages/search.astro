@@ -22,6 +22,21 @@ const query = Astro.url.searchParams.get('q')?.toLowerCase() || '';
         .search-input-wrapper { view-transition-name: search-field; }
         #search-title { view-transition-name: search-title; }
         .search-results-wrapper { view-transition-name: search-results; }
+
+        /* The search field fades in from below when entering this page.
+           :only-child means there is no matching old snapshot, i.e. the previous
+           page had no search field. When refining a search we come from the
+           search page itself, the old and new snapshots are paired, the
+           pseudo-elements are siblings and these rules no longer match, so the
+           field simply morphs instead of fading in again. */
+        ::view-transition-new(search-field):only-child {
+            animation: 300ms cubic-bezier(0, 0, 0.2, 1) both fade-in-up;
+            animation-delay: 0.5s;
+        }
+
+        ::view-transition-old(search-field):only-child {
+            animation: 300ms cubic-bezier(0.4, 0, 1, 1) both fade-out;
+        }
     </style>
 
     <main class="content-grid snap-top">
