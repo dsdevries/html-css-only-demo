@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import SearchResults from '../components/SearchResults.astro';
 import SearchResultsSkeleton from '../components/SearchResultsSkeleton.astro';
+import StreamFlush from '../components/StreamFlush.astro';
 
 export const prerender = false;
 
@@ -10,6 +11,16 @@ const query = Astro.url.searchParams.get('q')?.toLowerCase() || '';
 
 <Layout title="Search" htmlId="search" currentNav="search" breakoutHeader={true}>
     <link rel="expect" href="#search-results-container" blocking="render" slot="head">
+    
+    <style is:inline slot="head">
+        /* Critical View Transition names for the search page */
+        /* Moving these here ensures they are available for the very first paint, */
+        /* which is essential for native view transitions to work correctly. */
+        .search-input-wrapper { view-transition-name: search-field; }
+        #search-title { view-transition-name: search-title; }
+        .search-results-wrapper { view-transition-name: search-results; }
+    </style>
+
     <main class="content-grid snap-top">
         <div class="hero breakout search-hero radius-large">
             <form class="search-form" role="search" action="/search" method="get">
@@ -31,6 +42,7 @@ const query = Astro.url.searchParams.get('q')?.toLowerCase() || '';
                 <div class="skeleton-list search-results">
                     <SearchResultsSkeleton />
                 </div>
+                <StreamFlush />
                 <SearchResults query={query} />
             </div>
         </div>

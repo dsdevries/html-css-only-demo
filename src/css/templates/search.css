@@ -6,6 +6,10 @@
     view-transition-name: search-title;
 }
 
+.search-results-wrapper {
+    view-transition-name: search-results;
+}
+
 /* When this component finishes streaming, we fade out the skeletons */
 .search-results-wrapper:has(.results-done) .skeleton-list {
     animation: fade-out 0.4s 0.1s forwards !important;

@@ -1,0 +1,10 @@
+---
+/**
+ * This component sends ~4KB of invisible whitespace to force Vercel's edge 
+ * to flush the current stream buffer. This ensures that the head and 
+ * initial layout (like skeletons) are delivered to the browser immediately, 
+ * even if subsequent components are delayed.
+ */
+---
+{/* 4096 spaces to fill the buffer */}
+{Array.from({ length: 4096 }).map(() => ' ')}
