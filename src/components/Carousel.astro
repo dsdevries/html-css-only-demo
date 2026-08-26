@@ -15,3 +15,107 @@ const { class: className, ...rest } = Astro.props;
         <slot />
     </ul>
 </div>
+
+<style>
+    .carousel {
+        position: relative;
+
+        ul {
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: var(--padding-inline);
+            padding: 0 0 1rem 0;
+            margin-bottom: -1rem;
+            width: 100%;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            z-index: 0;
+            list-style: none;
+
+            @supports selector(::scroll-marker-group) {
+                overflow-x: hidden;
+                padding: 0 0 4rem 0;
+                margin-bottom: 0;
+            }
+
+            &::scroll-button(left),
+            &::scroll-button(right) {
+                --button-background-color-from: var(--button-bg-dark-from);
+                --button-background-color-to: var(--button-bg-dark-to);
+
+                position: absolute;
+                bottom: 0;
+                z-index: 2;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                height: 3.2rem;
+                box-sizing: border-box;
+                font-size: 1.2rem;
+                line-height: 3rem;
+                padding: .1rem 1rem;
+                color: var(--color-text-primary);
+                text-shadow: var(--text-shadow);
+                border: none;
+                border-radius: var(--radius-medium);
+                transform-origin: center center;
+                background: linear-gradient(
+                        to bottom,
+                        var(--button-background-color-from),
+                        var(--button-background-color-to)
+                );
+                filter: drop-shadow(var(--shadow-light));
+                border: var(--glass-border);
+
+                transition:
+                        --button-background-color-from 1s var(--spring-easing),
+                        --button-background-color-to 1s var(--spring-easing);
+            }
+
+            &::scroll-button(*):disabled {
+                opacity: 0.5;
+            }
+
+            &::scroll-button(*):not(:disabled) {
+                cursor: pointer;
+            }
+
+            &::scroll-button(*):not(:disabled):hover {
+                --button-background-color-from: var(--button-bg-light-from);
+                --button-background-color-to: var(--button-bg-light-to);
+            }
+
+            &::scroll-button(left) {
+                content: "⬅" / "Scroll Left";
+                left: 0;
+            }
+
+            &::scroll-button(right) {
+                content: "⮕" / "Scroll Right";
+                right: 0;
+            }
+
+            &::scroll-button(*):focus-visible {
+                outline-offset: 5px;
+            }
+
+            scroll-marker-group: after;
+
+            &::scroll-marker-group {
+                position: absolute;
+                bottom: 0;
+                height: 3.2rem;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                z-index: 1;
+            }
+        }
+    }
+</style>

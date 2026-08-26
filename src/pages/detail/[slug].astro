@@ -48,3 +48,23 @@ const relatedMovies = movies
         </Carousel>
     </main>
 </Layout>
+
+<style is:global>
+    /* Scoped styles cannot target the html element or the elements rendered by
+       MovieCard, so these page level rules are declared globally. */
+
+    #main-detail {
+        &::view-transition-new(.movie-poster) {
+            object-fit: cover;
+            z-index: 4;
+        }
+
+        .hero .content {
+            view-transition-name: main-movie-description;
+        }
+
+        .details {
+            display: none;
+        }
+    }
+</style>

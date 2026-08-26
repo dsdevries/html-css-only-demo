@@ -1,7 +1,6 @@
 ---
 import Header from '../components/Header.astro';
 import Navigation from '../components/Navigation.astro';
-import '../css/styles.css';
 
 interface Props {
   title: string;
@@ -47,3 +46,659 @@ const {
     <slot />
 </body>
 </html>
+
+<style is:global>
+    /* ---------------------------------------------------------------------
+       Global styles: design tokens, base elements, layout grid, shared
+       utility/component classes and cross page view transitions.
+       Everything that only belongs to a single component or page lives in
+       that component/page instead.
+       --------------------------------------------------------------------- */
+
+    /* Custom properties -------------------------------------------------- */
+
+    @property --button-background-color-from {
+        syntax: '<color>';
+        initial-value: transparent;
+        inherits: true;
+    }
+
+    @property --button-background-color-to {
+        syntax: '<color>';
+        initial-value: transparent;
+        inherits: true;
+    }
+
+    :root {
+        interpolate-size: allow-keywords;
+
+        /* Grid */
+        --padding-inline: 1.5rem;
+        --content-max-width: 900px;
+        --breakout-max-width: 1200px;
+
+        /* Base Colors */
+        --color-black: #000;
+        --color-white: #fff;
+        --color-red: red;
+        --color-red-50: rgba(255, 0, 0, 0.5);
+        --color-red-70: rgba(255, 0, 0, 0.7);
+        --color-gray: rgb(120,120,120);
+        --color-transparent-white: rgba(255, 255, 255, 0);
+        --color-transparent-black: rgba(0, 0, 0, 0);
+        --color-black-05: rgba(0, 0, 0, 0.05);
+        --color-black-08: rgba(0, 0, 0, 0.08);
+        --color-black-10: rgba(0, 0, 0, 0.1);
+        --color-black-30: rgba(0, 0, 0, 0.3);
+        --color-black-45: rgba(0, 0, 0, 0.45);
+        --color-black-50: rgba(0, 0, 0, 0.5);
+        --color-black-60: rgba(0, 0, 0, 0.6);
+        --color-white-05: rgba(255, 255, 255, 0.05);
+        --color-white-08: rgba(255, 255, 255, 0.08);
+        --color-white-10: rgba(255, 255, 255, 0.1);
+        --color-white-15: rgba(255, 255, 255, 0.15);
+        --color-white-20: rgba(255, 255, 255, 0.2);
+        --color-white-28: rgba(255, 255, 255, 0.28);
+        --color-white-30: rgba(255, 255, 255, 0.3);
+        --color-white-35: rgba(255, 255, 255, 0.35);
+        --color-white-42: rgba(255, 255, 255, 0.42);
+        --color-white-50: rgba(255, 255, 255, 0.5);
+        --color-white-60: rgba(255, 255, 255, 0.6);
+        --color-white-70: rgba(255, 255, 255, 0.7);
+
+        /* Theme Variables (Light by default) */
+        color-scheme: light;
+        --color-bg-page: var(--color-white);
+        --color-text-primary: var(--color-black);
+        --text-shadow: none;
+        --icon-filter: none;
+
+        --glass-border-color: var(--color-white-42);
+        --glass-border-color-strong: var(--color-white-70);
+        --glass-panel-dark-from: var(--color-white-20);
+        --glass-panel-dark-to: var(--color-white-30);
+        --glass-panel-medium-from: var(--color-white-42);
+        --glass-panel-medium-to: var(--color-white-28);
+        --glass-panel-light-from: var(--color-white-50);
+        --glass-panel-light-to: var(--color-white-60);
+        --glass-edge-color: var(--color-white-35);
+
+        --glass-mild-border-color: var(--color-white-20);
+        --glass-mild-bg: var(--color-white-10);
+        --glass-mild-edge-color: var(--color-white-15);
+
+        --shadow-heavy-color: var(--color-black-45);
+        --shadow-light-color: var(--color-gray);
+        --shadow-floating-color: var(--color-black-30);
+
+        /* Category Colors */
+        --color-category-action-1: #d69095;
+        --color-category-action-2: #c57177;
+        --color-category-action-3: #b35961;
+        --color-category-comedy-1: #e3cd7f;
+        --color-category-comedy-2: #d9c05c;
+        --color-category-comedy-3: #c9b140;
+        --color-category-family-1: #bdccab;
+        --color-category-family-2: #a1b887;
+        --color-category-family-3: #85a363;
+        --color-category-sci-fi-1: #b2c9d6;
+        --color-category-sci-fi-2: #92b2c7;
+        --color-category-sci-fi-3: #729ab5;
+        --color-category-classics-1: #e3dac1;
+        --color-category-classics-2: #d4cba3;
+        --color-category-classics-3: #c5ba85;
+        --color-category-thriller-1: #a2b3c5;
+        --color-category-thriller-2: #859bb3;
+        --color-category-thriller-3: #6883a1;
+        --color-category-horror-1: #b9adbf;
+        --color-category-horror-2: #9c89a8;
+        --color-category-horror-3: #7f6591;
+
+        /* Border Radii */
+        --radius-large: 2rem;
+        --radius-medium: 2em;
+        --radius-small: 1rem;
+        --radius-round: 50%;
+
+        /* Shadows & Effects */
+        --shadow-heavy: 0 4px 10px 0 var(--shadow-heavy-color);
+        --shadow-light: 0 3px 6px var(--shadow-light-color);
+        --shadow-floating: 0 10px 30px var(--shadow-floating-color);
+        --blur-standard: 5px;
+        --blur-heavy: 10px;
+
+        /* Glass Colors & Gradients */
+        --glass-border: 1px solid var(--glass-border-color);
+
+        --glass-panel-dark: linear-gradient(
+            to bottom,
+            var(--glass-panel-dark-from),
+            var(--glass-panel-dark-to)
+        );
+        --glass-panel-medium: linear-gradient(
+                to bottom,
+                var(--glass-panel-medium-from),
+                var(--glass-panel-medium-to)
+        );
+        --glass-panel-light: linear-gradient(
+                to bottom,
+                var(--glass-panel-light-from),
+                var(--glass-panel-light-to)
+        );
+        --glass-edge: inset 0 0 0 1px var(--glass-edge-color);
+
+        /* Animation Easing */
+        --spring-easing: linear(0, 0.0018, 0.0069 1.15%, 0.026 2.3%, 0.0637, 0.1135 5.18%, 0.2229 7.78%, 0.5977 15.84%, 0.7014, 0.7904, 0.8641, 0.9228, 0.9676 28.8%, 1.0032 31.68%, 1.0225, 1.0352 36.29%, 1.0431 38.88%, 1.046 42.05%, 1.0448 44.35%, 1.0407 47.23%, 1.0118 61.63%, 1.0025 69.41%, 0.9981 80.35%, 0.9992 99.94%);
+
+        /* Button Colors */
+        --button-bg-dark-from: var(--color-white-15);
+        --button-bg-dark-to: var(--color-white-30);
+        --button-bg-light-from: var(--color-white-35);
+        --button-bg-light-to: var(--color-white-50);
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            color-scheme: dark;
+            --color-bg-page: var(--color-black);
+            --color-text-primary: var(--color-white);
+            --text-shadow: 0 1px 10px var(--color-black-60);
+            --icon-filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.6));
+
+            --glass-border-color: var(--color-white-15);
+            --glass-border-color-strong: var(--color-white-30);
+            --glass-panel-dark-from: var(--color-white-10);
+            --glass-panel-dark-to: var(--color-white-15);
+            --glass-panel-medium-from: var(--color-white-20);
+            --glass-panel-medium-to: var(--color-white-15);
+            --glass-panel-light-from: var(--color-white-20);
+            --glass-panel-light-to: var(--color-white-28);
+            --glass-edge-color: var(--color-white-10);
+
+            --glass-mild-border-color: var(--color-white-10);
+            --glass-mild-bg: var(--color-black-10);
+            --glass-mild-edge-color: var(--color-white-05);
+
+            --shadow-heavy-color: var(--color-black-60);
+            --shadow-light-color: var(--color-black-50);
+            --shadow-floating-color: var(--color-black-60);
+
+            --button-bg-dark-from: var(--color-white-20);
+            --button-bg-dark-to: var(--color-white-35);
+            --button-bg-light-from: var(--color-white-35);
+            --button-bg-light-to: var(--color-white-50);
+        }
+
+        html[data-theme="light"],
+        html:has(#theme-light:checked) {
+            color-scheme: light;
+            --color-bg-page: var(--color-white);
+            --color-text-primary: var(--color-black);
+            --text-shadow: none;
+            --icon-filter: none;
+
+            --glass-border-color: var(--color-white-42);
+            --glass-border-color-strong: var(--color-white-70);
+            --glass-panel-dark-from: var(--color-white-20);
+            --glass-panel-dark-to: var(--color-white-30);
+            --glass-panel-medium-from: var(--color-white-42);
+            --glass-panel-medium-to: var(--color-white-28);
+            --glass-panel-light-from: var(--color-white-50);
+            --glass-panel-light-to: var(--color-white-60);
+            --glass-edge-color: var(--color-white-35);
+
+            --glass-mild-border-color: var(--color-white-20);
+            --glass-mild-bg: var(--color-white-10);
+            --glass-mild-edge-color: var(--color-white-15);
+
+            --shadow-heavy-color: var(--color-black-45);
+            --shadow-light-color: var(--color-black-10);
+            --shadow-floating-color: var(--color-black-30);
+
+            --button-bg-dark-from: var(--color-white-15);
+            --button-bg-dark-to: var(--color-white-30);
+            --button-bg-light-from: var(--color-white-35);
+            --button-bg-light-to: var(--color-white-50);
+        }
+    }
+
+    html[data-theme="dark"],
+    html:has(#theme-dark:checked) {
+        color-scheme: dark;
+        --color-bg-page: var(--color-black);
+        --color-text-primary: var(--color-white);
+        --text-shadow: 0 1px 10px var(--color-black-60);
+        --icon-filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.6));
+
+        --glass-border-color: var(--color-white-15);
+        --glass-border-color-strong: var(--color-white-30);
+        --glass-panel-dark-from: var(--color-white-10);
+        --glass-panel-dark-to: var(--color-white-15);
+        --glass-panel-medium-from: var(--color-white-20);
+        --glass-panel-medium-to: var(--color-white-15);
+        --glass-panel-light-from: var(--color-white-20);
+        --glass-panel-light-to: var(--color-white-28);
+        --glass-edge-color: var(--color-white-10);
+
+        --glass-mild-border-color: var(--color-white-10);
+        --glass-mild-bg: var(--color-black-10);
+        --glass-mild-edge-color: var(--color-white-05);
+
+        --shadow-heavy-color: var(--color-black-60);
+        --shadow-light-color: var(--color-black-50);
+        --shadow-floating-color: var(--color-black-60);
+
+        --button-bg-dark-from: var(--color-white-20);
+        --button-bg-dark-to: var(--color-white-35);
+        --button-bg-light-from: var(--color-white-35);
+        --button-bg-light-to: var(--color-white-50);
+    }
+
+    /* Base elements ------------------------------------------------------ */
+
+    body {
+        margin: 0;
+        font-family: sans-serif;
+        background-color: var(--color-bg-page);
+        color: var(--color-text-primary);
+        text-shadow: var(--text-shadow);
+    }
+
+    h1 {
+        margin-top: 3rem;
+    }
+
+    /* Layout grid -------------------------------------------------------- */
+
+    .content-grid {
+        --breakout-size: calc(
+                (var(--breakout-max-width) - var(--content-max-width)) / 2
+        );
+
+        display: grid;
+        grid-template-columns:
+        [full-width-start] minmax(var(--padding-inline), 1fr)
+        [breakout-start] minmax(0, var(--breakout-size))
+        [content-start] min(
+          100% - (var(--padding-inline) * 2),
+          var(--content-max-width)
+        )
+        [content-end]
+        minmax(0, var(--breakout-size)) [breakout-end]
+        minmax(var(--padding-inline), 1fr) [full-width-end];
+        width: 100%;
+    }
+
+    .content-grid > :not(.breakout){
+        grid-column: content;
+    }
+
+    .content-grid > .breakout {
+        grid-column: breakout;
+    }
+
+    .content-grid > .full-width {
+        width: 100%;
+        grid-column: full-width;
+        display: grid;
+        grid-template-columns: inherit;
+    }
+
+    img.full-width {
+        max-height: 45vh;
+        object-fit: cover;
+    }
+
+    /* Utility classes ---------------------------------------------------- */
+
+    .glass-container {
+        position: relative;
+        border: var(--glass-border);
+        border-radius: var(--radius-large);
+        filter: drop-shadow(var(--shadow-light));
+        backdrop-filter: blur(var(--blur-standard));
+
+
+        &::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background: var(--glass-panel-medium);
+            border-radius: inherit;
+            box-shadow: var(--shadow-heavy), var(--glass-edge);
+            clip-path: inset(0 round var(--radius-large));
+            z-index: -1;
+        }
+    }
+
+    .glass-container-mild {
+        position: relative;
+        border: 1px solid var(--glass-mild-border-color);
+        border-radius: var(--radius-large);
+        backdrop-filter: blur(2px);
+
+        &::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background: var(--glass-mild-bg);
+            border-radius: inherit;
+            box-shadow: 0 4px 12px var(--color-black-05), inset 0 0 0 1px var(--glass-mild-edge-color);
+            clip-path: inset(0 round var(--radius-large));
+            z-index: -1;
+        }
+    }
+
+    .radius-large { border-radius: var(--radius-large); }
+    .radius-medium { border-radius: var(--radius-medium); }
+    .radius-round { border-radius: var(--radius-round); }
+    .radius-none { border-radius: 0; }
+
+    .shadow-light { filter: drop-shadow(var(--shadow-light)); }
+    .shadow-heavy { box-shadow: var(--shadow-heavy); }
+    .shadow-floating { box-shadow: var(--shadow-floating); }
+    .shadow-none { box-shadow: none; filter: none; }
+
+    .blur-standard { backdrop-filter: blur(var(--blur-standard)); }
+    .blur-heavy { backdrop-filter: blur(var(--blur-heavy)); }
+    .blur-none { backdrop-filter: none; }
+
+    /* Shared building blocks --------------------------------------------- */
+
+    /* Used by Header, page level buttons and forms */
+    .button {
+        --button-background-color-from: var(--button-bg-dark-from);
+        --button-background-color-to: var(--button-bg-dark-to);
+
+        cursor: pointer;
+        font-size: 1.2rem;
+        line-height: 3rem;
+        padding: .1rem 1rem;
+        color: var(--color-text-primary);
+        text-shadow: var(--text-shadow);
+        border: none;
+        transform-origin: center center;
+        background: linear-gradient(
+                to bottom,
+                var(--button-background-color-from),
+                var(--button-background-color-to)
+        );
+
+        filter: drop-shadow(var(--shadow-light));
+        border: var(--glass-border);
+
+        transition:
+                --button-background-color-from 1s var(--spring-easing),
+                --button-background-color-to 1s var(--spring-easing);
+
+        svg {
+            overflow: visible;
+            filter: var(--icon-filter);
+        }
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: default;
+        }
+
+        &:not(:disabled):hover {
+            --button-background-color-from: var(--button-bg-light-from);
+            --button-background-color-to: var(--button-bg-light-to);
+        }
+    }
+
+    /* Shared by MovieCard, SearchResultsSkeleton and the categories page */
+    .card {
+        --movie-transition-name: none;
+        display: flex;
+        gap: 2rem;
+        overflow: clip;
+        padding: 1rem;
+        box-sizing: border-box;
+
+        &:hover img,
+        &:active img,
+        &:has(a:active) img,
+        &:target img,
+        &:has(:target) img {
+            view-transition-name: var(--movie-transition-name);
+            view-transition-class: movie-poster;
+        }
+
+        a {
+            width: 250px;
+            flex-shrink: 0;
+            display: block;
+            position: relative;
+            text-decoration: none;
+            overflow: hidden;
+            margin: -1rem;
+
+            img {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 2/3;
+                object-fit: cover;
+                display: block;
+                border-radius: var(--radius-large);
+            }
+        }
+
+        .details {
+            flex: 1;
+            min-width: 0;
+        }
+
+        h3 {
+            display: inline-block;
+            color: var(--color-text-primary);
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    }
+
+    /* Shared by the new, detail and search pages */
+    .hero {
+        margin: 15px 0;
+        position: relative;
+        min-height: 400px;
+
+        &.full-width {
+            margin: 0;
+
+            img {
+                position: absolute;
+            }
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .content {
+            position: absolute;
+            bottom: 0;
+            background: linear-gradient(0deg, var(--color-black-50), var(--color-transparent-black));
+            color: var(--color-white);
+            padding-bottom: 1rem;
+            overflow: clip;
+        }
+
+        h1 {
+            margin-bottom: 0;
+        }
+    }
+
+    /* Shared animations -------------------------------------------------- */
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes fade-out {
+        from {
+            opacity: 1;
+        }
+        to {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+
+    @keyframes fade-in-down {
+        from {
+            opacity: 0;
+            transform: translateY(-40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fade-out-up {
+        from {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        to {
+            opacity: 0;
+            transform: translateY(-40px);
+        }
+    }
+
+    @keyframes fade-in-up {
+        from {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Used by both the main navigation and the theme switch */
+    @keyframes droplet-stretch {
+        0% {
+            margin-inline: 0;
+            animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        }
+        30% {
+            margin-inline: -9px;
+            animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        }
+        60% {
+            margin-inline: -6px;
+            animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        }
+        100% {
+            margin-inline: 0;
+        }
+    }
+
+    @keyframes droplet-stretch-alt {
+        0% {
+            margin-inline: 0;
+            animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        }
+        30% {
+            margin-inline: -9px;
+            animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        }
+        60% {
+            margin-inline: -6px;
+            animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+        }
+        100% {
+            margin-inline: 0;
+        }
+    }
+
+    /* Cross page view transitions ---------------------------------------- */
+    /* These run between two documents, so they have to be available on every
+       page instead of only on the page that owns the element. */
+
+    ::view-transition-group(*) {
+        animation-duration: 0.5s;
+    }
+
+    ::view-transition-group(.movie-poster) {
+        z-index: 1;
+    }
+
+    ::view-transition-group(.hero-poster) {
+        z-index: 4;
+    }
+
+    ::view-transition-old(.movie-poster),
+    ::view-transition-new(.movie-poster) {
+        animation: none;
+        mix-blend-mode: normal;
+        height: 100%;
+        overflow: clip;
+        border-radius: var(--radius-large);
+        z-index: 4;
+    }
+
+    ::view-transition-old(.movie-poster):only-child {
+        animation: 0.5s cubic-bezier(0.4, 0, 1, 1) both fade-out;
+    }
+
+    ::view-transition-new(.movie-poster):only-child {
+        animation: 0.5s cubic-bezier(0, 0, 0.2, 1) both fade-in;
+    }
+
+    ::view-transition-old(main-movie-description),
+    ::view-transition-new(main-movie-description) {
+        mix-blend-mode: normal;
+    }
+
+    ::view-transition-new(main-movie-description) {
+        animation: 800ms cubic-bezier(0, 0, 0.2, 1) both fade-in-up;
+        animation-delay: 0.5s;
+    }
+
+    ::view-transition-old(main-movie-description) {
+        animation: 300ms cubic-bezier(0.4, 0, 1, 1) both fade-out;
+    }
+
+    ::view-transition-group(main-movie-description) {
+        overflow: clip;
+        border-radius: var(--radius-large);
+        z-index: 5;
+    }
+
+    ::view-transition-old(new-image),
+    ::view-transition-new(new-image) {
+        animation: none;
+        mix-blend-mode: normal;
+        height: 100%;
+        overflow: clip;
+    }
+
+    ::view-transition-old(new-image):only-child {
+        animation: 0.1s both fade-out;
+    }
+
+    ::view-transition-group(new-movie-description) {
+        overflow: clip;
+    }
+
+    ::view-transition-new(new-movie-description) {
+        animation: 300ms cubic-bezier(0, 0, 0.2, 1) both fade-in-up;
+        animation-delay: 0.5s;
+    }
+
+    ::view-transition-old(new-movie-description) {
+        animation: 150ms cubic-bezier(0.4, 0, 1, 1) both fade-out;
+    }
+</style>
