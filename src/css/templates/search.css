@@ -1,3 +1,24 @@
+.search-input-wrapper {
+    view-transition-name: search-field;
+}
+
+#search-title {
+    view-transition-name: search-title;
+}
+
+/* When this component starts streaming, we fade out the skeletons */
+/* We wait until there is actual content (cards or no-results) inside the results list */
+.search-results-wrapper:has(.results-list :is(.card, #no-results)) .skeleton-list {
+    animation: fade-out 0.8s forwards !important;
+    pointer-events: none !important;
+}
+
+/* Ensure the results list itself fades in */
+.results-list {
+    opacity: 0;
+    animation: fade-in 0.8s forwards !important;
+}
+
 #search {
     .search-hero {
         display: flex;
@@ -19,7 +40,6 @@
     }
 
     .search-input-wrapper {
-        view-transition-name: search-field;
         width: 100%;
         display: flex;
         align-items: center;
@@ -52,12 +72,7 @@
     }
 
 
-    #search-title {
-        view-transition-name: search-title;
-    }
-
     .search-results-wrapper {
-        view-transition-name: search-results;
         display: grid;
         grid-template-columns: 1fr;
         margin: 1.5rem 0 5rem;
