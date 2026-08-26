@@ -1,0 +1,11 @@
+---
+/**
+ * This component sends ~16KB of invisible content to force Vercel's edge 
+ * to flush the current stream buffer. We use random-ish data in a hidden 
+ * element to prevent compression and optimization from stripping it.
+ */
+const randomData = Array.from({ length: 16384 }, () => 
+    Math.floor(Math.random() * 36).toString(36)
+).join('');
+---
+<div style="display:none" aria-hidden="true" data-flush>{randomData}</div>

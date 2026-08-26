@@ -1,10 +1,28 @@
-::view-transition-new(search-field) {
-    animation: 300ms cubic-bezier(0, 0, 0.2, 1) both fade-in-up;
-    animation-delay: 0.5s;
+.search-input-wrapper {
+    view-transition-name: search-field;
 }
 
-::view-transition-old(search-field) {
-    animation: 300ms cubic-bezier(0.4, 0, 1, 1) both fade-out;
+#search-title {
+    view-transition-name: search-title;
+}
+
+.search-results-wrapper {
+    view-transition-name: search-results;
+}
+
+/* When this component finishes streaming, we fade out the skeletons */
+.search-results-wrapper:has(.results-done) .skeleton-list {
+    animation: fade-out 0.4s 0.1s forwards !important;
+    pointer-events: none !important;
+}
+
+/* Ensure the results list itself fades in only when fully loaded */
+.results-list {
+    opacity: 0;
+}
+
+.search-results-wrapper:has(.results-done) .results-list {
+    animation: fade-in 0.4s 0.1s forwards !important;
 }
 
 #search {
@@ -28,7 +46,6 @@
     }
 
     .search-input-wrapper {
-        view-transition-name: search-field;
         width: 100%;
         display: flex;
         align-items: center;
@@ -59,6 +76,7 @@
             opacity: 0.6;
         }
     }
+
 
     .search-results-wrapper {
         display: grid;
