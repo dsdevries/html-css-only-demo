@@ -33,3 +33,28 @@ const newestMovies = [...movies].sort((a, b) => new Date(b.releaseDate).getTime(
         </Carousel>
     </main>
 </Layout>
+
+<style is:global>
+    /* Scoped styles cannot target the html element or the elements rendered by
+       MovieCard, so these page level rules are declared globally. */
+
+    #new-overview {
+        position: relative;
+
+        &::view-transition-new(new-image) {
+            object-fit: contain;
+        }
+
+        &::view-transition-old(new-image) {
+            object-fit: cover;
+        }
+
+        .hero .content {
+            view-transition-name: new-movie-description;
+        }
+
+        .details {
+            display: none;
+        }
+    }
+</style>

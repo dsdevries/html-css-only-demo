@@ -28,6 +28,135 @@
     </label>
 </div>
 
+<style>
+    .theme-switch {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 3px;
+        width: 100%;
+        background: var(--glass-mild-bg);
+        border-radius: var(--radius-large);
+        box-shadow: var(--glass-edge);
+        box-sizing: border-box;
+        gap: 2px;
+
+        &:hover {
+            anchor-name: --profile-hover;
+        }
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            top: anchor(top);
+            left: anchor(left);
+            right: anchor(right);
+            height: anchor-size(height);
+            display: block;
+            background: none;
+            border-radius: var(--radius-medium);
+            transition:
+                left 1s var(--spring-easing),
+                right 1s var(--spring-easing),
+                top 1s var(--spring-easing),
+                height 1s var(--spring-easing),
+                opacity 1s var(--spring-easing),
+                transform 1s var(--spring-easing);
+            pointer-events: none;
+            transform-origin: center center;
+            animation-duration: 0.6s;
+            animation-timing-function: linear;
+            z-index: 0;
+        }
+
+        &::before {
+            background: var(--glass-panel-light);
+            box-shadow: var(--glass-edge);
+            position-anchor: --theme-selected;
+        }
+
+        &::after {
+            background: var(--glass-panel-dark);
+            position-anchor: --theme-hover;
+            opacity: 0;
+        }
+
+        &:not(:has(.theme-option:hover)) {
+            anchor-name: --theme-hover;
+        }
+
+        &:not(:has(.theme-option:hover)):hover {
+            anchor-name: --profile-hover, --theme-hover;
+        }
+
+        &:has(.theme-option:hover)::after {
+            opacity: 1;
+        }
+
+        &:has(.theme-option:nth-child(odd):hover)::after,
+        &:has(.theme-option:nth-child(odd):has(input:checked))::before {
+            animation-name: droplet-stretch;
+        }
+
+        &:has(.theme-option:nth-child(even):hover)::after,
+        &:has(.theme-option:nth-child(even):has(input:checked))::before {
+            animation-name: droplet-stretch-alt;
+        }
+
+        &:has(.theme-option:active)::after {
+            transform: scale(1.15);
+        }
+
+        .theme-option {
+            position: relative;
+            z-index: 1;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            padding: 6px 4px;
+            border-radius: var(--radius-medium);
+            cursor: pointer;
+            user-select: none;
+            color: inherit;
+            font-size: 0.75rem;
+            font-weight: 500;
+            transition:
+                color 0.3s var(--spring-easing),
+                opacity 0.3s var(--spring-easing);
+            white-space: nowrap;
+
+            input[type="radio"] {
+                position: absolute;
+                opacity: 0;
+                width: 0;
+                height: 0;
+                pointer-events: none;
+                margin: 0;
+            }
+
+            svg {
+                width: 14px;
+                height: 14px;
+                flex-shrink: 0;
+            }
+
+            &:hover {
+                anchor-name: --theme-hover;
+            }
+
+            &:has(input:checked) {
+                color: var(--color-red);
+                text-shadow: none;
+                anchor-name: --theme-selected;
+            }
+        }
+    }
+</style>
+
 <script>
     function initTheme(): void {
         const lightInput = document.getElementById('theme-light') as HTMLInputElement | null;

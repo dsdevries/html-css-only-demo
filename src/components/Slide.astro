@@ -11,3 +11,47 @@ const { class: className, ...rest } = Astro.props;
 <li class:list={["slide", className]} {...rest}>
     <slot />
 </li>
+
+<style>
+    .slide {
+        scroll-snap-align: center;
+
+        &::scroll-marker {
+            --button-background-color-from: var(--button-bg-dark-from);
+            --button-background-color-to: var(--button-bg-dark-to);
+
+            content: '';
+            display: block;
+            width: 20px;
+            height: 20px;
+            border-radius: var(--radius-round);
+            border: none;
+            transform-origin: center center;
+            background: linear-gradient(
+                    to bottom,
+                    var(--button-background-color-from),
+                    var(--button-background-color-to)
+            );
+            filter: drop-shadow(var(--shadow-light));
+            border: var(--glass-border);
+            transition:
+                    --button-background-color-from 1s var(--spring-easing),
+                    --button-background-color-to 1s var(--spring-easing);
+        }
+
+        &::scroll-marker:hover {
+            --button-background-color-from: var(--button-bg-light-from);
+            --button-background-color-to: var(--button-bg-light-to);
+        }
+
+        &::scroll-marker:target-current {
+            --button-background-color-from: var(--color-red-50);
+            --button-background-color-to: var(--color-red);
+        }
+
+        &::scroll-marker:target-current:hover {
+            --button-background-color-from: var(--color-red-70);
+            --button-background-color-to: var(--color-red);
+        }
+    }
+</style>

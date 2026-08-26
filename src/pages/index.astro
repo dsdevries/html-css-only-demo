@@ -27,3 +27,25 @@ import movies from '../data/movies.json';
         </Carousel>
     </main>
 </Layout>
+
+<style is:global>
+    /* Scoped styles cannot target the html element or the elements rendered by
+       MovieCard, so these page level rules are declared globally. */
+
+    #main-overview {
+        position: relative;
+
+        &::view-transition-new(.movie-poster) {
+            object-fit: contain;
+        }
+
+        &::view-transition-old(.movie-poster) {
+            object-fit: cover;
+            z-index: 4;
+        }
+
+        .details {
+            display: none;
+        }
+    }
+</style>
