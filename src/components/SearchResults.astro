@@ -9,7 +9,7 @@ interface Props {
 const { query } = Astro.props;
 
 // Artificial delay to demonstrate streaming
-await new Promise(resolve => setTimeout(resolve, 1500));
+await new Promise(resolve => setTimeout(resolve, 500));
 
 const filteredMovies = movies.filter((movie) => {
     if (!query) return true;
@@ -29,4 +29,5 @@ const filteredMovies = movies.filter((movie) => {
             />
         ))
     )}
+    <span class="results-done" style="display:none;"></span>
 </div>

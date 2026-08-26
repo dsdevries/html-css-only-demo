@@ -6,17 +6,19 @@
     view-transition-name: search-title;
 }
 
-/* When this component starts streaming, we fade out the skeletons */
-/* We wait until there is actual content (cards or no-results) inside the results list */
-.search-results-wrapper:has(.results-list :is(.card, #no-results)) .skeleton-list {
-    animation: fade-out 0.8s forwards !important;
+/* When this component finishes streaming, we fade out the skeletons */
+.search-results-wrapper:has(.results-done) .skeleton-list {
+    animation: fade-out 0.4s 0.1s forwards !important;
     pointer-events: none !important;
 }
 
-/* Ensure the results list itself fades in */
+/* Ensure the results list itself fades in only when fully loaded */
 .results-list {
     opacity: 0;
-    animation: fade-in 0.8s forwards !important;
+}
+
+.search-results-wrapper:has(.results-done) .results-list {
+    animation: fade-in 0.4s 0.1s forwards !important;
 }
 
 #search {
