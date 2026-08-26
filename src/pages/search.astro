@@ -10,9 +10,12 @@ const query = Astro.url.searchParams.get('q')?.toLowerCase() || '';
 ---
 
 <Layout title="Search" htmlId="search" currentNav="search" breakoutHeader={true}>
-    <link rel="expect" href="#search-results-container" blocking="render" slot="head">
+    <link rel="expect" href="#skeleton-ready" blocking="render" slot="head">
     
     <style is:inline slot="head">
+        /* Force native view transitions to be active */
+        @view-transition { navigation: auto; }
+
         /* Critical View Transition names for the search page */
         /* Moving these here ensures they are available for the very first paint, */
         /* which is essential for native view transitions to work correctly. */
@@ -42,6 +45,7 @@ const query = Astro.url.searchParams.get('q')?.toLowerCase() || '';
                 <div class="skeleton-list search-results">
                     <SearchResultsSkeleton />
                 </div>
+                <div id="skeleton-ready"></div>
                 <StreamFlush />
                 <SearchResults query={query} />
             </div>
