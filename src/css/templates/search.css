@@ -60,7 +60,12 @@
         }
     }
 
+    #search-title {
+        view-transition-name: search-title;
+    }
+
     .search-results-wrapper {
+        view-transition-name: search-results;
         display: grid;
         grid-template-columns: 1fr;
         margin: 1.5rem 0 5rem;
