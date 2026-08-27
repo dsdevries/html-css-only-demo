@@ -34,9 +34,9 @@ const {
         }
     </style>
     <script is:inline>
-        // Apply theme as early as possible to prevent flash
-        const savedTheme = localStorage.getItem('theme') || 'system';
-        document.documentElement.dataset.theme = savedTheme;
+        // Single source of truth for the theme: 'light', 'dark' or 'system'.
+        // Applied before the first paint to prevent a flash on page transitions.
+        document.documentElement.dataset.theme = localStorage.getItem('theme') || 'system';
     </script>
     <slot name="head" />
 </head>
@@ -106,30 +106,32 @@ const {
         --color-white-60: rgba(255, 255, 255, 0.6);
         --color-white-70: rgba(255, 255, 255, 0.7);
 
-        /* Theme Variables (Light by default) */
-        color-scheme: light;
-        --color-bg-page: var(--color-white);
-        --color-text-primary: var(--color-black);
-        --text-shadow: none;
-        --icon-filter: none;
+        /* Theme Variables: light-dark() picks the value that matches the
+           color-scheme, which is driven by data-theme on the html element. */
+        color-scheme: light dark;
+        --color-bg-page: light-dark(var(--color-white), var(--color-black));
+        --color-text-primary: light-dark(var(--color-black), var(--color-white));
+        --shadow-elevation-color: light-dark(var(--color-transparent-black), var(--color-black-60));
+        --text-shadow: 0 1px 10px var(--shadow-elevation-color);
+        --icon-filter: drop-shadow(0 1px 10px var(--shadow-elevation-color));
 
-        --glass-border-color: var(--color-white-42);
-        --glass-border-color-strong: var(--color-white-70);
-        --glass-panel-dark-from: var(--color-white-20);
-        --glass-panel-dark-to: var(--color-white-30);
-        --glass-panel-medium-from: var(--color-white-42);
-        --glass-panel-medium-to: var(--color-white-28);
-        --glass-panel-light-from: var(--color-white-50);
-        --glass-panel-light-to: var(--color-white-60);
-        --glass-edge-color: var(--color-white-35);
+        --glass-border-color: light-dark(var(--color-white-42), var(--color-white-15));
+        --glass-border-color-strong: light-dark(var(--color-white-70), var(--color-white-30));
+        --glass-panel-dark-from: light-dark(var(--color-white-20), var(--color-white-10));
+        --glass-panel-dark-to: light-dark(var(--color-white-30), var(--color-white-15));
+        --glass-panel-medium-from: light-dark(var(--color-white-42), var(--color-white-20));
+        --glass-panel-medium-to: light-dark(var(--color-white-28), var(--color-white-15));
+        --glass-panel-light-from: light-dark(var(--color-white-50), var(--color-white-20));
+        --glass-panel-light-to: light-dark(var(--color-white-60), var(--color-white-28));
+        --glass-edge-color: light-dark(var(--color-white-35), var(--color-white-10));
 
-        --glass-mild-border-color: var(--color-white-20);
-        --glass-mild-bg: var(--color-white-10);
-        --glass-mild-edge-color: var(--color-white-15);
+        --glass-mild-border-color: light-dark(var(--color-white-20), var(--color-white-10));
+        --glass-mild-bg: light-dark(var(--color-white-10), var(--color-black-10));
+        --glass-mild-edge-color: light-dark(var(--color-white-15), var(--color-white-05));
 
-        --shadow-heavy-color: var(--color-black-45);
-        --shadow-light-color: var(--color-gray);
-        --shadow-floating-color: var(--color-black-30);
+        --shadow-heavy-color: light-dark(var(--color-black-45), var(--color-black-60));
+        --shadow-light-color: light-dark(var(--color-gray), var(--color-black-50));
+        --shadow-floating-color: light-dark(var(--color-black-30), var(--color-black-60));
 
         /* Category Colors */
         --color-category-action-1: #d69095;
@@ -191,107 +193,21 @@ const {
         --spring-easing: linear(0, 0.0018, 0.0069 1.15%, 0.026 2.3%, 0.0637, 0.1135 5.18%, 0.2229 7.78%, 0.5977 15.84%, 0.7014, 0.7904, 0.8641, 0.9228, 0.9676 28.8%, 1.0032 31.68%, 1.0225, 1.0352 36.29%, 1.0431 38.88%, 1.046 42.05%, 1.0448 44.35%, 1.0407 47.23%, 1.0118 61.63%, 1.0025 69.41%, 0.9981 80.35%, 0.9992 99.94%);
 
         /* Button Colors */
-        --button-bg-dark-from: var(--color-white-15);
-        --button-bg-dark-to: var(--color-white-30);
+        --button-bg-dark-from: light-dark(var(--color-white-15), var(--color-white-20));
+        --button-bg-dark-to: light-dark(var(--color-white-30), var(--color-white-35));
         --button-bg-light-from: var(--color-white-35);
         --button-bg-light-to: var(--color-white-50);
     }
 
-    @media (prefers-color-scheme: dark) {
-        :root {
-            color-scheme: dark;
-            --color-bg-page: var(--color-black);
-            --color-text-primary: var(--color-white);
-            --text-shadow: 0 1px 10px var(--color-black-60);
-            --icon-filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.6));
+    /* The inline script in the head sets data-theme before the first paint.
+       'system' (the default) keeps the 'light dark' scheme from :root. */
 
-            --glass-border-color: var(--color-white-15);
-            --glass-border-color-strong: var(--color-white-30);
-            --glass-panel-dark-from: var(--color-white-10);
-            --glass-panel-dark-to: var(--color-white-15);
-            --glass-panel-medium-from: var(--color-white-20);
-            --glass-panel-medium-to: var(--color-white-15);
-            --glass-panel-light-from: var(--color-white-20);
-            --glass-panel-light-to: var(--color-white-28);
-            --glass-edge-color: var(--color-white-10);
-
-            --glass-mild-border-color: var(--color-white-10);
-            --glass-mild-bg: var(--color-black-10);
-            --glass-mild-edge-color: var(--color-white-05);
-
-            --shadow-heavy-color: var(--color-black-60);
-            --shadow-light-color: var(--color-black-50);
-            --shadow-floating-color: var(--color-black-60);
-
-            --button-bg-dark-from: var(--color-white-20);
-            --button-bg-dark-to: var(--color-white-35);
-            --button-bg-light-from: var(--color-white-35);
-            --button-bg-light-to: var(--color-white-50);
-        }
-
-        html[data-theme="light"],
-        html:has(#theme-light:checked) {
-            color-scheme: light;
-            --color-bg-page: var(--color-white);
-            --color-text-primary: var(--color-black);
-            --text-shadow: none;
-            --icon-filter: none;
-
-            --glass-border-color: var(--color-white-42);
-            --glass-border-color-strong: var(--color-white-70);
-            --glass-panel-dark-from: var(--color-white-20);
-            --glass-panel-dark-to: var(--color-white-30);
-            --glass-panel-medium-from: var(--color-white-42);
-            --glass-panel-medium-to: var(--color-white-28);
-            --glass-panel-light-from: var(--color-white-50);
-            --glass-panel-light-to: var(--color-white-60);
-            --glass-edge-color: var(--color-white-35);
-
-            --glass-mild-border-color: var(--color-white-20);
-            --glass-mild-bg: var(--color-white-10);
-            --glass-mild-edge-color: var(--color-white-15);
-
-            --shadow-heavy-color: var(--color-black-45);
-            --shadow-light-color: var(--color-black-10);
-            --shadow-floating-color: var(--color-black-30);
-
-            --button-bg-dark-from: var(--color-white-15);
-            --button-bg-dark-to: var(--color-white-30);
-            --button-bg-light-from: var(--color-white-35);
-            --button-bg-light-to: var(--color-white-50);
-        }
+    html[data-theme="light"] {
+        color-scheme: light;
     }
 
-    html[data-theme="dark"],
-    html:has(#theme-dark:checked) {
+    html[data-theme="dark"] {
         color-scheme: dark;
-        --color-bg-page: var(--color-black);
-        --color-text-primary: var(--color-white);
-        --text-shadow: 0 1px 10px var(--color-black-60);
-        --icon-filter: drop-shadow(0 1px 10px rgba(0, 0, 0, 0.6));
-
-        --glass-border-color: var(--color-white-15);
-        --glass-border-color-strong: var(--color-white-30);
-        --glass-panel-dark-from: var(--color-white-10);
-        --glass-panel-dark-to: var(--color-white-15);
-        --glass-panel-medium-from: var(--color-white-20);
-        --glass-panel-medium-to: var(--color-white-15);
-        --glass-panel-light-from: var(--color-white-20);
-        --glass-panel-light-to: var(--color-white-28);
-        --glass-edge-color: var(--color-white-10);
-
-        --glass-mild-border-color: var(--color-white-10);
-        --glass-mild-bg: var(--color-black-10);
-        --glass-mild-edge-color: var(--color-white-05);
-
-        --shadow-heavy-color: var(--color-black-60);
-        --shadow-light-color: var(--color-black-50);
-        --shadow-floating-color: var(--color-black-60);
-
-        --button-bg-dark-from: var(--color-white-20);
-        --button-bg-dark-to: var(--color-white-35);
-        --button-bg-light-from: var(--color-white-35);
-        --button-bg-light-to: var(--color-white-50);
     }
 
     /* Base elements ------------------------------------------------------ */
