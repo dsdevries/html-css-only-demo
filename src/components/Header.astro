@@ -75,6 +75,13 @@ const { showBackButton = false, breakout = false, backHref = '/' } = Astro.props
             @container scroll-state(stuck: top) {
                 opacity: 1;
             }
+
+            /* Safari does not support scroll-state queries yet, so there the
+               stuck state is read from --header-stuck, which the scroll driven
+               fallback animation below flips. */
+            @container style(--header-stuck: true) {
+                opacity: 1;
+            }
         }
 
         /* The main element is rendered by the page, so it has to be global */
@@ -135,6 +142,20 @@ const { showBackButton = false, breakout = false, backHref = '/' } = Astro.props
                 overflow: visible;
                 filter: var(--icon-filter);
             }
+        }
+    }
+
+    /* Fallback for browsers without scroll-state container queries (Safari).
+       The header sits at the very top of the page, so "stuck: top" is the same
+       as "the page is scrolled": a scroll driven animation flips the registered
+       --header-stuck custom property, which is inherited by the ::after
+       backdrop and picked up by the style query above. The property is discrete,
+       so it switches at once and the opacity transition keeps running. */
+    @supports not (container-type: scroll-state) {
+        header {
+            animation: header-stuck both;
+            animation-timeline: scroll(root block);
+            animation-range: 0 2px;
         }
     }
 
@@ -344,8 +365,24 @@ const { showBackButton = false, breakout = false, backHref = '/' } = Astro.props
 </style>
 
 <style is:global>
-    /* View transitions and keyframes cannot be scoped, so they are declared
-       globally here next to the component that uses them. */
+    /* View transitions, registered properties and keyframes cannot be scoped,
+       so they are declared globally here next to the component that uses them. */
+
+    /* Drives the header backdrop in browsers without scroll-state queries. */
+    @property --header-stuck {
+        syntax: '<custom-ident>';
+        initial-value: false;
+        inherits: true;
+    }
+
+    @keyframes header-stuck {
+        from {
+            --header-stuck: false;
+        }
+        to {
+            --header-stuck: true;
+        }
+    }
 
     @keyframes droplet-stretch-vertical {
         0% {
